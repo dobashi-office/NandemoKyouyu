@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退職合意書作成時の基本チェックポイント</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせたダークグリーン系テーマ */
+            --primary-color: #355e46;
+            --primary-light: #f0f5f2;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f4f7f5;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-category {
+            width: 16%;
+            font-weight: bold;
+            background-color: #f7faf8;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-check {
+            width: 24%;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .col-detail {
+            width: 60%;
+        }
+
+        tbody tr:hover td {
+            background-color: #fafdfb;
+        }
+
+        .col-category:hover {
+            background-color: #f7faf8 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>退職合意書作成時の基本チェックポイント</h1>
+            <div class="intro">
+                退職合意書作成時の基本チェックポイントをまとめました。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                退職合意書は「紛争の最終解決」を目的としますが、記載内容や締結プロセスに不備があると、後日「合意の無効」を主張される深刻なリスクが潜んでいます。
+            </div>
+            <ul class="warning-list">
+                <li><strong>密室での即日署名リスク（強迫・錯誤の主張）：</strong> 面談のその場で無理に署名・捺印させると、後日「強要された」「内容を正しく理解していなかった」として合意の取り消しを主張されるリスクが高まります。合意書を持ち帰って家族や専門家と検討する時間を与えるプロセスが重要です。</li>
+                <li><strong>「清算条項」の範囲の限定解釈リスク：</strong> 「本件に関し」といった文言を省き一般清算条項を設けても、未払い残業代やハラスメントの慰謝料について「締結時に当事者間で具体的に認識されていなかった（よって合意の対象外）」と解釈される裁判例があります。潜在的な紛争リスク（特に未払い賃金）がある場合は、その対象を明記した上で清算・放棄させる必要があります。</li>
+                <li><strong>公益通報への口外禁止条項の無効：</strong> 口外禁止条項を設けても、労働基準監督署等の行政機関への申告や、法令に基づく公益通報を禁止することは法的に無効です。行政の調査が入った際に「会社が口封じをしようとした」と心証を悪くする原因にもなります。</li>
+                <li><strong>賃金との相殺禁止の原則違反：</strong> 会社に対する損害賠償請求権や貸付金残高がある場合でも、合意書に「労働者の明確かつ自由な意思に基づく相殺の合意」が明記されていない限り、労働基準法第24条（全額払いの原則）違反となり無効とされます。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-category">カテゴリー</th>
+                        <th class="col-check">チェック項目</th>
+                        <th class="col-detail">解説・実務上のポイント</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-category" rowspan="4">基本条項</td>
+                        <td class="col-check">退職日の確定</td>
+                        <td>「解雇」や「辞職」ではなく、双方が納得した「合意退職」であることを明記し、退職日（労働契約終了日）を確定させます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">賃金・退職金の確認</td>
+                        <td>最終給与、賞与、退職金（ある場合）の「金額」と「支払日」を特定します。後日の計算違いや未払い主張を防ぎます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">貸与品の返還</td>
+                        <td>PC、スマホ、社員証、保険証などの物理的な返還期限を設定します。返還を解決金支払いの条件にすることも有効です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">清算条項（一般清算）</td>
+                        <td>最も重要な条項です。「本件に関し」といった限定的な文言は避け、「労働契約に関連する一切の金銭請求権（賃金、残業代、慰謝料等）」を含めて相互に債権債務がないことを確認します。</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-category" rowspan="4">情報・評判リスク</td>
+                        <td class="col-check">守秘義務の継続</td>
+                        <td>「退職後も」守秘義務が継続することを確認させます。守るべき機密情報（顧客名簿、技術資料、財務情報等）を具体的に例示します。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">データの完全削除</td>
+                        <td>会社貸与品だけでなく、「私物端末（スマホ等）」や「個人のクラウド（Google Drive等）」に残存する業務データの削除・廃棄を誓約させます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">SNS・誹謗中傷対策</td>
+                        <td>具体的な媒体（X、Facebook、転職口コミサイト、掲示板等）を列挙し、会社や役職員への誹謗中傷を禁止します。違反時の違約金設定も検討します。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">口外禁止条項</td>
+                        <td>合意に至った経緯や解決金の内容を、正当な理由なく第三者に漏らさないよう義務付けます。</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-category" rowspan="4">金銭・処遇</td>
+                        <td class="col-check">解決金の税務処理</td>
+                        <td>「特別退職金（退職所得）」として扱う場合には労働者から「退職所得の受給に関する申告書」を必ず提出させ、源泉徴収漏れを防ぎます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">ストックオプション</td>
+                        <td>「未確定分」の権利喪失と、「確定分」の行使期限（退職後◯ヶ月以内等）を明確にします。親会社の規程との整合性も確認が必要です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">社宅・貸付金</td>
+                        <td>社宅の明渡期限を設定し、遅延時の違約金を定めます。貸付金を給与や退職金から控除する場合、法的に有効な「書面による同意」を条項に盛り込みます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">ガーデンリーブ</td>
+                        <td>出社免除期間を経て退職する場合、その期間の対価を「賃金」ではなく「解決金（退職所得）」とすることで、双方の税・社保負担を軽減できる場合があります。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>

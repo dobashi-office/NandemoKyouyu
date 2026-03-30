@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業から内定取り消しを行う場合のチェックポイント</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせた渋めのオリーブグリーン系テーマ */
+            --primary-color: #4a6352;
+            --primary-light: #f2f5f3;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f7f9f8;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-category {
+            width: 16%;
+            font-weight: bold;
+            background-color: #f7faf8;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-check {
+            width: 18%;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .col-detail {
+            width: 40%;
+        }
+
+        .col-risk {
+            width: 26%;
+        }
+
+        .special-note {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        tbody tr:hover td {
+            background-color: #fafdfb;
+        }
+
+        .col-category:hover {
+            background-color: #f7faf8 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>企業から内定取り消しを行う場合のチェックポイント</h1>
+            <div class="intro">
+                企業から内定取り消しを行う場合のチェックポイントを作成しました。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                企業側は「まだ入社前だから」と安易に考えがちですが、法的に「内定」は「始期付・解約権留保付労働契約の成立」を意味します。つまり、内定取り消しは「解雇」と同等の極めて厳しい基準で審査されます。
+            </div>
+            <ul class="warning-list">
+                <li><strong>「自社に合わなそう」は100%不当解雇：</strong> 採用の自由は内定を出した時点で終了しています。入社前の研修や面談での態度を見て「やっぱり自社のカラーに合わない」「能力が低そう」といった主観的・抽象的な理由での取り消しは、裁判では絶対に認められません。</li>
+                <li><strong>後出しの取り消し事由は無効：</strong> 内定通知書や誓約書に「取り消し事由」として明記されていない理由での取り消しは、原則として困難です。また、記載があっても「客観的に合理的な理由」と「社会通念上の相当性」がなければ権利の濫用となります。</li>
+                <li><strong>企業側都合（業績悪化）の絶望的なハードル：</strong> 「想定より業績が悪化した」「事業方針が変わった」程度での取り消しは論外です。既存社員の希望退職を募るほどの危機的状況であり、かつ「整理解雇の4要素」を全て満たさなければ、高額な損害賠償の対象となります。</li>
+                <li><strong>デジタルタトゥーと採用ブランドの致命傷：</strong> 不当な内定取り消しは、SNS等で即座に告発・拡散されます。法的に和解できたとしても、「あの会社は平気で内定を切る」というレッテルはネット上に半永久的に残り、今後の採用活動に壊滅的な打撃を与えます。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-category">カテゴリ</th>
+                        <th class="col-check">チェック項目</th>
+                        <th class="col-detail">詳細・判断基準</th>
+                        <th class="col-risk">リスクへの影響</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-category">1. 契約・通知書</td>
+                        <td class="col-check">内定通知書の記載</td>
+                        <td>内定通知書や誓約書に「内定取り消し事由」が明記されているか。(例：「卒業できなかった場合」「経歴に虚偽があった場合」など)</td>
+                        <td>明記がない場合、正当性の立証が非常に困難になります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category" rowspan="4">2. 取り消し理由<br>(候補者起因)</td>
+                        <td class="col-check">学校卒業の可否</td>
+                        <td>(新卒の場合) 単位不足等で卒業不可が確定しているか。<br><span class="special-note">※留年しても採用する余地があるかは別途検討が必要です。</span></td>
+                        <td>卒業不可は最も正当性が認められやすい理由です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">健康上の重大な支障</td>
+                        <td>業務の遂行に耐えられないほどの健康悪化があるか。<br><span class="special-note">※一時的な病気や怪我ではなく、長期的に勤務不可能である客観的証拠（診断書）が必要です。</span></td>
+                        <td>医師の診断なく判断するのは極めて危険です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">経歴詐称の重大性</td>
+                        <td>履歴書の虚偽記載が「採否判断を覆すほど重大」か。<br><span class="special-note">※些細な書き間違いではなく、必須資格の未保持や犯罪歴の隠蔽などが該当します。</span></td>
+                        <td>「重要な経歴」でなければ不当解雇とされる可能性があります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">反社会的行為</td>
+                        <td>逮捕、起訴、またはSNS等での著しい迷惑行為など、企業の社会的信用を毀損する事実があるか。</td>
+                        <td>事実関係の裏付け（警察発表や証拠画像）が不可欠です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">3. 取り消し理由<br>(企業側起因)</td>
+                        <td class="col-check">経営状況の悪化</td>
+                        <td>倒産の危機など、高度な経営難に陥っているか。<br><span class="special-note">※単に「業績が予想より悪い」「方針が変わった」程度では認められません。</span></td>
+                        <td>「整理解雇の4要件」(下記参照) を満たす必要があります。ハードルは極めて高いです。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category" rowspan="2">4. 手続きの妥当性</td>
+                        <td class="col-check">事実確認の徹底</td>
+                        <td>本人へのヒアリング、学校への確認、医師の診断など、事実関係を直接かつ客観的に確認したか。<br><span class="special-note">※噂やSNSの断片情報だけで判断していませんか？</span></td>
+                        <td>誤認があった場合、損害賠償請求のリスクが高まります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">弁明の機会</td>
+                        <td>内定を取り消す前に、本人に事情を説明し、弁明する機会を与えたか。</td>
+                        <td>手続きの妥当性も裁判では重視されます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">5. 回避努力</td>
+                        <td class="col-check">配置転換等の検討</td>
+                        <td>当初の予定部署で不適格でも、他部署での採用や条件変更で雇用維持ができないか検討したか。</td>
+                        <td>「解雇回避努力義務」を果たしていないと判断されるリスクがあります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">6. 社会的影響</td>
+                        <td class="col-check">レピュテーション</td>
+                        <td>取り消しが公になった場合（SNS拡散等）、企業のブランド毀損に耐えられるか。<br><span class="special-note">※特に新卒の取り消しは「オワハラ」以上に炎上しやすい案件です。</span></td>
+                        <td>大学の就職課から「今後、御社には学生を紹介しない」とされるリスクもあります。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>

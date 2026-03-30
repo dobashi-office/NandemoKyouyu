@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退職勧奨を行う前のチェックリスト</title>
+    <style>
+        :root {
+            --primary-color: #4b6b53;
+            --primary-light: #f1f6f2;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #e0e0e0;
+            --bg-body: #f7f9f8;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 14px 16px;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-category {
+            width: 12%;
+        }
+
+        .col-check {
+            width: 28%;
+        }
+
+        .col-detail {
+            width: 60%;
+        }
+
+        .category-cell {
+            font-weight: bold;
+            background-color: #fafafa;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-box {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #888;
+            border-radius: 2px;
+            flex-shrink: 0;
+            background-color: #fff;
+        }
+
+        tbody tr:hover td {
+            background-color: #fcfcfc;
+        }
+
+        .category-cell:hover {
+            background-color: #fafafa !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>退職勧奨を行う前のチェックリスト</h1>
+            <div class="intro">
+                退職勧奨は解雇権濫用法理の適用はないものの、「出たとこ勝負」で行うとかえって無用なトラブルに発展しかねないため、しっかりとした事前準備が欠かせません。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                チェックリストを消化しても、現場の対応次第で「退職勧奨（適法）」は容易に「退職強要（違法）」へと転落します。労働者が録音している前提で、以下の経営リスクを直視してください。
+            </div>
+            <ul class="warning-list">
+                <li><strong>「退職強要」への不法行為リスク：</strong>労働者が明確に「辞めない」と拒絶した後の執拗な面談、大声での威圧、「辞めないと解雇だ（懲戒だ）」という脅しは、直ちに不法行為となり損害賠償請求の対象となります。</li>
+                <li><strong>「プランB」なき見切り発車による組織崩壊：</strong>交渉が決裂し、対象者が残留した場合の配置・業務を想定せずに勧奨を行えば、周囲のモチベーション低下や対象者のメンタル不調による休職など、より深刻な事態を招きます。</li>
+                <li><strong>「口頭合意」の脆弱性：</strong>面談の場で「わかりました」と口頭で同意を得ても、翌日「強要された」と翻意されれば立証は困難です。退職合意書（精算条項含む）に署名・捺印させるまでが退職勧奨のゴールです。</li>
+                <li><strong>自己都合・会社都合の安易な約束：</strong>「失業保険がすぐ出るから会社都合にしてあげる」という安易な妥協は、後日助成金の不支給や、他の社員への波及といった想定外の経営ダメージを引き起こします。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-category">カテゴリ</th>
+                        <th class="col-check">チェック項目</th>
+                        <th class="col-detail">詳細・確認ポイント</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="category-cell" rowspan="4">1. 理由・根拠</td>
+                        <td><div class="check-item"><span class="check-box"></span>勧奨理由の明確化</div></td>
+                        <td>能力不足、勤務態度、経営不振など、理由は具体的か？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>客観的証拠の確保</div></td>
+                        <td>指導記録、注意書、評価シート、勤怠データなどは揃っているか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>改善機会の付与</div></td>
+                        <td>過去に十分な指導や配置転換の機会を与えたか？（いきなり勧奨していないか）</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>公平性の担保</div></td>
+                        <td>他の社員と比較して、不当・恣意的な人選になっていないか？</td>
+                    </tr>
+
+                    <tr>
+                        <td class="category-cell" rowspan="5">2. 提示条件</td>
+                        <td><div class="check-item"><span class="check-box"></span>退職日の設定</div></td>
+                        <td>引継ぎや有給消化を考慮した、現実的な日付か？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>金銭的条件</div></td>
+                        <td>通常の退職金に加え、解決金（給与の数ヶ月分等）の上乗せはあるか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>有給休暇の扱い</div></td>
+                        <td>残日数を消化させるか、買い取るかの方針は決まっているか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>再就職支援</div></td>
+                        <td>再就職支援会社の利用や推薦状の作成など、次のキャリアへの配慮はあるか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>失業給付の区分</div></td>
+                        <td>離職票の離職理由を「会社都合（特定受給資格者）」にする準備はあるか？</td>
+                    </tr>
+
+                    <tr>
+                        <td class="category-cell" rowspan="4">3. 実施体制</td>
+                        <td><div class="check-item"><span class="check-box"></span>面談者の選定</div></td>
+                        <td>必ず2名以上（本人＋上司＋人事など）で実施できるか？（1名は記録係）</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>場所の確保</div></td>
+                        <td>プライバシーが守られ、かつ「監禁」を感じさせない部屋（ドア開放可など）か？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>時間の制限</div></td>
+                        <td>1回の面談は30分〜1時間程度に収まるよう計画しているか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>シナリオ準備</div></td>
+                        <td>導入の言葉、想定問答集（Q&A）、決裂時の対応を準備しているか？</td>
+                    </tr>
+
+                    <tr>
+                        <td class="category-cell" rowspan="4">4. 法的リスク</td>
+                        <td><div class="check-item"><span class="check-box"></span>拒否時の対応</div></td>
+                        <td>「NO」と言われた場合のプランB（残留後の配置・業務）は決まっているか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>強要の禁止</div></td>
+                        <td>「辞めないと解雇する」等の脅迫的言動は厳禁と理解しているか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>ハラスメント防止</div></td>
+                        <td>人格否定や侮辱的な発言をしないよう、面談担当者に周知徹底しているか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>頻度・回数の制限</div></td>
+                        <td>執拗な面談（連日の呼び出し、長時間拘束）は違法性が高いと認識しているか？</td>
+                    </tr>
+
+                    <tr>
+                        <td class="category-cell" rowspan="2">5. 文書化</td>
+                        <td><div class="check-item"><span class="check-box"></span>記録の準備</div></td>
+                        <td>面談日時、場所、発言内容を詳細に記録する体制（録音含む）はあるか？</td>
+                    </tr>
+                    <tr>
+                        <td><div class="check-item"><span class="check-box"></span>合意書案の作成</div></td>
+                        <td>退職合意書、秘密保持誓約書などのドラフトは手元にあるか？</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>

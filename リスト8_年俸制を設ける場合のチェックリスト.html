@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年俸制を設ける場合のチェックリスト</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせた渋めのグリーン系テーマ */
+            --primary-color: #43634e;
+            --primary-light: #f2f6f3;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f7f9f8;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-category {
+            width: 20%;
+            font-weight: bold;
+            background-color: #f7faf8;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-check {
+            width: 20%;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .col-detail {
+            width: 60%;
+        }
+
+        .num-list {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 1.5em;
+        }
+        
+        .num-list li {
+            margin-bottom: 4px;
+        }
+
+        tbody tr:hover td {
+            background-color: #fafdfb;
+        }
+
+        .col-category:hover {
+            background-color: #f7faf8 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>年俸制を設ける場合のチェックリスト</h1>
+            <div class="intro">
+                年俸制を設ける場合のチェックリストを作成しました。<br>
+                「年俸制を設けたものの法的には機能しない」という例もよく目にします。制度設計するからには抜けがないよう、機能する制度にしなければなりません。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                経営層は「年俸制＝残業代不要・業績次第で自由に減給可能」という致命的な誤解を抱きがちですが、日本の労働法制において「名ばかり年俸制」は企業にとって巨大な簿外債務（未払い賃金リスク）となります。
+            </div>
+            <ul class="warning-list">
+                <li><strong>「年俸制＝残業代込み」は100%敗訴する：</strong> 管理監督者（労基法第41条2号）に該当しない限り、年俸制であっても残業代の支払いは必須です。固定残業代を組み込む場合は、基本給部分と割増賃金部分の「明確な区分性」と、超過分の「清算ルール」が就業規則等に明記されていなければ全額無効となります。</li>
+                <li><strong>「年俸割りの賞与」に残業代が乗る罠：</strong> 年俸1200万円を「月額80万円×12ヶ月＋賞与120万円×2回（14分割）」等とする設計は極めて危険です。この賞与は「あらかじめ支給額が確定している賃金」とみなされ、残業代の計算基礎単価に算入しなければなりません。これにより、残業代単価が跳ね上がります。</li>
+                <li><strong>業績連動による「一方的減額」の違法性：</strong> 業績不良を理由に、次年度の年俸を会社の裁量で大幅に引き下げることは原則として違法（権利の濫用）です。減額するには、具体的で客観的な評価基準、減額幅の上限（例：最大10%まで等）、不服申し立て手続きの制度化が不可欠です。</li>
+                <li><strong>「期中の減額」は絶対不可：</strong> 一度合意した当該年度の年俸額は、期中に本人がいかに著しい成績不良であっても、原則として引き下げることはできません（具体的請求権が既に発生しているため）。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-category">カテゴリ</th>
+                        <th class="col-check">チェック項目</th>
+                        <th class="col-detail">詳細・留意点</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-category">決定権限と手続</td>
+                        <td class="col-check">年俸額決定の<br>ルール化</td>
+                        <td>
+                            使用者が対象者の同意なく年俸額を決定できるようにする場合、以下の4点を就業規則等に明示し、制度化する必要があります。
+                            <ol class="num-list">
+                                <li>成果・業績評価基準</li>
+                                <li>年俸額決定手続</li>
+                                <li>減額の限界の有無</li>
+                                <li>不服申立手続</li>
+                            </ol>
+                            これらに不足があると、使用者に一方的な決定権はないと判断されるリスクがあります。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">合意不成立時の扱い</td>
+                        <td class="col-check">改定合意が<br>できない場合</td>
+                        <td>労使間で新年度の年俸額に合意できない場合、上記のような明確な制度がない限り、「前年度の年俸額が次年度も適用される（据え置き）」となる可能性が高いです。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">年俸の減額</td>
+                        <td class="col-check">期中変更の禁止</td>
+                        <td>一度決定・合意された当該年度の年俸額は、経営悪化等の合理的理由があっても、年度途中で一方的に引き下げることは原則として許されません（具体的請求権が発生しているため）。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category" rowspan="2">賞与の扱い</td>
+                        <td class="col-check">割増賃金の<br>基礎単価</td>
+                        <td>年俸額を14等分や16等分し、一部を「賞与」として支給する場合、その賞与部分はあらかじめ確定した賃金とみなされ、割増賃金（残業代）の算定基礎から除外できません。「臨時に支払われた賃金」には該当しないとの解釈が一般的です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">支給日在籍要件の<br>効力</td>
+                        <td>年俸制の一部として支払われる賞与に対し、「支給日に在籍していなければ不支給」とする規定（支給日在籍要件）は無効となる可能性が高いです。年俸制下の賞与は「労働の対価として支払義務がある賃金の一部（後払い的性格）」とみなされるためです。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">中途入退社</td>
+                        <td class="col-check">日割り計算・<br>期間の定義</td>
+                        <td>年度途中の入社・退社、あるいは管理職への昇格・降格があった場合の年俸計算ルール（日割り計算や適用期間）を明確に定めておく必要があります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">評価期間の調整</td>
+                        <td class="col-check">評価と支給のズレ</td>
+                        <td>評価期間（例：4/1〜翌3/31）と決定・支給のタイミングにズレが生じる場合の調整規定が必要です。不服申し立てにより後から年俸額が変わった場合の差額調整についても定めておくことが望ましいです。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>

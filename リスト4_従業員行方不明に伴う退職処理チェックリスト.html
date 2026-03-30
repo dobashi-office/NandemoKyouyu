@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>従業員行方不明に伴う退職処理チェックリスト</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせた深いグリーン系のテーマ */
+            --primary-color: #2e5c43;
+            --primary-light: #f0f5f2;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f4f7f5;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-phase {
+            width: 15%;
+            font-weight: bold;
+            background-color: #f7faf8;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-check {
+            width: 20%;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .col-detail {
+            width: 55%;
+        }
+
+        .col-importance {
+            width: 10%;
+            text-align: center;
+            vertical-align: middle;
+            color: #f39c12; /* 星の色 */
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .special-note {
+            color: var(--danger-color);
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        tbody tr:hover td {
+            background-color: #fafdfb;
+        }
+
+        .col-phase:hover {
+            background-color: #f7faf8 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+            .col-importance {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>従業員行方不明に伴う退職処理チェックリスト</h1>
+            <div class="intro">
+                従業員行方不明に伴う退職処理について、実務上のチェックリストをまとめました。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・裁判例に基づく注意点</div>
+            <div class="warning-text">
+                裁判例は、行方不明に伴う「自然退職条項」の要件該当性を極めて厳格に判断する傾向にあります。
+            </div>
+            <ul class="warning-list">
+                <li><strong>東京地裁令和2年2月4日判決の教訓：</strong>「14日以上連絡が取れない」として退職扱いとしたケースで、裁判所は「会社がメールやFAX等で連絡を取る可能性があった」とし、退職を無効と判断しました。</li>
+                <li><strong>「通常の手段が全くなくなった状態」の立証：</strong>従業員が所在不明となり、出勤命令や解雇等の通知・意思表示をする通常の手段が<strong>完全に</strong>なくなった状態であることを立証する必要があります。</li>
+                <li><strong>安易な即断は禁物（プロセスと証拠の徹底）：</strong>単に「連絡がつかない」だけで即断するのではなく、とりうる連絡手段をすべて尽くし、その客観的な証拠（架電履歴、メール履歴、訪問記録、内容証明の返戻など）を残しておくことが最大の防御となります。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-phase">フェーズ</th>
+                        <th class="col-check">チェック項目</th>
+                        <th class="col-detail">詳細・アクション</th>
+                        <th class="col-importance">重要度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-phase" rowspan="4">1. 初動・安否確認</td>
+                        <td class="col-check">本人への連絡試行</td>
+                        <td>電話、メール、LINE、社内チャットなど、あらゆる手段で連絡を入れる。<br><span class="special-note">※「〇月〇日〇時〇分 電話（留守電残す）」と全ての履歴を記録する。</span></td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">緊急連絡先への連絡</td>
+                        <td>入社時の「身元保証人」や「緊急連絡先（実家・配偶者）」へ連絡。「無断欠勤が続いている。事件等の可能性も心配なので連絡が欲しい」と伝える。</td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">自宅訪問（重要）</td>
+                        <td>上司と同僚など2名以上で自宅を訪問する。インターホンを押し、応答がなければ郵便受けに「至急連絡されたし」というメモを投函。<br><span class="special-note">※電気メーターが動いているか、郵便物が溜まっていないかも確認し記録する。</span></td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">警察への相談</td>
+                        <td>事件・事故の可能性がある場合、家族経由または会社として警察に相談履歴を残す。<br><span class="special-note">※警察に相談したという事実が「会社は心配して手を尽くした」という証拠になる。</span></td>
+                        <td class="col-importance">★★☆</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase" rowspan="3">2. 就業規則の確認</td>
+                        <td class="col-check">「自然退職」規定の有無</td>
+                        <td>就業規則に以下の条文があるか確認する。<br>例：「無断欠勤が〇日（例：30日）続いたときは自然退職とする」<br>例：「行方不明となり〇日経過したときは退職とみなす」</td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">「懲戒解雇」規定の有無</td>
+                        <td>自然退職規定がない場合、「無断欠勤〇日以上は懲戒解雇」の条項を使うことになるが、解雇予告手当等の問題が出るため自然退職の方がリスクは低い。</td>
+                        <td class="col-importance">★★☆</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">日数のカウント</td>
+                        <td>規定にある日数（例：14日や30日）を経過しているか厳密に計算する。<br><span class="special-note">※休日を含めるか、労働日のみかは規則の記載に従う。</span></td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase" rowspan="3">3. 証拠保全・通知</td>
+                        <td class="col-check">出勤督促通知の送付</td>
+                        <td>「無断欠勤が続いているため、〇月〇日までに出社、または連絡すること。なき場合は就業規則第〇条に基づき退職扱いとする」旨の文書を送る。</td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">内容証明郵便の利用</td>
+                        <td>上記の通知は必ず「配達証明付き内容証明郵便」で送る。宛先不明で戻ってきた場合も、開封せずにそのまま保管する（「送達を試みた証拠」となる）。</td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">給与口座への振込</td>
+                        <td>行方不明期間中であっても、すでに働いた分の給与は通常通り振り込む。<br><span class="special-note">※これを止めると「賃金不払い」の問題が別途発生するため。</span></td>
+                        <td class="col-importance">★★☆</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase" rowspan="3">4. 決定・処理</td>
+                        <td class="col-check">公示送達（必要な場合）</td>
+                        <td>完全に居場所が不明で内容証明も届かない場合、簡易裁判所の掲示板に掲示してもらう「公示送達」を行うことで、法的に「相手に届いた」ことにできる。<br><span class="special-note">※自然退職規定がしっかりしていれば必須ではない場合もあるが、係争リスクが高い場合は検討。</span></td>
+                        <td class="col-importance">★☆☆</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">退職日の確定</td>
+                        <td>就業規則の規定に基づき、退職日を確定する。（例：無断欠勤30日目が経過した日、など）</td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">社会保険の資格喪失</td>
+                        <td>「資格喪失届」を年金事務所・ハローワークへ提出。喪失理由は「退職（行方不明による自然退職）」とする。<br><span class="special-note">※離職票の離職理由コードに注意（自己都合か会社都合か揉める可能性があるため、ハローワークに事情を説明する）。</span></td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase" rowspan="2">5. 事後対応</td>
+                        <td class="col-check">私物の管理</td>
+                        <td>社内に残された私物を勝手に処分しない。リストを作成し写真を撮った上で段ボールに詰め、「一定期間保管し、引き取りがない場合は処分する」旨の通知（内容証明）を送った上で、一定期間（例：3ヶ月〜半年）保管する。</td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">社貸与品の回収</td>
+                        <td>PC、携帯電話、保険証、社員証などの返還請求を記録に残す。<br><span class="special-note">※返ってこない場合、アクセス権限の停止や無効化を即座に行う。</span></td>
+                        <td class="col-importance">★★★</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>
