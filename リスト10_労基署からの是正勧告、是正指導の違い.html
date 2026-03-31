@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>労基署からの是正勧告、是正指導の違い</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせた渋めのグレーグリーン系テーマ */
+            --primary-color: #556b59;
+            --primary-light: #f3f6f4;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f7f9f8;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-item {
+            width: 20%;
+            font-weight: bold;
+            background-color: #f7faf8;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-kankoku, .col-shidou {
+            width: 40%;
+        }
+
+        .item-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .item-list li {
+            position: relative;
+            padding-left: 1em;
+            margin-bottom: 0.4em;
+        }
+
+        .item-list li::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+        }
+
+        .item-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        tbody tr:hover td {
+            background-color: #fafdfb;
+        }
+
+        .col-item:hover {
+            background-color: #f7faf8 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>労基署からの是正勧告、是正指導の違い</h1>
+            <div class="intro">
+                いずれも法的性質は「行政指導」ですが、温度感に違いがあります。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                「法的拘束力のない行政指導だから」と軽く見ていると、企業経営の根幹を揺るがす致命傷になり得ます。以下の実務リスクを正しく認識してください。
+            </div>
+            <ul class="warning-list">
+                <li><strong>是正報告書の「虚偽記載」は一発レッド：</strong> 是正勧告に対して「改善しました」と嘘の報告書を提出する行為は、労働基準法違反（第120条等）として最も悪質とみなされます。発覚した場合、即座に強制捜査（書類送検・逮捕）に踏み切られるリスクが跳ね上がります。</li>
+                <li><strong>指導票の放置がもたらす「故意」の認定：</strong> 是正指導（イエローカード）を放置した後に、同種の違反や労災が発生した場合、「過去に指導を受けたのに改善しなかった＝悪質な故意犯」と認定されます。過失ではなく故意とみなされることで、刑事罰や損害賠償額が大幅に加重されます。</li>
+                <li><strong>未払い残業代発覚による「連鎖爆発」：</strong> 是正勧告で1人の未払い残業代が指摘された場合、労働基準監督署は「全社員の過去の労働時間の遡及調査」を命じます（原則過去3年分）。数千万〜数億円単位の簿外債務が突如として表面化し、資金繰りがショートする黒字倒産のリスクに直結します。</li>
+                <li><strong>対応の丸投げによる二次被害：</strong> 報告書の提出期限に間に合わせるためだけに、現場の実態を無視した制度（名ばかり管理職の廃止や強引なみなし残業制の導入など）を拙速に作ると、後に従業員との間でさらに深刻な労働審判や民事訴訟を引き起こします。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-item">比較項目</th>
+                        <th class="col-kankoku">是正勧告</th>
+                        <th class="col-shidou">是正指導</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-item">交付される書面</td>
+                        <td>是正勧告書</td>
+                        <td>指導票</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">基本性質</td>
+                        <td>「法律違反」の指摘</td>
+                        <td>「改善要望」または「努力義務」の指摘</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">深刻度</td>
+                        <td>高（レッドカード）</td>
+                        <td>中〜低（イエローカード）</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">法的根拠</td>
+                        <td>労働基準法、安衛法などの明確な法違反</td>
+                        <td>法的な努力義務、または安全衛生上の配慮不足</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">具体例</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>残業代の未払い</li>
+                                <li>36協定なしでの残業</li>
+                                <li>法定健康診断の未実施</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="item-list">
+                                <li>健康診断の事後措置の不備</li>
+                                <li>就業規則の軽微な不備</li>
+                                <li>過重労働の予防措置不足</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">対応の必要性</td>
+                        <td>対応が必要（是正報告書の提出必須）</td>
+                        <td>原則、対応が必要（改善報告書の提出が強く求められる）</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">放置した場合</td>
+                        <td>再監督（再調査）、送検（逮捕・起訴）企業名の公表等のリスクあり</td>
+                        <td>是正勧告への格上げ、将来的な法違反のリスク増</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">是正期限</td>
+                        <td>書面に指定あり</td>
+                        <td>書面に指定あり（相談により柔軟な場合も）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>

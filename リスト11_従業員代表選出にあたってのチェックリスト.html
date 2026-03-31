@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>従業員代表選出にあたってのチェックリスト</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせた落ち着いたセージグリーン系テーマ */
+            --primary-color: #4e735c;
+            --primary-light: #f1f6f3;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f7f9f8;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 14px 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-phase {
+            width: 10%;
+            font-weight: bold;
+            background-color: #f6f9f7;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-check {
+            width: 14%;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .col-detail {
+            width: 30%;
+        }
+
+        .col-action {
+            width: 26%;
+        }
+
+        .col-risk {
+            width: 20%;
+        }
+
+        .item-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .item-list li {
+            position: relative;
+            padding-left: 1em;
+            margin-bottom: 0.4em;
+        }
+
+        .item-list li::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+        }
+
+        .item-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        tbody tr:hover td {
+            background-color: #fafcfb;
+        }
+
+        .col-phase:hover {
+            background-color: #f6f9f7 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>従業員代表選出にあたってのチェックリスト</h1>
+            <div class="intro">
+                従業員代表選出にあたってのチェックリストを作成しました。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                経営側は「誰が代表でも同じ」「手続きは形式的なもの」と軽視しがちですが、従業員代表の選出プロセスに瑕疵があった場合、企業は根底から覆る壊滅的なダメージを受けます。
+            </div>
+            <ul class="warning-list">
+                <li><strong>「全社無効」の恐怖：</strong> 従業員代表の選出が無効とされた瞬間、その代表と結んだ「36協定」等の労使協定は全て白紙となります。つまり、社員に行わせた過去の残業が「全て違法残業」に反転し、労働基準法違反で即座に送検されるリスクを抱えることになります。</li>
+                <li><strong>「異議なし＝承認」という致命的誤認：</strong> 会社が候補者を指名し、「異議がある者だけ申し出よ」という手法（黙示の承認）は、労基署の調査や裁判で100%否認されます。「挙手」「投票」「署名」など、自発的かつ明確に「賛成」の意思表示をした客観的記録がなければ無効です。</li>
+                <li><strong>母集団（分母）の計算ミス：</strong> パート、アルバイト、休職中などの社員を「分母」から勝手に除外して過半数を計算しているケースが多発しています。分母を誤れば、集めた信任票が「実は過半数に達していなかった」という取り返しのつかない事態に陥ります。</li>
+                <li><strong>管理監督者の選任リスク：</strong> 「現場のリーダーだから」「話が早いから」と代表に据えた人物が、仮に労基法上の管理監督者に該当していた場合、その時点で選出は無効です。会社側の意向を忖度する人物をあてがう行為は法的リスクの塊です。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-phase">フェーズ</th>
+                        <th class="col-check">確認項目</th>
+                        <th class="col-detail">詳細基準・NG例</th>
+                        <th class="col-action">使用者側のアクション（環境整備）</th>
+                        <th class="col-risk">リスク・法的根拠</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-phase" rowspan="2">1. 準備</td>
+                        <td class="col-check">選出単位</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>原則、事業場（店舗・支店・工場）ごとに選出する。</li>
+                                <li>会社全体で1名選ぶのは不可（※例外あり）。</li>
+                            </ul>
+                        </td>
+                        <td>各拠点の責任者に、それぞれの拠点で選出が必要な旨を指示する。</td>
+                        <td>単位を間違えると、その協定は全社的に無効となる。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">母集団の確定</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>パート、アルバイト、休職者、嘱託を含む全労働者が分母。</li>
+                                <li>正社員のみで計算してはならない。</li>
+                                <li>派遣社員は含めない。</li>
+                            </ul>
+                        </td>
+                        <td>最新の在籍者リストを用意し、拠点ごとの分母（総数）を確定させる。</td>
+                        <td>分母が間違っていると過半数の要件を満たせず無効になる。</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase" rowspan="2">2. 候補者</td>
+                        <td class="col-check">管理監督者の排除</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>労基法上の管理監督者（部長・工場長など）は代表になれない。</li>
+                                <li>役職者の方が話が早い等の理由で選ぶのはNG。</li>
+                            </ul>
+                        </td>
+                        <td>立候補者が出た時点で、管理監督者に該当しないか確認する。</td>
+                        <td>管理監督者が代表の場合、協定は無効。（最も多い否認理由）</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">使用者の意向排除</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>会社が特定の人物を指名・誘導してはならない。</li>
+                            </ul>
+                        </td>
+                        <td>会社側からの指名ではない旨を通知文に明記する。あくまで立候補・推薦を募る。</td>
+                        <td>会社の意向で選ばれた代表者は、労働者の代表と認められない。</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase" rowspan="3">3. 手続き</td>
+                        <td class="col-check">選出目的の明示</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>何の代表か（36協定、就業規則等）を明示する。</li>
+                                <li>親睦会代表＝自動的に36協定代表とするのはNG。</li>
+                            </ul>
+                        </td>
+                        <td>通知文に「36協定締結および就業規則変更の意見聴取のため」と具体的に記載する。</td>
+                        <td>目的外の選出とみなされ、権限がないとされる恐れがある。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">民主的な方法</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>投票、挙手、回覧による信任など。</li>
+                                <li>「異議がなければ信任とみなす」方法はリスク大（意思表示がない＝信任ではない）。</li>
+                            </ul>
+                        </td>
+                        <td>Web投票、投票箱、署名簿の回覧など、賛成の意思が記録に残る方法を用意する。</td>
+                        <td>プロセスが民主的でないと判断されると、選出自体が無効になる。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">参加機会の付与</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>出張者、欠勤者、シフト休の者も参加できること。</li>
+                                <li>その場にいる社員だけで決めてはならない。</li>
+                            </ul>
+                        </td>
+                        <td>メール、電話、チャット等で、不在者にも案内を送り、投票の手段を提供する。</td>
+                        <td>一部の従業員が排除された選出は無効とされる可能性がある。</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase">4. 結果</td>
+                        <td class="col-check">過半数の獲得</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>全在籍労働者の過半数の信任が必要。</li>
+                                <li>投票者の過半数ではない。</li>
+                            </ul>
+                        </td>
+                        <td>信任票（署名数）をカウントし、在籍総数の2分の1を超えていることを確認・記録する。</td>
+                        <td>過半数に1票でも足りなければ、協定を結ぶ権限を持たない。</td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-phase">5. 事後</td>
+                        <td class="col-check">証拠の保全</td>
+                        <td>
+                            <ul class="item-list">
+                                <li>選出プロセスが適正だった証拠を残す。</li>
+                                <li>選出が終わったら投票用紙等をすぐ捨ててはならない。</li>
+                            </ul>
+                        </td>
+                        <td>投票結果、回覧した署名簿、Web投票ログ、通知メール等を協定の有効期間中（最低3年）保管する。</td>
+                        <td>労基署調査や紛争時に適正に選ばれたことを証明できない。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>

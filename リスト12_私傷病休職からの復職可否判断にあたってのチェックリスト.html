@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私傷病休職からの復職可否判断にあたってのチェックリスト</title>
+    <style>
+        :root {
+            /* 画像の色調に合わせた落ち着いたブルーグリーン系テーマ */
+            --primary-color: #486b59;
+            --primary-light: #f1f6f3;
+            --danger-color: #d9534f;
+            --danger-light: #fff5f5;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-color: #d1d9d4;
+            --bg-body: #f7f9f8;
+            --bg-container: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+        }
+
+        .intro {
+            background-color: var(--primary-light);
+            padding: 18px 24px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 15px;
+            color: var(--text-main);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: var(--danger-light);
+            border: 1px solid #fadcdc;
+            border-left: 6px solid var(--danger-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            color: var(--danger-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .warning-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 14.5px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
+            line-height: 1.5;
+        }
+
+        .warning-list li::before {
+            content: "■";
+            color: var(--danger-color);
+            margin-right: 0.5em;
+            font-size: 12px;
+        }
+
+        .warning-list strong {
+            color: #333;
+            background: linear-gradient(transparent 60%, #ffe6e6 60%);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .col-category {
+            width: 18%;
+            font-weight: bold;
+            background-color: #f5f8f6;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-check {
+            width: 32%;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .col-detail {
+            width: 50%;
+        }
+
+        tbody tr:hover td {
+            background-color: #fbfdfc;
+        }
+
+        .col-category:hover {
+            background-color: #f5f8f6 !important;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .warning-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>私傷病休職からの復職可否判断にあたってのチェックリスト</h1>
+            <div class="intro">
+                私傷病休職からの復職可否判断にあたってのチェックリストを作成しました。<br><br>
+                特に実務上、業務変更や時短等の条件付き「復職可能」の診断が出た場合の判断は見誤りがちなので注意が必要です。
+            </div>
+        </header>
+
+        <div class="warning-box">
+            <div class="warning-title">【重要】実務上のリスク・論理の穴に対する指摘</div>
+            <div class="warning-text">
+                復職判定は「主治医の診断書が絶対」ではありません。安易な復職許可は再休職を招き、安易な復職拒否は不当解雇（退職扱い無効）として多額のバックペイ（遡及賃金）を支払う致命的リスクを生みます。
+            </div>
+            <ul class="warning-list">
+                <li><strong>「主治医の復職可能」を鵜呑みにする危険性：</strong> 主治医は「日常生活が送れるレベル」を基準に診断書を書く傾向があり、自社のハードな業務実態を把握していません。産業医への意見聴取や、具体的な業務内容を提示した上での判断を怠り、主治医の診断のみで復職させ病状が悪化した場合、会社の安全配慮義務違反が問われます。</li>
+                <li><strong>「元の業務ができない＝即退職」の論理の飛躍：</strong> 職種限定契約（専門職など）でない「総合職」の場合、元の部署の業務ができなくても「配置転換可能な現実的業務」があれば復職させる義務があります（片山組事件最高裁判例）。「元のポジションがないから」という理由での復職拒否は、裁判で高確率で無効とされます。</li>
+                <li><strong>「条件付き復職」の曖昧な合意によるトラブル：</strong> 「しばらくは残業なしの軽作業で」と曖昧な条件で復職させると、いつまでも通常業務に戻れず、給与水準や業務配分で周囲の不満が爆発します。リハビリ出勤の期間、到達目標、期間内に通常業務に戻れなかった場合の処遇（自然退職等）について、事前に明確な書面合意が不可欠です。</li>
+                <li><strong>本人の「大丈夫です」を真に受けるリスク：</strong> 傷病手当金の受給満了など、経済的な事情から本人が無理をして復職を強く希望するケースがあります。客観的な医学的所見や産業医の反対を押し切って復職させた結果、事故や症状悪化が起きれば「本人が希望したから」という言い訳は法廷では一切通用しません。</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-category">確認区分</th>
+                        <th class="col-check">具体的なチェック項目</th>
+                        <th class="col-detail">判断基準・対応の方向性</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-category" rowspan="2">主治医の診断内容</td>
+                        <td class="col-check">診断書に「治癒」「復職可能」の記載があるか</td>
+                        <td>「従前の業務を通常通り遂行できる」状態であるかが原則的な基準となります。「条件付き可」「軽作業なら可」は原則として治癒とは扱いません。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">短時間勤務や業務軽減の必要性があるか</td>
+                        <td>必要とされる場合、その期間と程度を確認します。恒久的な制限であれば、労働契約の本旨に従った労務提供が不能と判断する要素となります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">回復の見込み</td>
+                        <td class="col-check">通常業務に戻れる具体的時期が示されているか</td>
+                        <td>「1か月程度で通常勤務可」等、近い将来の完全復帰が確実視される場合は、信義則上、復職を認めるのが望ましいです。時期が不明確な場合は、復職拒否の正当性が高まります。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">雇用契約の内容</td>
+                        <td class="col-check">職種や勤務地が契約で限定されているか</td>
+                        <td>限定あり：その特定の業務ができない場合、復職を拒否し退職・解雇とする扱いが可能です。限定なし（総合職）：従前の業務が遂行できない場合に限り、他の業務への配置転換を検討する義務が生じます。（従前の業務が可能であれば、原則通り原職または同等の職務へ復帰となります）</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category" rowspan="2">代替業務の検討</td>
+                        <td class="col-check">配置転換可能な他の業務（空きポスト）があるか</td>
+                        <td>職種限定がなく従前業務が不能な場合、現存する業務の中で本人の能力・経験・健康状態に適した業務があるか確認します。新たな業務を創設する義務はありません。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-check">本人が代替業務への就労を希望しているか</td>
+                        <td>従前の業務ができなくとも、他の業務での復職を本人が希望している場合、配置転換の検討義務が生じます。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">産業医の意見</td>
+                        <td class="col-check">産業医面談を実施したか</td>
+                        <td>主治医の診断はあくまで日常生活レベルの回復を指す場合があるため、産業医に具体的な業務内容を提示し、就労可否の意見を聴取する段取りが不可欠です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">就業規則の規定</td>
+                        <td class="col-check">復職の定義・要件はどうなっているか</td>
+                        <td>「従前の業務に復帰できること」か「会社が指定する業務に就けること」か等、自社の規定文言との整合性を確認します。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">リハビリ出勤</td>
+                        <td class="col-check">試し出勤やリハビリ勤務制度の適用の可否</td>
+                        <td>制度として運用する場合、期間、賃金、完全復帰の判定基準、復帰できなかった場合の処遇（退職等）を明記した合意書の締結が必要です。</td>
+                    </tr>
+                    <tr>
+                        <td class="col-category">安全配慮義務</td>
+                        <td class="col-check">復職により病状が悪化するリスクはないか</td>
+                        <td>本人が復職を強く希望しても、医学的に悪化のリスクが高い場合は、会社として安全配慮義務の観点から復職を認めない判断が妥当となるケースがあります。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="author">
+            特定社会保険労務士　土橋　豪
+        </div>
+    </div>
+</body>
+</html>
