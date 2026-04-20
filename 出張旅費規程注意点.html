@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出張旅費規程 見直しのポイント</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1d1a;
+  --ink-soft: #2d3230;
+  --paper: #f5f1e8;
+  --paper-warm: #ebe4d3;
+  --accent: #7a3e2a;
+  --accent-deep: #5a2a1a;
+  --gold: #a67c3f;
+  --line: #c9bfa8;
+  --alert: #8b2e2e;
+  --muted: #6b665a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 15px;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(122, 62, 42, 0.02) 2px, rgba(122, 62, 42, 0.02) 4px);
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 56px 48px;
+}
+
+.header {
+  border-top: 4px double var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0 28px;
+  margin-bottom: 44px;
+  position: relative;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+}
+
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 13.5px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.intro {
+  background: var(--paper-warm);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  margin-bottom: 48px;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+h2 .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--accent);
+  font-style: italic;
+  line-height: 1;
+}
+
+p {
+  margin-bottom: 12px;
+  font-size: 14.5px;
+}
+
+ul.points {
+  list-style: none;
+  margin: 10px 0;
+}
+
+ul.points li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  border-bottom: 1px dotted var(--line);
+  font-size: 14px;
+}
+
+ul.points li:last-child { border-bottom: none; }
+
+ul.points li::before {
+  content: "▪";
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+ul.points li strong {
+  color: var(--accent-deep);
+  font-weight: 700;
+}
+
+.risk-box {
+  background: #fdf6f0;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--alert);
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 13.5px;
+}
+
+.risk-box .label {
+  display: inline-block;
+  background: var(--alert);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 2px 10px;
+  margin-bottom: 8px;
+}
+
+.summary {
+  margin-top: 56px;
+  padding: 32px 36px;
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+}
+
+.summary::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+}
+
+.summary h2 {
+  color: var(--paper);
+  border-bottom-color: var(--gold);
+  font-size: 18px;
+}
+
+.summary h2 .num {
+  color: var(--gold);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.summary-item {
+  padding: 14px 16px;
+  background: rgba(245, 241, 232, 0.06);
+  border-left: 2px solid var(--gold);
+}
+
+.summary-item .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.summary-item strong {
+  display: block;
+  font-size: 13.5px;
+  color: var(--paper);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.summary-item span {
+  font-size: 12px;
+  color: #c9bfa8;
+  line-height: 1.6;
+}
+
+@media (max-width: 680px) {
+  .container { padding: 28px 18px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 17px; }
+  .summary-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body { background: #fff; }
+  .container { max-width: 100%; padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+  <div class="eyebrow">Advisory Note</div>
+  <h1>出張旅費規程<br>見直しのポイント</h1>
+  <div class="subtitle">規程整備・改定にあたり押さえるべき実務ポイント</div>
+</header>
+
+<div class="intro">
+  <p>出張旅費規程は <strong>税務リスク</strong>・<strong>労務リスク</strong>・<strong>内部統制</strong> の三つが交差する規程です。金額設計や手続に不備があると、思わぬ追徴課税や従業員トラブルにつながります。見直しの際は以下7点をご確認ください。</p>
+</div>
+
+<!-- 1 -->
+<section>
+  <h2><span class="num">01</span>日当の金額水準</h2>
+  <ul class="points">
+    <li>役員日当が一般従業員の <strong>3倍</strong> を超えると合理性を疑われやすい</li>
+    <li>相場を著しく超える日当は <strong>賃金認定</strong> され、社会保険料・残業代の算定基礎に含まれる</li>
+    <li>役職区分（役員／管理職／一般）の3段階構成が税務上も運用上も扱いやすい</li>
+  </ul>
+  <div class="risk-box">
+    <span class="label">RISK</span>
+    実費を大きく上回る日当は、税務調査で給与認定され <strong>源泉所得税の追徴</strong> リスクあり。
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="num">02</span>役職区分の明確化</h2>
+  <ul class="points">
+    <li>「役職者」「管理職」の <strong>範囲を規程または附則で定義</strong></li>
+    <li>定義が曖昧だと運用段階で適用境界が不明確になり、不公平感を生む</li>
+    <li>就業規則・人事規程との整合性を確保</li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="num">03</span>出張の距離・時間基準</h2>
+  <ul class="points">
+    <li>「片道◯km以上」「移動時間◯時間以上」等の <strong>客観的基準</strong> を明示</li>
+    <li>距離基準は業態に応じて設定（一般的には100〜150km）</li>
+    <li>近距離業務は「旅費交通費規程」等で別途対応</li>
+    <li>日帰り出張と宿泊出張の区分を明確化</li>
+  </ul>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="num">04</span>私有車使用のルール</h2>
+  <ul class="points">
+    <li>燃料費単価を明記（1kmあたり <strong>15〜30円</strong> が実務相場）</li>
+    <li>任意保険（対人・対物無制限）の <strong>付保義務</strong> を規定</li>
+    <li>業務使用中の事故は会社の使用者責任が問われる点に留意</li>
+    <li>マイカー業務使用規程との整合性を確保</li>
+  </ul>
+  <div class="risk-box">
+    <span class="label">RISK</span>
+    任意保険未加入車両の業務使用は、事故時に <strong>会社が直接賠償責任</strong> を負うリスク大。
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="num">05</span>精算手続と期限</h2>
+  <ul class="points">
+    <li>仮払金の <strong>精算期限</strong> を明示（帰任後7日以内等）</li>
+    <li>領収書添付の要否・金額基準を明記</li>
+    <li>未精算仮払金の <strong>給与からの一方的控除は労基法24条違反</strong></li>
+    <li>控除する場合は個別同意書または賃金控除協定が必要</li>
+  </ul>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="num">06</span>細部で見落としやすい項目</h2>
+  <ul class="points">
+    <li><strong>マイル・ポイント</strong> の帰属（会社／個人）を明記</li>
+    <li><strong>キャンセル料</strong> の負担区分（業務都合／自己都合）</li>
+    <li>グリーン車・ビジネスクラス利用の <strong>条件</strong>（距離・時間帯）</li>
+    <li>車中泊・船中泊の取扱い（宿泊料／寝台料金）</li>
+    <li>長期出張時の日当逓減（8日目以降80％等）</li>
+    <li>海外出張は <strong>別規程</strong> で整備</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="num">07</span>改廃手続の適正性</h2>
+  <ul class="points">
+    <li>規程変更は <strong>不利益変更</strong> に該当し得る</li>
+    <li>就業規則の一部であれば労契法10条の合理性判断対象</li>
+    <li>改廃時は <strong>周知・意見聴取・取締役会決議</strong> の手続を明文化</li>
+    <li>日当減額など既得権化した条件の変更は激変緩和措置を検討</li>
+  </ul>
+</section>
+
+<section class="summary">
+  <h2><span class="num">*</span>優先チェック項目</h2>
+  <div class="summary-grid">
+    <div class="summary-item">
+      <span class="num">Priority 1</span>
+      <strong>日当の相場適合性</strong>
+      <span>過大支給は課税・社保リスク</span>
+    </div>
+    <div class="summary-item">
+      <span class="num">Priority 2</span>
+      <strong>私有車使用ルール</strong>
+      <span>任意保険と燃料費単価の明記</span>
+    </div>
+    <div class="summary-item">
+      <span class="num">Priority 3</span>
+      <strong>精算期限の具体化</strong>
+      <span>給与控除ルールの整備</span>
+    </div>
+    <div class="summary-item">
+      <span class="num">Priority 4</span>
+      <strong>改廃手続の明文化</strong>
+      <span>不利益変更リスクの低減</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
