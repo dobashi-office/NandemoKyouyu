@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>「無菌室の職場」が若手を殺す？〜ハラハラとホワイトハラスメントが招く組織崩壊〜</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1c2e;
+      --ink-light: #3b3b5c;
+      --ink-muted: #6e6e8a;
+      --bg: #f9fafb;
+      --bg-warm: #f0f4f8;
+      --bg-card: #ffffff;
+      --accent: #d35400;
+      --navy: #1b2a4a;
+      --teal: #0e6655;
+      --red: #c0392b;
+      --border: #dce1e8;
+      --shadow: rgba(28,28,46,0.07);
+      --radius: 6px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Noto Sans JP',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.85;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* HERO */
+    .hero {
+      background:linear-gradient(135deg,#1b2a4a 0%,#d35400 100%);
+      color:#fff;
+      padding:80px 40px 60px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; top:-40%; right:-15%;
+      width:500px; height:500px;
+      background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .hero::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg,var(--red),var(--accent),#f39c12);
+    }
+    .hero-inner { max-width:960px; margin:0 auto; position:relative; z-index:1; }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.2); padding:6px 18px; border-radius:30px;
+      font-size:13px; font-weight:500; letter-spacing:0.08em; margin-bottom:24px;
+      backdrop-filter:blur(4px);
+    }
+    .hero h1 {
+      font-family:'Noto Serif JP',serif; font-size:clamp(26px,4vw,40px); font-weight:700; line-height:1.4; margin-bottom:16px;
+    }
+    .hero h1 em { font-style:normal; color:#ffd700; }
+    .hero-sub { font-size:16px; opacity:0.85; font-weight:300; max-width:640px; }
+
+    /* LAYOUT */
+    .container { max-width:960px; margin:0 auto; padding:0 24px; }
+
+    /* OVERVIEW BOX */
+    .overview-box {
+      background:var(--bg-warm); border-left:4px solid var(--accent);
+      padding:32px 36px; margin:48px auto; max-width:960px;
+      border-radius:0 var(--radius) var(--radius) 0;
+    }
+    .overview-box h2 {
+      font-family:'Noto Serif JP',serif; font-size:20px; color:var(--accent);
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .overview-box h2::before { content:'📋'; font-size:22px; }
+
+    /* MEASURES GRID */
+    .measures-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px; margin-top:20px;
+    }
+    .measure-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:20px; position:relative;
+    }
+    .measure-num {
+      position:absolute; top:-10px; left:16px;
+      background:var(--navy); color:#fff; width:28px; height:28px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    }
+    .measure-card h3 { font-size:14px; font-weight:700; margin-bottom:6px; margin-top:6px; color:var(--navy); }
+    .measure-card p { font-size:13px; color:var(--ink-muted); line-height:1.7; }
+
+    /* SECTION */
+    .section { margin:56px auto; max-width:960px; }
+    .section-header {
+      display:flex; align-items:center; gap:14px; margin-bottom:28px;
+      padding-bottom:16px; border-bottom:2px solid var(--ink);
+    }
+    .section-icon {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0;
+    }
+    .section-header h2 { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; line-height:1.3; }
+    .section-header .section-sub { font-size:13px; color:var(--ink-muted); font-weight:400; }
+
+    /* CARDS */
+    .card-grid { display:grid; gap:24px; }
+    .card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden; box-shadow:0 2px 12px var(--shadow); transition:box-shadow 0.2s;
+    }
+    .card:hover { box-shadow:0 4px 24px rgba(28,28,46,0.12); }
+    .card-head {
+      padding:20px 24px; display:flex; align-items:center; gap:14px;
+      border-bottom:1px solid var(--border);
+    }
+    .card-head h3 { font-size:17px; font-weight:700; flex:1; }
+    .card-body { padding:24px; }
+    .card-body p { margin-bottom:14px; font-size:14.5px; color:var(--ink-light); }
+
+    /* CARD SUB-BOXES */
+    .card-sub { margin-top:20px; padding:18px 20px; border-radius:var(--radius); border:1px solid; }
+    .sub-point { background:#f0f4ff; border-color:#c8d8f0; }
+    .sub-do { background:#f0f8f0; border-color:#c8e0c8; }
+    .sub-warn { background:#fff8f0; border-color:#f0d8b0; }
+    .sub-danger { background:#fdf2f2; border-color:#f0c8c8; }
+
+    .card-sub h4 { font-size:13px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+    .sub-point h4 { color:var(--navy); }
+    .sub-do h4 { color:#2e7d32; }
+    .sub-warn h4 { color:#b8860b; }
+    .sub-danger h4 { color:var(--red); }
+
+    .card-sub ul { list-style:none; padding:0; }
+    .card-sub li {
+      position:relative; padding-left:20px; margin-bottom:8px;
+      font-size:13.5px; line-height:1.75; color:var(--ink-light);
+    }
+    .card-sub li::before { content:'▸'; position:absolute; left:0; color:var(--ink-muted); font-size:11px; top:2px; }
+
+    /* FLOW DIAGRAM */
+    .flow-section { margin:56px auto; max-width:960px; }
+    .flow-section h2 {
+      font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px;
+      padding-bottom:12px; border-bottom:2px solid var(--ink);
+    }
+    .flow-steps { display:flex; flex-direction:column; gap:0; }
+    .flow-step {
+      display:flex; gap:20px; align-items:flex-start; position:relative; padding-bottom:24px;
+    }
+    .flow-step:not(:last-child)::before {
+      content:''; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:var(--border);
+    }
+    .flow-num {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:#fff; z-index:1; background:var(--navy);
+    }
+    .flow-content {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:18px 22px; flex:1;
+    }
+    .flow-content h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .flow-content p { font-size:13.5px; color:var(--ink-light); line-height:1.7; }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width:100%; border-collapse:collapse; margin-top:20px;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .compare-table th {
+      background:var(--navy); color:#fff; padding:14px 18px; text-align:left; font-size:13px; font-weight:700;
+    }
+    .compare-table td {
+      padding:14px 18px; border-bottom:1px solid var(--border); font-size:13.5px; color:var(--ink-light); line-height:1.7;
+    }
+    .compare-table tr:nth-child(even) td { background:#f8f9fb; }
+
+    /* DARK BOX */
+    .dark-box {
+      background:linear-gradient(135deg,#1b2a4a,#0e6655); color:#fff; padding:40px; border-radius:var(--radius);
+      margin:56px auto; max-width:960px; position:relative; overflow:hidden;
+    }
+    .dark-box h2 { font-family:'Noto Serif JP',serif; font-size:20px; margin-bottom:20px; color:#ffd700; }
+    .dark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+    .dark-item {
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      border-radius:var(--radius); padding:20px;
+    }
+    .dark-item h3 { font-size:15px; font-weight:700; margin-bottom:8px; color:#ffd700; }
+    .dark-item p { font-size:13px; opacity:0.85; line-height:1.75; }
+
+    /* CHECKLIST */
+    .checklist-section { margin:56px auto; max-width:960px; }
+    .checklist-section h2 { font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .check-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+    .check-box { width:22px; height:22px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:2px; }
+
+    /* FOOTER */
+    .footer { margin-top:64px; padding:32px 24px; text-align:center; border-top:1px solid var(--border); font-size:12px; color:var(--ink-muted); }
+
+    /* SUMMARY BOX */
+    .summary-box {
+      background:var(--navy); color:#fff; padding:40px; border-radius:var(--radius);
+      margin:56px auto; max-width:960px;
+    }
+    .summary-box h2 { font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:20px; color:#ffd700; }
+    .summary-box p { font-size:14.5px; line-height:1.9; opacity:0.9; margin-bottom:14px; }
+    .summary-box p:last-child { margin-bottom:0; }
+    .summary-box strong { color:#ffd700; }
+
+    @media (max-width:640px) {
+      .hero { padding:48px 20px 40px; }
+      .hero h1 { font-size:24px; }
+      .overview-box { padding:24px 20px; margin:32px 16px; }
+      .measures-grid { grid-template-columns:1fr; }
+      .section { margin:40px auto; }
+      .dark-box { padding:28px 20px; margin:40px 16px; }
+      .dark-grid { grid-template-columns:1fr; }
+      .flow-step { flex-direction:column; gap:12px; }
+      .flow-step:not(:last-child)::before { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">労務コラム｜最新労務トレンド</div>
+      <h1>「無菌室の職場」が<em>若手を殺す</em>？</h1>
+      <p class="hero-sub">ハラハラとホワイトハラスメントが招く組織崩壊と、就業規則による防衛線</p>
+    </div>
+  </div>
+
+  <!-- OVERVIEW: 3つのキーワード -->
+  <div class="overview-box" style="padding:32px 36px;">
+    <h2>現代の職場を蝕む3つのキーワード</h2>
+    <p style="font-size:14px;color:var(--ink-light);margin-bottom:4px;">「部下に気を遣いすぎて疲弊する管理職」「居心地は良いはずなのに突然辞めていく若手」——良かれと思った配慮が組織の首を絞める残酷なパラドックスが起きている。</p>
+    <div class="measures-grid">
+      <div class="measure-card">
+        <div class="measure-num" style="font-size:11px; width:32px; height:32px; border-radius:4px;">KEY1</div>
+        <h3 style="margin-top:12px;">上司ガチャ</h3>
+        <p>誰の下で働くかが従業員のエンゲージメントや離職意向を左右する時代。部下が上司を評価・選択する制度が広がりつつある。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num" style="font-size:11px; width:32px; height:32px; border-radius:4px;">KEY2</div>
+        <h3 style="margin-top:12px;">ハラハラ（何でもハラスメント）</h3>
+        <p>「受け手が不快＝即ハラスメント」という短絡的な風潮。管理職が萎縮し、業務上必要な指導まで止まってしまう。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num" style="font-size:11px; width:32px; height:32px; border-radius:4px; background:var(--red);">KEY3</div>
+        <h3 style="margin-top:12px;">ホワハラ（ホワイトハラスメント）</h3>
+        <p>指導を恐れた管理職が「無関心」と「放置」に走る新たな組織の病理。成長機会を奪われた若手が静かに離職していく。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: 上司ガチャ時代 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🎰</div>
+      <div>
+        <h2>「上司ガチャ」時代：部下が上司を評価し、選ぶ世界</h2>
+        <div class="section-sub">一方向の評価構造の崩壊</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">🔄</span>
+          <h3>広がる「部下視点の制度」</h3>
+        </div>
+        <div class="card-body">
+          <p>かつての「上司が部下を一方的に評価する」という前提は崩れ去った。マネジメントの質そのものが企業価値や人材流出に直結する現代では、以下のような制度を導入する企業が増加している。</p>
+          <div class="card-sub sub-point">
+            <h4>💡 部下視点の主な制度</h4>
+            <ul>
+              <li><strong>育成目的の360度評価：</strong>複数の立場からフィードバックを得て管理職の成長を促す（処遇には直結させない）</li>
+              <li><strong>処遇反映型360度評価：</strong>評価結果を昇格や報酬などの判断材料の一部に組み込む</li>
+              <li><strong>上司選択制度：</strong>部下が働きたい上司を希望し、配置のミスマッチを是正する</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-danger">
+            <h4>🚫 運用を誤れば「人気投票」に成り下がる</h4>
+            <ul>
+              <li>管理職が部下の顔色をうかがい、必要な指導ができなくなる</li>
+              <li>安易に要求を飲む「迎合」が起き、成果・育成の観点で深刻な悪影響を及ぼす</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: ハラハラ -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">⚡</div>
+      <div>
+        <h2>「ハラハラ」の暴走と誤解</h2>
+        <div class="section-sub">何でもハラスメント——管理職萎縮の元凶</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">⚠️</span>
+          <h3>「不快＝ハラスメント」という危険な短絡</h3>
+        </div>
+        <div class="card-body">
+          <p>スメハラやリモハラなど言葉の多様化によって問題が言語化しやすくなった反面、「受け手が不快＝即ハラスメント」と短絡的に結論付けられる危険な風潮が蔓延している。</p>
+          <p>「心理的安全性」についても、本来は「安心して意見を出し、間違いを修正できる」状態であるにもかかわらず、「何を言っても許される」状態だと都合よく誤解されているケースが少なくない。</p>
+          <div class="card-sub sub-warn">
+            <h4>⚠️ 「ハラハラ」が生む2つの弊害</h4>
+            <ul>
+              <li><strong>判定基準の歪み：</strong>「不快」という個人の感覚だけを基準にすると、職場全体が萎縮し、業務上必要な注意やフィードバックまで止まってしまう</li>
+              <li><strong>消耗戦の果て：</strong>訴える側も訴えられる側も疲弊し、結果としてメンタル不調者を量産する危険がある</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-danger">
+            <h4>🚫 ハラスメント対策の本来のゴールを見失うな</h4>
+            <ul>
+              <li>ゴールは「誰も不快にさせないこと」ではない</li>
+              <li>人が集まる以上、一定の摩擦は避けられない</li>
+              <li>個人の感情に場当たり的に対応し続ける組織は、ルールが崩壊していく</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK BOX: ホワハラ -->
+  <div class="dark-box">
+    <h2>🆕 新たな組織の病理「ホワイトハラスメント（ホワハラ）」の誕生</h2>
+    <p style="font-size:14px;opacity:0.85;margin-bottom:28px;">部下からの評価を恐れ、「ハラハラ」の標的にされることを回避しようとした結果、管理職は<strong style="color:#ffd700;">「無関心」と「指導の放棄」</strong>に走る。一見優しく働きやすい「ホワイトな職場」——しかしその実態は、若手のキャリア形成機会を奪う残酷な放置だ。</p>
+    <div class="dark-grid">
+      <div class="dark-item">
+        <h3>😶 見て見ぬふり</h3>
+        <p>ミスや遅刻があっても、あえて注意せず黙認する。叱責されることなく放置された若手は、自己成長の機会を失う。</p>
+      </div>
+      <div class="dark-item">
+        <h3>🚫 重要な仕事から外す</h3>
+        <p>プレッシャーのかかる重要な仕事や新規プロジェクトから若手を外し、誰でもできる軽微な作業だけを与える。</p>
+      </div>
+      <div class="dark-item">
+        <h3>⏰ 仕事を取り上げる</h3>
+        <p>残業を一切禁止し、「定時だから帰っていいよ」と仕事を取り上げる。成長意欲のある若手は「自分の市場価値がゼロになる」と絶望し、静かに退職届を出す。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: 就業規則による防衛線 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🛡️</div>
+      <div>
+        <h2>実務防衛線：就業規則・社内規程への落とし込み</h2>
+        <div class="section-sub">理念だけでは会社と管理職を守れない</div>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <!-- 対策① -->
+      <div class="card">
+        <div class="card-head">
+          <div style="background:var(--navy);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">①</div>
+          <h3>「ホワハラ」を防ぐ：服務規律への『指導義務』の明文化</h3>
+        </div>
+        <div class="card-body">
+          <p>多くの就業規則は「やってはいけないこと（禁止事項）」ばかりが並んでいる。管理職が指導を放棄するホワハラを防ぐには、<strong>「やるべきこと」を明記</strong>しなければならない。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 服務規律・懲戒事由に追加すべき項目例</h4>
+            <ul>
+              <li>「部下への管理監督または業務上の指導、指示を怠り、職場秩序を乱したとき」</li>
+              <li>「部下の非違行為を知得したにもかかわらず、その事実を隠ぺい、または黙認したとき」</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-point">
+            <h4>💡 明文化の効果</h4>
+            <ul>
+              <li>「指導しないこと自体が就業規則違反になり得る」という強力なメッセージになる</li>
+              <li>管理職が評価を恐れずに正当な指導を行うための法的根拠と勇気を与える</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 対策② -->
+      <div class="card">
+        <div class="card-head">
+          <div style="background:var(--navy);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">②</div>
+          <h3>「ハラハラ」を封じ込める：ハラスメント防止規程の防波堤</h3>
+        </div>
+        <div class="card-body">
+          <p>「不快だからハラスメントだ」という主観的な暴走を止めるには、客観的な要件をハラスメント防止規程に明記する必要がある。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 規程に必ず設ける一文（免責事項の明示）</h4>
+            <ul>
+              <li>ハラスメントの定義に「職務上の地位や人間関係などの優位性を背景に、業務上必要かつ相当な範囲を超えた言動」と要件を明記する</li>
+              <li>「業務上必要かつ相当な範囲で行われる適正な業務指示、指導、および人事評価は、本規程のハラスメントには該当しない」という一文を必ず設ける</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-warn">
+            <h4>⚠️ 相談窓口プロセスのルール化</h4>
+            <ul>
+              <li>相談があった時点で結論を急がない</li>
+              <li>「出来事の事実」と「本人に起きた影響（症状・業務支障）」を分けて整理する旨を定める</li>
+              <li>一方的なヒアリングで即座に加害者扱いしないプロセスを制度化する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 対策③ -->
+      <div class="card">
+        <div class="card-head">
+          <div style="background:var(--navy);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">③</div>
+          <h3>「360度評価」の暴走を防ぐ：人事評価規程への適切な紐付け</h3>
+        </div>
+        <div class="card-body">
+          <p>部下からの評価を昇降格や給与に反映させる（処遇反映型）のであれば、以下の点が欠けると労務紛争化しやすくなる。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 人事評価規程に明記すべき2点</h4>
+            <ul>
+              <li><strong>「総合判断の一要素」の明記：</strong>「360度評価の結果は、上司評価や業績評価と合わせ、総合的に判断する際の一要素とする」と定め、評価会議での手続きを明文化する</li>
+              <li><strong>改善機会の付与プロセス：</strong>低評価だった場合、いきなり降格・配置転換を行うのではなく、「改善のための支援（コーチング・研修）および再評価の機会」を付与するプロセスを規程に組み込む</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-point">
+            <h4>💡 規程整備の効果</h4>
+            <ul>
+              <li>本人の納得感が高まる</li>
+              <li>「説明がないまま処分された」という訴えを防ぐことができる</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUMMARY: まとめ -->
+  <div class="summary-box container">
+    <h2>💪 まとめ：健全な摩擦を恐れるな</h2>
+    <p>「誰も傷つかない無菌室」のような職場は、一見理想的かもしれないが、そこでは誰も成長できない。</p>
+    <p>評価制度は目的ではなく、<strong>より良い組織づくりのための手段</strong>だ。ハラスメント対策も、耳障りの良い言葉で組織を包み込むことではなく、業務上必要な指導を正しく行える環境を守るために存在する。</p>
+    <p>表層的な「優しさ」に逃げることなく、論理的なルールに基づいた<strong>「健全な摩擦」を取り戻すこと</strong>——都合の悪い事実を直視し、厳しいフィードバックから逃げず、それを支える強固な就業規則を整備する組織だけが、真の競争力を維持できる。</p>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="checklist-section container">
+    <h2>✅ 今すぐ確認すべき規程整備チェックリスト</h2>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">服務規律・懲戒事由に「管理監督義務の放棄」に関する項目が明記されているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">ハラスメント防止規程に「業務上適正な指導は該当しない」旨の免責条項があるか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">ハラスメント相談窓口のプロセスが「事実の確認→影響の整理」の手順で定められているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">360度評価を実施する場合、「総合判断の一要素」として位置付けが人事評価規程に明記されているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">低評価時の「改善支援→再評価」のプロセスが規程に組み込まれているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">評価会議の議事メモを残し、処遇判断の根拠を後から説明できる体制があるか</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>LABOR &amp; HR MANAGEMENT ADVISORY &nbsp;|&nbsp; 土橋社労士事務所</p>
+  </div>
+
+</body>
+</html>
