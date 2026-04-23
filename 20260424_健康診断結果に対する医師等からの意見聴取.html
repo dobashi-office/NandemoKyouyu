@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>健康診断結果に対する医師等からの意見聴取</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1c2e;
+      --ink-light: #3b3b5c;
+      --ink-muted: #6e6e8a;
+      --bg: #f9fafb;
+      --bg-warm: #f0f4f8;
+      --bg-card: #ffffff;
+      --accent: #d35400;
+      --navy: #1b2a4a;
+      --teal: #0e6655;
+      --red: #c0392b;
+      --border: #dce1e8;
+      --shadow: rgba(28,28,46,0.07);
+      --radius: 6px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Noto Sans JP',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.85;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* HERO */
+    .hero {
+      background:linear-gradient(135deg,#1b2a4a 0%,#d35400 100%);
+      color:#fff;
+      padding:80px 40px 60px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; top:-40%; right:-15%;
+      width:500px; height:500px;
+      background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .hero::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg,var(--red),var(--accent),#f39c12);
+    }
+    .hero-inner { max-width:960px; margin:0 auto; position:relative; z-index:1; }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.2); padding:6px 18px; border-radius:30px;
+      font-size:13px; font-weight:500; letter-spacing:0.08em; margin-bottom:24px;
+      backdrop-filter:blur(4px);
+    }
+    .hero h1 {
+      font-family:'Noto Serif JP',serif; font-size:clamp(26px,4vw,40px); font-weight:700; line-height:1.4; margin-bottom:16px;
+    }
+    .hero h1 em { font-style:normal; color:#ffd700; }
+    .hero-sub { font-size:16px; opacity:0.85; font-weight:300; max-width:640px; }
+
+    /* LAYOUT */
+    .container { max-width:960px; margin:0 auto; padding:0 24px; }
+
+    /* OVERVIEW BOX */
+    .overview-box {
+      background:var(--bg-warm); border-left:4px solid var(--accent);
+      padding:32px 36px; margin:48px auto; max-width:960px;
+      border-radius:0 var(--radius) var(--radius) 0;
+    }
+    .overview-box h2 {
+      font-family:'Noto Serif JP',serif; font-size:20px; color:var(--accent);
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .overview-box h2::before { content:'📋'; font-size:22px; }
+
+    /* MEASURES GRID */
+    .measures-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px; margin-top:20px;
+    }
+    .measure-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:20px; position:relative;
+    }
+    .measure-num {
+      position:absolute; top:-10px; left:16px;
+      background:var(--navy); color:#fff; width:28px; height:28px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    }
+    .measure-card h3 { font-size:14px; font-weight:700; margin-bottom:6px; margin-top:6px; color:var(--navy); }
+    .measure-card p { font-size:13px; color:var(--ink-muted); line-height:1.7; }
+
+    /* SECTION */
+    .section { margin:56px auto; max-width:960px; }
+    .section-header {
+      display:flex; align-items:center; gap:14px; margin-bottom:28px;
+      padding-bottom:16px; border-bottom:2px solid var(--ink);
+    }
+    .section-icon {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0;
+    }
+    .section-header h2 { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; line-height:1.3; }
+    .section-header .section-sub { font-size:13px; color:var(--ink-muted); font-weight:400; }
+
+    /* CARDS */
+    .card-grid { display:grid; gap:24px; }
+    .card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden; box-shadow:0 2px 12px var(--shadow); transition:box-shadow 0.2s;
+    }
+    .card:hover { box-shadow:0 4px 24px rgba(28,28,46,0.12); }
+    .card-head {
+      padding:20px 24px; display:flex; align-items:center; gap:14px;
+      border-bottom:1px solid var(--border);
+    }
+    .card-head h3 { font-size:17px; font-weight:700; flex:1; }
+    .card-body { padding:24px; }
+    .card-body p { margin-bottom:14px; font-size:14.5px; color:var(--ink-light); }
+
+    /* CARD SUB-BOXES */
+    .card-sub { margin-top:20px; padding:18px 20px; border-radius:var(--radius); border:1px solid; }
+    .sub-point { background:#f0f4ff; border-color:#c8d8f0; }
+    .sub-do { background:#f0f8f0; border-color:#c8e0c8; }
+    .sub-warn { background:#fff8f0; border-color:#f0d8b0; }
+    .sub-danger { background:#fdf2f2; border-color:#f0c8c8; }
+
+    .card-sub h4 { font-size:13px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+    .sub-point h4 { color:var(--navy); }
+    .sub-do h4 { color:#2e7d32; }
+    .sub-warn h4 { color:#b8860b; }
+    .sub-danger h4 { color:var(--red); }
+
+    .card-sub ul { list-style:none; padding:0; }
+    .card-sub li {
+      position:relative; padding-left:20px; margin-bottom:8px;
+      font-size:13.5px; line-height:1.75; color:var(--ink-light);
+    }
+    .card-sub li::before { content:'▸'; position:absolute; left:0; color:var(--ink-muted); font-size:11px; top:2px; }
+
+    /* FLOW DIAGRAM */
+    .flow-section { margin:56px auto; max-width:960px; }
+    .flow-section h2 {
+      font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px;
+      padding-bottom:12px; border-bottom:2px solid var(--ink);
+    }
+    .flow-steps { display:flex; flex-direction:column; gap:0; }
+    .flow-step {
+      display:flex; gap:20px; align-items:flex-start; position:relative; padding-bottom:24px;
+    }
+    .flow-step:not(:last-child)::before {
+      content:''; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:var(--border);
+    }
+    .flow-num {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:#fff; z-index:1; background:var(--navy);
+    }
+    .flow-content {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:18px 22px; flex:1;
+    }
+    .flow-content h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .flow-content p { font-size:13.5px; color:var(--ink-light); line-height:1.7; }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width:100%; border-collapse:collapse; margin-top:20px;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .compare-table th {
+      background:var(--navy); color:#fff; padding:14px 18px; text-align:left; font-size:13px; font-weight:700;
+    }
+    .compare-table td {
+      padding:14px 18px; border-bottom:1px solid var(--border); font-size:13.5px; color:var(--ink-light); line-height:1.7;
+    }
+    .compare-table tr:nth-child(even) td { background:#f8f9fb; }
+
+    /* DARK BOX */
+    .dark-box {
+      background:linear-gradient(135deg,#1b2a4a,#0e6655); color:#fff; padding:40px; border-radius:var(--radius);
+      margin:56px auto; max-width:960px; position:relative; overflow:hidden;
+    }
+    .dark-box h2 { font-family:'Noto Serif JP',serif; font-size:20px; margin-bottom:20px; color:#ffd700; }
+    .dark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+    .dark-item {
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      border-radius:var(--radius); padding:20px;
+    }
+    .dark-item h3 { font-size:15px; font-weight:700; margin-bottom:8px; color:#ffd700; }
+    .dark-item p { font-size:13px; opacity:0.85; line-height:1.75; }
+
+    /* CHECKLIST */
+    .checklist-section { margin:56px auto; max-width:960px; }
+    .checklist-section h2 { font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .check-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+    .check-box { width:22px; height:22px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:2px; }
+
+    /* FOOTER */
+    .footer { margin-top:64px; padding:32px 24px; text-align:center; border-top:1px solid var(--border); font-size:12px; color:var(--ink-muted); }
+
+    /* QA BLOCK */
+    .qa-block {
+      display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;
+    }
+    .qa-item {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:24px; display:flex; gap:16px; align-items:flex-start;
+    }
+    .qa-label {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; font-weight:700; color:#fff;
+    }
+    .qa-label.q { background:var(--navy); }
+    .qa-label.a { background:var(--accent); }
+    .qa-text { font-size:14px; color:var(--ink-light); line-height:1.8; }
+
+    @media (max-width:640px) {
+      .hero { padding:48px 20px 40px; }
+      .hero h1 { font-size:24px; }
+      .overview-box { padding:24px 20px; margin:32px 16px; }
+      .measures-grid { grid-template-columns:1fr; }
+      .section { margin:40px auto; }
+      .dark-box { padding:28px 20px; margin:40px 16px; }
+      .dark-grid { grid-template-columns:1fr; }
+      .flow-step { flex-direction:column; gap:12px; }
+      .flow-step:not(:last-child)::before { display:none; }
+      .qa-block { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">労基・安衛｜2026.5 No.969</div>
+      <h1>健康診断結果に対する<br><em>医師等からの意見聴取</em></h1>
+      <br>健康診断の実施だけで終わらせず、事後措置まで適切に対応するためのポイントを解説します。</p>
+    </div>
+  </div>
+
+  <!-- Q&A OVERVIEW -->
+  <div class="overview-box" style="margin:48px auto; max-width:960px;">
+    <h2>相談内容と回答</h2>
+    <div class="qa-block">
+      <div class="qa-item">
+        <div class="qa-label q">Q</div>
+        <p class="qa-text">当社では、安衛法に基づき毎年従業員に定期健康診断を受けさせています。健康診断実施後の対応として留意すべき点はありますか。</p>
+      </div>
+      <div class="qa-item">
+        <div class="qa-label a">A</div>
+        <p class="qa-text">健康診断の結果、労働者の健康を保持するために必要な措置について、<strong>医師等の意見を聴く必要があります。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: 一般健康診断の種類 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <div>
+        <h2>安衛法が定める一般健康診断</h2>
+        <div class="section-sub">労働安全衛生法66条1項〜4項</div>
+      </div>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>健康診断の種類</th>
+          <th>対象となる労働者</th>
+          <th>実施時期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>雇入時の健康診断</strong><br><span style="font-size:12px;color:var(--ink-muted)">安衛則第43条</span></td>
+          <td>常時使用する労働者</td>
+          <td>雇入れの際</td>
+        </tr>
+        <tr>
+          <td><strong>定期健康診断</strong><br><span style="font-size:12px;color:var(--ink-muted)">安衛則第44条</span></td>
+          <td>常時使用する労働者<br>（特定業務従事者を除く）</td>
+          <td>1年以内ごとに1回</td>
+        </tr>
+        <tr>
+          <td><strong>特定業務従事者の健康診断</strong><br><span style="font-size:12px;color:var(--ink-muted)">安衛則第45条</span></td>
+          <td>労働安全衛生規則第13条第1項第3号に掲げる業務に常時従事する労働者</td>
+          <td>左記業務への配置替えの際、6月以内ごとに1回</td>
+        </tr>
+        <tr>
+          <td><strong>海外派遣労働者の健康診断</strong><br><span style="font-size:12px;color:var(--ink-muted)">安衛則第45条の2</span></td>
+          <td>海外に6月以上派遣する労働者</td>
+          <td>海外に6月以上派遣する際、帰国後国内業務に就かせる際</td>
+        </tr>
+        <tr>
+          <td><strong>給食従業員の検便</strong><br><span style="font-size:12px;color:var(--ink-muted)">安衛則第47条</span></td>
+          <td>事業に附属する食堂又は炊事場における給食の業務に従事する労働者</td>
+          <td>雇入れの際、配置替えの際</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-muted);margin-top:10px;">（厚生労働省リーフレット「労働安全衛生法に基づく健康診断を実施しましょう」より）</p>
+  </div>
+
+  <!-- SECTION 2: 意見聴取の内容 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🩺</div>
+      <div>
+        <h2>医師等からの意見聴取</h2>
+        <div class="section-sub">安衛法66条の4</div>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">📌</span>
+          <h3>意見聴取の対象と内容</h3>
+        </div>
+        <div class="card-body">
+          <p>健康診断の結果、<strong>異常の所見があると診断された労働者</strong>に関して、その健康を保持するために必要な措置について、医師または歯科医師の意見を聴かなければなりません（安衛法66条の4）。</p>
+          <p>ここでいう医師等の意見とは、<strong>就業の可否や就業させる場合の措置</strong>についての意見を指します。</p>
+          <div class="card-sub sub-point">
+            <h4>💡 就業させる場合の措置の例</h4>
+            <ul>
+              <li>就業場所や作業内容の変更</li>
+              <li>労働時間の短縮</li>
+              <li>深夜業の回数の減少</li>
+              <li>作業環境測定の実施</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 特段の措置不要の場合も記録が必要</h4>
+            <ul>
+              <li>異常所見があっても「通常勤務可能」との意見であれば、それで構いません</li>
+              <li>その場合も「通常勤務可能」「特になし」と健康診断個人票に記載すること</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">⏱️</span>
+          <h3>意見聴取の期限と記録方法</h3>
+        </div>
+        <div class="card-body">
+          <p>意見聴取は、健康診断実施後に速やかに行う必要があります。聴取した意見は健康診断個人票に記載しなければなりません（安衛則51条の2第1項）。</p>
+          <div class="card-sub sub-warn">
+            <h4>⚠️ 期限・記録の要件</h4>
+            <ul>
+              <li>健康診断から<strong>3カ月以内</strong>に医師等の意見を聴取すること</li>
+              <li>聴取した意見は<strong>健康診断個人票</strong>に記載すること</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 3: 意見を聴取する医師等 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🏥</div>
+      <div>
+        <h2>意見を聴取する医師等について</h2>
+        <div class="section-sub">産業医選任の有無による対応</div>
+      </div>
+    </div>
+    <div class="measures-grid" style="margin-top:0;">
+      <div class="measure-card">
+        <div class="measure-num">①</div>
+        <h3>産業医を選任している事業場</h3>
+        <p>当該産業医から意見を聴取します。常時50人以上の労働者を使用する事業場は産業医の選任が義務付けられています。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">②</div>
+        <h3>産業医を選任していない事業場</h3>
+        <p>選任義務のない事業場では、<strong>地域産業保健センター</strong>で産業保健サービスとして<strong>無料</strong>で意見聴取を行うことができます。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK BOX: 中小企業への警告 -->
+  <div class="dark-box">
+    <h2>⚠️ 中小企業が特に注意すべきポイント</h2>
+    <div class="dark-grid">
+      <div class="dark-item">
+        <h3>未実施事業場が多い現状</h3>
+        <p>健康診断結果に対する医師等からの意見聴取については、特に中小企業では実施していない事業場が多い状況です。</p>
+      </div>
+      <div class="dark-item">
+        <h3>労基署の臨検で是正勧告</h3>
+        <p>労働基準監督署の臨検が入った際に、意見聴取の未実施を理由に是正勧告を受ける例が多く見られます。</p>
+      </div>
+      <div class="dark-item">
+        <h3>健康診断の実施だけでは不十分</h3>
+        <p>健康診断を実施するだけで対応完了とすることなく、<strong>事後的な意見聴取が必要</strong>であることに留意してください。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="checklist-section container">
+    <h2>✅ 事業者の対応チェックリスト</h2>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:14px;">定期健康診断を毎年実施しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:14px;">異常所見のある労働者を把握しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:14px;">健康診断から3カ月以内に医師等の意見を聴取しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:14px;">意見内容を健康診断個人票に記載しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:14px;">産業医未選任の場合、地域産業保健センターを活用しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:14px;">医師の意見に基づき必要な就業上の措置を講じているか</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+  SOCIAL INSURANCE &amp; LABOR CONSULTANT &nbsp;|&nbsp; 土橋社労士事務所
+  </div>
+
+</body>
+</html>
