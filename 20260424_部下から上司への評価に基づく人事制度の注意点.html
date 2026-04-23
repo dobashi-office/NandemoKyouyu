@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>部下から上司への評価に基づく人事制度の注意点</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1c2e;
+      --ink-light: #3b3b5c;
+      --ink-muted: #6e6e8a;
+      --bg: #f9fafb;
+      --bg-warm: #f0f4f8;
+      --bg-card: #ffffff;
+      --accent: #d35400;
+      --navy: #1b2a4a;
+      --teal: #0e6655;
+      --red: #c0392b;
+      --border: #dce1e8;
+      --shadow: rgba(28,28,46,0.07);
+      --radius: 6px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Noto Sans JP',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.85;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* HERO */
+    .hero {
+      background:linear-gradient(135deg,#1b2a4a 0%,#d35400 100%);
+      color:#fff;
+      padding:80px 40px 60px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; top:-40%; right:-15%;
+      width:500px; height:500px;
+      background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .hero::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg,var(--red),var(--accent),#f39c12);
+    }
+    .hero-inner { max-width:960px; margin:0 auto; position:relative; z-index:1; }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.2); padding:6px 18px; border-radius:30px;
+      font-size:13px; font-weight:500; letter-spacing:0.08em; margin-bottom:24px;
+      backdrop-filter:blur(4px);
+    }
+    .hero h1 {
+      font-family:'Noto Serif JP',serif; font-size:clamp(26px,4vw,40px); font-weight:700; line-height:1.4; margin-bottom:16px;
+    }
+    .hero h1 em { font-style:normal; color:#ffd700; }
+    .hero-sub { font-size:16px; opacity:0.85; font-weight:300; max-width:640px; }
+
+    /* LAYOUT */
+    .container { max-width:960px; margin:0 auto; padding:0 24px; }
+
+    /* OVERVIEW BOX */
+    .overview-box {
+      background:var(--bg-warm); border-left:4px solid var(--accent);
+      padding:32px 36px; margin:48px auto; max-width:960px;
+      border-radius:0 var(--radius) var(--radius) 0;
+    }
+    .overview-box h2 {
+      font-family:'Noto Serif JP',serif; font-size:20px; color:var(--accent);
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .overview-box h2::before { content:'📋'; font-size:22px; }
+
+    /* MEASURES GRID */
+    .measures-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px; margin-top:20px;
+    }
+    .measure-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:20px; position:relative;
+    }
+    .measure-num {
+      position:absolute; top:-10px; left:16px;
+      background:var(--navy); color:#fff; width:28px; height:28px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    }
+    .measure-card h3 { font-size:14px; font-weight:700; margin-bottom:6px; margin-top:6px; color:var(--navy); }
+    .measure-card p { font-size:13px; color:var(--ink-muted); line-height:1.7; }
+
+    /* SECTION */
+    .section { margin:56px auto; max-width:960px; }
+    .section-header {
+      display:flex; align-items:center; gap:14px; margin-bottom:28px;
+      padding-bottom:16px; border-bottom:2px solid var(--ink);
+    }
+    .section-icon {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0;
+    }
+    .section-header h2 { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; line-height:1.3; }
+    .section-header .section-sub { font-size:13px; color:var(--ink-muted); font-weight:400; }
+
+    /* CARDS */
+    .card-grid { display:grid; gap:24px; }
+    .card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden; box-shadow:0 2px 12px var(--shadow); transition:box-shadow 0.2s;
+    }
+    .card:hover { box-shadow:0 4px 24px rgba(28,28,46,0.12); }
+    .card-head {
+      padding:20px 24px; display:flex; align-items:center; gap:14px;
+      border-bottom:1px solid var(--border);
+    }
+    .card-head h3 { font-size:17px; font-weight:700; flex:1; }
+    .card-body { padding:24px; }
+    .card-body p { margin-bottom:14px; font-size:14.5px; color:var(--ink-light); }
+
+    /* CARD SUB-BOXES */
+    .card-sub { margin-top:20px; padding:18px 20px; border-radius:var(--radius); border:1px solid; }
+    .sub-point { background:#f0f4ff; border-color:#c8d8f0; }
+    .sub-do { background:#f0f8f0; border-color:#c8e0c8; }
+    .sub-warn { background:#fff8f0; border-color:#f0d8b0; }
+    .sub-danger { background:#fdf2f2; border-color:#f0c8c8; }
+
+    .card-sub h4 { font-size:13px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+    .sub-point h4 { color:var(--navy); }
+    .sub-do h4 { color:#2e7d32; }
+    .sub-warn h4 { color:#b8860b; }
+    .sub-danger h4 { color:var(--red); }
+
+    .card-sub ul { list-style:none; padding:0; }
+    .card-sub li {
+      position:relative; padding-left:20px; margin-bottom:8px;
+      font-size:13.5px; line-height:1.75; color:var(--ink-light);
+    }
+    .card-sub li::before { content:'▸'; position:absolute; left:0; color:var(--ink-muted); font-size:11px; top:2px; }
+
+    /* FLOW DIAGRAM */
+    .flow-section { margin:56px auto; max-width:960px; }
+    .flow-section h2 {
+      font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px;
+      padding-bottom:12px; border-bottom:2px solid var(--ink);
+    }
+    .flow-steps { display:flex; flex-direction:column; gap:0; }
+    .flow-step {
+      display:flex; gap:20px; align-items:flex-start; position:relative; padding-bottom:24px;
+    }
+    .flow-step:not(:last-child)::before {
+      content:''; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:var(--border);
+    }
+    .flow-num {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:#fff; z-index:1; background:var(--navy);
+    }
+    .flow-content {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:18px 22px; flex:1;
+    }
+    .flow-content h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .flow-content p { font-size:13.5px; color:var(--ink-light); line-height:1.7; }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width:100%; border-collapse:collapse; margin-top:20px;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .compare-table th {
+      background:var(--navy); color:#fff; padding:14px 18px; text-align:left; font-size:13px; font-weight:700;
+    }
+    .compare-table td {
+      padding:14px 18px; border-bottom:1px solid var(--border); font-size:13.5px; color:var(--ink-light); line-height:1.7;
+    }
+    .compare-table tr:nth-child(even) td { background:#f8f9fb; }
+
+    /* DARK BOX */
+    .dark-box {
+      background:linear-gradient(135deg,#1b2a4a,#0e6655); color:#fff; padding:40px; border-radius:var(--radius);
+      margin:56px auto; max-width:960px; position:relative; overflow:hidden;
+    }
+    .dark-box h2 { font-family:'Noto Serif JP',serif; font-size:20px; margin-bottom:20px; color:#ffd700; }
+    .dark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+    .dark-item {
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      border-radius:var(--radius); padding:20px;
+    }
+    .dark-item h3 { font-size:15px; font-weight:700; margin-bottom:8px; color:#ffd700; }
+    .dark-item p { font-size:13px; opacity:0.85; line-height:1.75; }
+
+    /* CHECKLIST */
+    .checklist-section { margin:56px auto; max-width:960px; }
+    .checklist-section h2 { font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .check-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+    .check-box { width:22px; height:22px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:2px; }
+
+    /* FOOTER */
+    .footer { margin-top:64px; padding:32px 24px; text-align:center; border-top:1px solid var(--border); font-size:12px; color:var(--ink-muted); }
+
+    @media (max-width:640px) {
+      .hero { padding:48px 20px 40px; }
+      .hero h1 { font-size:24px; }
+      .overview-box { padding:24px 20px; margin:32px 16px; }
+      .measures-grid { grid-template-columns:1fr; }
+      .section { margin:40px auto; }
+      .dark-box { padding:28px 20px; margin:40px 16px; }
+      .dark-grid { grid-template-columns:1fr; }
+      .flow-step { flex-direction:column; gap:12px; }
+      .flow-step:not(:last-child)::before { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">人事評価｜2026.5 No.969</div>
+      <h1>部下から上司への評価に基づく<br><em>人事制度の注意点</em></h1>
+      <p class="hero-sub">設計・運用・紛争予防の3つの観点から、360度評価と上司選択制度の実務論点を体系的に整理します。</p>
+    </div>
+  </div>
+
+  <!-- OVERVIEW: 制度類型 -->
+  <div class="overview-box" style="padding:32px 36px;">
+    <h2>部下→管理職評価制度の3類型</h2>
+    <p style="font-size:14px;color:var(--ink-light);margin-bottom:4px;">目的が違えば設計が変わる。まず自社が何を達成したいかを明確にすることが出発点。</p>
+    <div class="measures-grid">
+      <div class="measure-card">
+        <div class="measure-num">①</div>
+        <h3>育成目的の360度評価</h3>
+        <p>複数の立場からフィードバックを得て、管理職本人の気づきと成長を促す。原則として処遇には直結させない。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">②</div>
+        <h3>処遇反映型360度評価</h3>
+        <p>昇格・報酬・配置などの判断材料に組み込む。スコア単独ではなく、評価会議での総合判断の一要素として扱うのが一般的。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">③</div>
+        <h3>上司選択制度</h3>
+        <p>部下がどの上司の下で働きたいかを希望・選択できる仕組み。配置のミスマッチ是正を狙う。</p>
+      </div>
+    </div>
+    <div class="card-sub sub-danger" style="margin-top:20px;">
+      <h4>🚫 目的の混在は厳禁</h4>
+      <ul>
+        <li>「育成目的」と説明しながら実態として処遇に影響が出ていると、制度への信頼は瞬時に失われる</li>
+        <li>処遇に反映するなら、評価基準・手続き・説明責任を前提にしなければ納得性の担保は困難</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION: 育成目的の360度評価 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🌱</div>
+      <div>
+        <h2>育成目的の360度評価</h2>
+        <div class="section-sub">導入は多いが「やりっぱなし」に注意</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">⚠️</span>
+          <h3>「評価して終わり」では行動変容は起きない</h3>
+        </div>
+        <div class="card-body">
+          <p>育成目的の360度評価は導入例として最も多い。しかし「評価→集計→フィードバックして終わり」という運用にとどまる会社が少なくない。本人の自覚は促せても、ポジティブな行動変容が起こるかどうかは本人次第となりやすい限界がある。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ フィードバック後のフォローが不可欠</h4>
+            <ul>
+              <li>「心を入れ替えましょう」という方法論の乏しい研修では不十分</li>
+              <li>誰に対してどのような行動をすれば改善できるかを<strong>行動レベルで具体化</strong>する支援が必要</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-point">
+            <h4>💡 行動レベルの処方箋の例（「部下の意見を聞いていない」が低い場合）</h4>
+            <ul>
+              <li>会議の冒頭で必ず一人ずつ発言機会を設ける</li>
+              <li>反論や結論を急がずに要約して返す</li>
+              <li>提案の質が上がった部下に対して具体的に称賛する</li>
+              <li>実施状況を上司・人事・本人が振り返れる仕組み（チェックリスト、1on1での確認）を置く</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">📝</span>
+          <h3>コメント記述ルールの事前周知</h3>
+        </div>
+        <div class="card-body">
+          <p>360度評価の結果は上司本人にとって心理的負荷になり得る。評価者コメントが攻撃的で「人格否定」と受け取られやすい表現だと、むしろ本人は防衛的になり学習が止まる。</p>
+          <div class="card-sub sub-warn">
+            <h4>⚠️ コメント記述ルールを評価者へ事前に周知する</h4>
+            <ul>
+              <li>事実ベースで書く</li>
+              <li>具体的な行動を指摘する</li>
+              <li>改善提案を含める</li>
+              <li>誹謗中傷は禁止</li>
+              <li>必要に応じて人事がコメントをレビューする運用も有効</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: 処遇反映型360度評価 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">⚖️</div>
+      <div>
+        <h2>処遇反映型360度評価</h2>
+        <div class="section-sub">合理性はあるが"スコア主義"は危険</div>
+      </div>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-light);margin-bottom:24px;">マネジメント行動は上位者からは見えにくく、部下・同僚の観察情報が補完的に役立つ。処遇への間接的な反映には一定の合理性があるが、以下の4点が欠けると紛争化しやすい。</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>要件</th>
+          <th>内容</th>
+          <th>欠けた場合のリスク</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>① 評価基準の明確性</strong></td>
+          <td>「何を評価しているのか」を明確にする</td>
+          <td>本人は改善のしようがなく、結果に納得できない</td>
+        </tr>
+        <tr>
+          <td><strong>② 評価者の選定基準</strong></td>
+          <td>評価者が恣意的にならないよう基準を設ける</td>
+          <td>評価の正当性が揺らぐ</td>
+        </tr>
+        <tr>
+          <td><strong>③ 手続きと説明責任</strong></td>
+          <td>評価会議でどのような観点で総合判断したかを説明できるようにする</td>
+          <td>不信感が残り、紛争化につながる</td>
+        </tr>
+        <tr>
+          <td><strong>④ 改善機会の付与</strong></td>
+          <td>結果が悪い場合も、改善支援（コーチング・研修・配置配慮）と再評価の機会を設ける</td>
+          <td>いきなりの不利益処分は納得感を損なう</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DARK BOX: 紛争に発展しやすい典型パターン -->
+  <div class="dark-box">
+    <h2>🚨 紛争に発展しやすい典型パターンと対処法</h2>
+    <p style="font-size:13.5px;opacity:0.85;margin-bottom:24px;">制度が紛争に発展する場面は、評価制度そのものよりも「運用の雑さ」から生じることが多い。360度評価で低評価となった管理職に対し、十分な説明や改善支援がないまま「異動の内示」や「降格」を行った場合、本人の納得感は得られにくくなる。</p>
+    <div class="dark-grid">
+      <div class="dark-item">
+        <h3>① 運用ルールの事前明確化</h3>
+        <p>評価の位置付け、匿名性の扱い、開示範囲を事前に明確にしておく。「総合判断だ」とだけ回答し続けると対立は深まる。</p>
+      </div>
+      <div class="dark-item">
+        <h3>② 改善計画と支援策の提示</h3>
+        <p>結果が悪い場合はまず改善計画と支援策を提示する。いきなりの処分ではなく、改善の機会を与えることが重要。</p>
+      </div>
+      <div class="dark-item">
+        <h3>③ 総合判断の説明可能性</h3>
+        <p>処遇判断に至る場合は、評価以外の要素も含めた総合判断であること、手続きが適正であることを説明できるようにしておく。評価会議の議事メモを残すことが有効。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: 上司選択制度 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🔀</div>
+      <div>
+        <h2>上司選択制度</h2>
+        <div class="section-sub">若手定着策としての魅力と落とし穴</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">⚠️</span>
+          <h3>制度設計を誤ると"人気投票"になる</h3>
+        </div>
+        <div class="card-body">
+          <p>上司選択制度は「上司との相性ミスマッチによる離職」を抑える観点から注目されている。狙いは配置の納得感向上とミスマッチの早期是正。しかし主な課題が3つある。</p>
+          <div class="card-sub sub-warn">
+            <h4>⚠️ 3つの落とし穴</h4>
+            <ul>
+              <li><strong>希望の集中：</strong>人気のある上司に希望が偏ると、組織運営上のバランスが崩れる</li>
+              <li><strong>希望不成立時の不満：</strong>「声を出したのに無視された」と感じると制度は逆効果になる</li>
+              <li><strong>管理職の迎合：</strong>評価を恐れて必要な指導ができなくなり、成果・育成の観点で悪影響が出る</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 導入時に明示すべきこと</h4>
+            <ul>
+              <li>「希望は尊重するが、最終決定は人事が組織要件と総合して行う」ことを明示する</li>
+              <li>判断基準（職務適性、育成計画、業務量、組織編成）を開示する</li>
+              <li>希望理由を記述させる運用で、単なる好き嫌いの申請を減らし、本人の成長意欲を可視化する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">👥</span>
+          <h3>若手定着と「制度への期待値」の関係</h3>
+        </div>
+        <div class="card-body">
+          <p>部下→管理職評価制度や上司選択制度は若手定着を目的に導入されることが多い。しかし<strong>制度そのものが定着を生むわけではない</strong>。重要なのは「声が尊重されている」という実感と「組織が改善に向けて動いている」という信頼だ。</p>
+          <div class="card-sub sub-danger">
+            <h4>🚫 評価を実施しても現場が変わらなければ若手は失望する</h4>
+            <ul>
+              <li>制度導入は期待値を高める行為。期待値を上げる以上、改善の実感を返せないと不信を増幅する</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 人事が用意すべき運用サイクル</h4>
+            <ul>
+              <li>① 改善テーマの優先順位付け</li>
+              <li>② 管理職への支援提供</li>
+              <li>③ 一定期間後のフォロー確認</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: 匿名性とデータ信頼性 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div>
+        <h2>設計を固めるための実務論点</h2>
+        <div class="section-sub">匿名性・データ信頼性・閲覧権限</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">🎭</span>
+          <h3>匿名性とデータ信頼性のバランス</h3>
+        </div>
+        <div class="card-body">
+          <p>匿名性は率直なフィードバックを促すが、コメントが攻撃的になったり根拠が曖昧になったりする副作用がある。実務上は以下の設計が現実的だ。</p>
+          <div class="card-sub sub-point">
+            <h4>💡 現実的な設計</h4>
+            <ul>
+              <li>① 点数は匿名</li>
+              <li>② コメントは人事がチェックし、不適切表現は修正または削除</li>
+              <li>③ 本人への開示は要約表現も選択肢とする</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-warn">
+            <h4>⚠️ 少人数組織での注意点</h4>
+            <ul>
+              <li>評価者数が少ない場合、偶然の偏りが大きくなる</li>
+              <li>「絶対値の競争」ではなく「本人内の前年差」「改善テーマの抽出」に寄せた使い方が安全</li>
+              <li>処遇反映型でも、点数を機械的に換算せず評価会議での補助情報として位置付けることで説明可能性が高まる</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">📂</span>
+          <h3>評価データの保存・閲覧権限</h3>
+        </div>
+        <div class="card-body">
+          <p>評価データの保存期間や閲覧権限も明確化が必要だ。閲覧権限が広過ぎると評価が萎縮し、逆に狭過ぎると改善支援につながらない。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 無難な設計</h4>
+            <ul>
+              <li>人事と直属上司（あるいはコーチ）が閲覧する</li>
+              <li>本人には本人分のみ開示する</li>
+              <li>評価者個別の特定につながる情報は持ち出さない</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOW: 育成から改善へつなぐ運用モデル -->
+  <div class="flow-section container">
+    <h2>🔄「育成」から「改善」へつなぐ運用モデル</h2>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px;">育成目的の360度評価を"効く制度"にするには、以下の型を最小構成として組み込むことを推奨する。</p>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-num">①</div>
+        <div class="flow-content">
+          <h3>事前説明</h3>
+          <p>目的（育成）と処遇への非連動、匿名性の範囲、コメントルールを説明する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">②</div>
+        <div class="flow-content">
+          <h3>実施</h3>
+          <p>評価者を偏らせない（特定の好き嫌いで選ばない）ための選定基準を設ける。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">③</div>
+        <div class="flow-content">
+          <h3>フィードバック面談</h3>
+          <p>結果を渡すだけでなく、上位3強み・上位3改善点を言語化する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">④</div>
+        <div class="flow-content">
+          <h3>行動目標の設定</h3>
+          <p>改善点ごとに「やる行動」「やめる行動」を具体化し、2〜4週間単位で試行する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">⑤</div>
+        <div class="flow-content">
+          <h3>フォロー</h3>
+          <p>1on1や短いチェックで進捗を確認し、必要に応じて行動を修正する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">⑥</div>
+        <div class="flow-content">
+          <h3>再測定</h3>
+          <p>半年〜1年で再実施し、定着と次の課題を確認する。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: 設問設計・社内コミュニケーション -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">✏️</div>
+      <div>
+        <h2>設問設計と社内コミュニケーションのコツ</h2>
+        <div class="section-sub">管理職が"何をすればよいか"わかる設問にする</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">📋</span>
+          <h3>設問は「観察可能な行動」に落とし込む</h3>
+        </div>
+        <div class="card-body">
+          <p>「リーダーシップがある」「信頼できる」といった抽象項目は、評価者ごとに解釈がずれ、本人も改善行動に落とせない。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 具体的な設問例（部下育成）</h4>
+            <ul>
+              <li>期待役割を具体的に伝えている</li>
+              <li>フィードバックが事実と行動に基づいている</li>
+              <li>成長機会（任せる・挑戦させる）を意図的に作っている</li>
+              <li>感情的な叱責をしない（ハラスメント予防の禁止行動明示）</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-point">
+            <h4>💡 設問数と記述欄のバランス</h4>
+            <ul>
+              <li>設問は8〜12項目程度に絞る</li>
+              <li>自由記述は「良かった行動／改善してほしい行動」の2問に限定する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">💬</span>
+          <h3>社内説明は「順番」が重要</h3>
+        </div>
+        <div class="card-body">
+          <p>人事が「若手定着のため」と強調し過ぎると、管理職は"管理職いじめ"と受け止めやすくなる。説明の順番を整えることが重要。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 説明の順番</h4>
+            <ul>
+              <li><strong>まず：</strong>目的（育成・改善）と、会社としてマネジメント品質を高めたいメッセージを示す</li>
+              <li><strong>次に：</strong>匿名性の範囲、データの扱い、処遇との関係、フィードバックと支援の具体例を説明する</li>
+              <li><strong>最後に：</strong>部下側には「評価は攻撃の場ではなく、働きやすいチームを作るための情報提供」であることを伝え、コメントルールを周知する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST: 導入・運用の実務チェックポイント -->
+  <div class="checklist-section container">
+    <h2>✅ 導入・運用の実務チェックポイント</h2>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>目的の明確化：</strong>育成なのか、処遇なのか、配置是正なのか。目的が曖昧な制度は混乱する。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>評価指標の設計：</strong>行動ベースの項目にし、評価者が観察できる言動として定義する（抽象概念だけにしない）。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>評価者運用：</strong>評価者選定基準、評価者教育（コメント記述ルール、誹謗中傷の禁止）、匿名性の扱いを定める。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>フィードバック設計：</strong>結果の伝え方、本人の受け止め支援、改善計画の作成支援をセットにする。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>処遇への位置付け：</strong>処遇反映型の場合は単独指標化を避け、総合判断の一要素として扱い、説明可能性を担保する。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>記録と説明責任：</strong>評価会議や判断根拠を簡潔に残し、後から説明できる体制を整える。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>段階的導入：</strong>部門限定・トライアルで運用負荷と副作用を検証し、改善してから展開する。</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;"><strong>効果測定：</strong>点数だけでなく改善行動の実施率・離職率・パルスサーベイ・ハラスメント相談件数など複数指標で測定する。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>EMPLOYMENT &amp; HR CONSULTANT &nbsp;|&nbsp; 土橋社労士事務所</p>
+  </div>
+
+</body>
+</html>
