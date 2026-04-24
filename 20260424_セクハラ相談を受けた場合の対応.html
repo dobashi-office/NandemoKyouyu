@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>セクハラ相談を受けた場合の対応</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1c2e;
+      --ink-light: #3b3b5c;
+      --ink-muted: #6e6e8a;
+      --bg: #f9fafb;
+      --bg-warm: #f0f4f8;
+      --bg-card: #ffffff;
+      --accent: #d35400;
+      --navy: #1b2a4a;
+      --teal: #0e6655;
+      --red: #c0392b;
+      --border: #dce1e8;
+      --shadow: rgba(28,28,46,0.07);
+      --radius: 6px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Noto Sans JP',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.85;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0f182b 0%, #2a3c5a 50%, #c0cbd8 100%);
+      color: #fff;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -20%;
+      width: 150%; height: 150%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 40%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #aa8e45 0%, #f9f2c8 50%, #aa8e45 100%);
+      z-index: 1;
+    }
+    .hero-inner { max-width:960px; margin:0 auto; position:relative; z-index:2; }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.3); padding:6px 18px; border-radius:30px;
+      font-size:13px; font-weight:500; letter-spacing:0.08em; margin-bottom:24px;
+      backdrop-filter:blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-family:'Noto Serif JP',serif; font-size:clamp(26px,4vw,40px); font-weight:700; line-height:1.4; margin-bottom:16px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .hero h1 em { font-style:normal; color:#ffd700; }
+    .hero-sub { font-size:16px; opacity:0.9; font-weight:300; max-width:640px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+
+    /* LAYOUT */
+    .container { max-width:960px; margin:0 auto; padding:0 24px; }
+
+    /* OVERVIEW BOX */
+    .overview-box {
+      background:var(--bg-warm); border-left:4px solid var(--accent);
+      padding:32px 36px; margin:48px auto; max-width:960px;
+      border-radius:0 var(--radius) var(--radius) 0;
+    }
+    .overview-box h2 {
+      font-family:'Noto Serif JP',serif; font-size:20px; color:var(--accent);
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .overview-box h2::before { content:'📋'; font-size:22px; }
+
+    /* MEASURES GRID */
+    .measures-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px; margin-top:20px;
+    }
+    .measure-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:20px; position:relative;
+    }
+    .measure-num {
+      position:absolute; top:-10px; left:16px;
+      background:var(--navy); color:#fff; width:28px; height:28px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    }
+    .measure-card h3 { font-size:14px; font-weight:700; margin-bottom:6px; margin-top:6px; color:var(--navy); }
+    .measure-card p { font-size:13px; color:var(--ink-muted); line-height:1.7; }
+
+    /* SECTION */
+    .section { margin:56px auto; max-width:960px; }
+    .section-header {
+      display:flex; align-items:center; gap:14px; margin-bottom:28px;
+      padding-bottom:16px; border-bottom:2px solid var(--ink);
+    }
+    .section-icon {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0;
+    }
+    .section-header h2 { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; line-height:1.3; }
+    .section-header .section-sub { font-size:13px; color:var(--ink-muted); font-weight:400; }
+
+    /* CARDS */
+    .card-grid { display:grid; gap:24px; }
+    .card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden; box-shadow:0 2px 12px var(--shadow); transition:box-shadow 0.2s;
+    }
+    .card:hover { box-shadow:0 4px 24px rgba(28,28,46,0.12); }
+    .card-head {
+      padding:20px 24px; display:flex; align-items:center; gap:14px;
+      border-bottom:1px solid var(--border);
+    }
+    .card-head h3 { font-size:17px; font-weight:700; flex:1; }
+    .card-body { padding:24px; }
+    .card-body p { margin-bottom:14px; font-size:14.5px; color:var(--ink-light); }
+
+    /* CARD SUB-BOXES */
+    .card-sub { margin-top:20px; padding:18px 20px; border-radius:var(--radius); border:1px solid; }
+    .sub-point { background:#f0f4ff; border-color:#c8d8f0; }
+    .sub-do { background:#f0f8f0; border-color:#c8e0c8; }
+    .sub-warn { background:#fff8f0; border-color:#f0d8b0; }
+    .sub-danger { background:#fdf2f2; border-color:#f0c8c8; }
+
+    .card-sub h4 { font-size:13px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+    .sub-point h4 { color:var(--navy); }
+    .sub-do h4 { color:#2e7d32; }
+    .sub-warn h4 { color:#b8860b; }
+    .sub-danger h4 { color:var(--red); }
+
+    .card-sub ul { list-style:none; padding:0; }
+    .card-sub li {
+      position:relative; padding-left:20px; margin-bottom:8px;
+      font-size:13.5px; line-height:1.75; color:var(--ink-light);
+    }
+    .card-sub li::before { content:'▸'; position:absolute; left:0; color:var(--ink-muted); font-size:11px; top:2px; }
+
+    /* FLOW DIAGRAM */
+    .flow-section { margin:56px auto; max-width:960px; }
+    .flow-section h2 {
+      font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px;
+      padding-bottom:12px; border-bottom:2px solid var(--ink);
+    }
+    .flow-steps { display:flex; flex-direction:column; gap:0; }
+    .flow-step {
+      display:flex; gap:20px; align-items:flex-start; position:relative; padding-bottom:24px;
+    }
+    .flow-step:not(:last-child)::before {
+      content:''; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:var(--border);
+    }
+    .flow-num {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:#fff; z-index:1; background:var(--navy);
+    }
+    .flow-content {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:18px 22px; flex:1;
+    }
+    .flow-content h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .flow-content p { font-size:13.5px; color:var(--ink-light); line-height:1.7; }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width:100%; border-collapse:collapse; margin-top:20px;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .compare-table th {
+      background:var(--navy); color:#fff; padding:14px 18px; text-align:left; font-size:13px; font-weight:700;
+    }
+    .compare-table td {
+      padding:14px 18px; border-bottom:1px solid var(--border); font-size:13.5px; color:var(--ink-light); line-height:1.7;
+    }
+    .compare-table tr:nth-child(even) td { background:#f8f9fb; }
+
+    /* DARK BOX */
+    .dark-box {
+      background:linear-gradient(135deg,#1b2a4a,#0e6655); color:#fff; padding:40px; border-radius:var(--radius);
+      margin:56px auto; max-width:960px; position:relative; overflow:hidden;
+    }
+    .dark-box h2 { font-family:'Noto Serif JP',serif; font-size:20px; margin-bottom:20px; color:#ffd700; }
+    .dark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+    .dark-item {
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      border-radius:var(--radius); padding:20px;
+    }
+    .dark-item h3 { font-size:15px; font-weight:700; margin-bottom:8px; color:#ffd700; }
+    .dark-item p { font-size:13px; opacity:0.85; line-height:1.75; }
+
+    /* CHECKLIST */
+    .checklist-section { margin:56px auto; max-width:960px; }
+    .checklist-section h2 { font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .check-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+    .check-box { width:22px; height:22px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:2px; }
+
+    /* FOOTER */
+    .footer { margin-top:64px; padding:32px 24px; text-align:center; border-top:1px solid var(--border); font-size:12px; color:var(--ink-muted); }
+
+    /* QA BLOCK */
+    .qa-block { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px; }
+    .qa-item {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:24px; display:flex; gap:16px; align-items:flex-start;
+    }
+    .qa-label {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; font-weight:700; color:#fff;
+    }
+    .qa-label.q { background:var(--navy); }
+    .qa-label.a { background:var(--accent); }
+    .qa-text { font-size:14px; color:var(--ink-light); line-height:1.8; }
+
+    @media (max-width:640px) {
+      .hero { padding:48px 20px 40px; }
+      .hero h1 { font-size:24px; }
+      .overview-box { padding:24px 20px; margin:32px 16px; }
+      .measures-grid { grid-template-columns:1fr; }
+      .section { margin:40px auto; }
+      .dark-box { padding:28px 20px; margin:40px 16px; }
+      .dark-grid { grid-template-columns:1fr; }
+      .flow-step { flex-direction:column; gap:12px; }
+      .flow-step:not(:last-child)::before { display:none; }
+      .qa-block { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">ハラスメント｜2026.5 No.969</div>
+      <h1>セクハラ相談を受けた場合の<em>対応</em></h1>
+      <p class="hero-sub">申出があった場合の迅速な調査義務、事業主の措置義務、二次被害防止まで——実務対応の要点を整理します。</p>
+    </div>
+  </div>
+
+  <!-- Q&A OVERVIEW -->
+  <div class="overview-box" style="margin:48px auto; max-width:960px;">
+    <h2>相談内容と回答</h2>
+    <div class="qa-block">
+      <div class="qa-item">
+        <div class="qa-label q">Q</div>
+        <p class="qa-text">女性の派遣社員から、職場の営業所長が、2人だけになると、来客や他の派遣社員の年齢や未婚などを殊更に取り上げ、侮蔑的で下品な言辞で女性らを侮辱し、自分の不倫話を繰り返してくることにより、働き難い環境になり困惑しているとの申出がありました。企業はどのように対応すべきでしょうか。</p>
+      </div>
+      <div class="qa-item">
+        <div class="qa-label a">A</div>
+        <p class="qa-text">セクハラ被害の申出があった場合、<strong>迅速にヒアリング等の調査を行い</strong>、その結果に応じて、懲戒処分や配置転換等の必要な措置を講じる必要があります。事後的な職場環境調整を怠れば、<strong>会社固有の責任を問われる可能性</strong>もあります。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: セクハラ該当性 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">⚖️</div>
+      <div>
+        <h2>セクハラ該当性</h2>
+        <div class="section-sub">対価型・環境型の2類型</div>
+      </div>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>種類</th>
+          <th>内容</th>
+          <th>具体例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>対価型セクハラ</strong></td>
+          <td>労働者の意に反する性的な言動に対する対応により、労働者が労働条件につき<strong>不利益を受ける</strong>もの</td>
+          <td>性的要求を拒否したことを理由に降格・解雇するなど</td>
+        </tr>
+        <tr>
+          <td><strong>環境型セクハラ</strong></td>
+          <td>労働者の意に反する性的な言動により、労働者の<strong>就業環境が害される</strong>もの</td>
+          <td>侮蔑的・下品な発言を繰り返し就業意欲の低下を招くなど<br><span style="font-size:12px;color:var(--accent);">※設問の言動は環境型セクハラの典型例（海遊館事件・最一小判平27.2.26）</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: 事業主の措置義務 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🏢</div>
+      <div>
+        <h2>セクハラに対する事業主の措置義務</h2>
+        <div class="section-sub">男女雇用機会均等法11条1項・セクハラ指針</div>
+      </div>
+    </div>
+    <div class="measures-grid" style="margin-top:0;">
+      <div class="measure-card">
+        <div class="measure-num">①</div>
+        <h3>方針の明確化・周知・啓発</h3>
+        <p>セクハラを許容しないという事業主の方針を明確にし、全従業員への周知・啓発を行う。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">②</div>
+        <h3>相談体制の整備</h3>
+        <p>相談（苦情を含む）に応じ、適切に対応するための相談窓口等の必要な体制を整備する。</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">③</div>
+        <h3>事後の迅速かつ適切な対応</h3>
+        <p>申出・相談があれば適切な相談対応を行い、調査の結果セクハラと認められれば懲戒処分・配置転換等の措置を講じる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOW: 相談を受けてからの対応手順 -->
+  <div class="flow-section container">
+    <h2>🔄 相談を受けてからの対応フロー</h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <h3>相談の受付・事実確認</h3>
+          <p>相談者から丁寧にヒアリングを行い、出来事の事実と本人への影響（症状・業務支障）を分けて整理する。機微な情報の取り扱いに十分配慮する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <h3>第三者へのヒアリング範囲の確認</h3>
+          <p>第三者（同僚・目撃者等）からもヒアリングを行う場合、<strong>どの範囲まで話してよいか事前に相談者から確認</strong>しておく。二次被害防止のため、情報の取り扱いを慎重に行う。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <h3>行為者へのヒアリング</h3>
+          <p>相談者の意向を踏まえた上で、行為者（申立対象者）からもヒアリングを実施する。一方的な聴取で即座に加害者扱いしないよう、公正なプロセスを確保する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <h3>セクハラ認定・措置の判断</h3>
+          <p>調査結果を踏まえ、セクハラの有無を認定する。セクハラと認められる場合は、懲戒処分・配置転換等の必要な措置を決定する。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-content">
+          <h3>職場環境の調整・再発防止</h3>
+          <p>被害者の職場環境を回復するための措置（配置転換等）を検討し、再発防止策（研修・規程整備等）を実施する。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK BOX: 会社固有の法的リスク -->
+  <div class="dark-box">
+    <h2>⚠️ 会社が調査・対応を怠った場合の法的リスク</h2>
+    <p style="font-size:13.5px;opacity:0.85;margin-bottom:28px;">セクハラを含むハラスメントが生じた場合、加害者に対する損害賠償請求（不法行為責任）や会社の使用者責任等が問題になるだけでなく、<strong style="color:#ffd700;">会社が調査を開始せずに問題を放置した場合は会社固有の責任</strong>として損害賠償責任が認められることがある。</p>
+    <div class="dark-grid">
+      <div class="dark-item">
+        <h3>📌 裁判例（Y市役所事件）</h3>
+        <p>横浜地判平16.7.8 判時1865号106頁</p>
+      </div>
+      <div class="dark-item">
+        <h3>窓口担当者の問題ある対応</h3>
+        <p>被害者から相談を受けた課長が「嫌がらせをするような陰湿なタイプじゃない」等の被通報者を庇う発言を行い、セクハラの存在を認めながら異動等の対策をとらなかった。</p>
+      </div>
+      <div class="dark-item">
+        <h3>判決の内容</h3>
+        <p>国家賠償法違法として、セクハラ行為による慰謝料とは<strong style="color:#ffd700;">別に</strong>、窓口担当者の不作為による慰謝料を認定。会社固有の責任が問われた事例。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: 二次被害防止 -->
+  <div class="section container">
+    <div class="section-header">
+      <div class="section-icon">🛡️</div>
+      <div>
+        <h2>二次的なセクハラ被害を生まないために</h2>
+        <div class="section-sub">会社の事後的な対応が二次被害につながる</div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head">
+          <span style="font-size:24px;">🔒</span>
+          <h3>情報管理と相談者への配慮</h3>
+        </div>
+        <div class="card-body">
+          <p>セクハラ相談の内容は機微な情報であることが多い。調査の過程で誤った情報管理を行うと、相談者が職場で孤立したり、報復的な行為を受けるリスクがある。</p>
+          <div class="card-sub sub-do">
+            <h4>✅ 対応時の必須確認事項</h4>
+            <ul>
+              <li>第三者にヒアリングする場合、<strong>どの範囲まで話してよいか事前に相談者に確認</strong>する</li>
+              <li>相談者の氏名・内容が不必要に広まらないよう、情報共有の範囲を最小限に絞る</li>
+              <li>相談者に対し、調査の進捗状況を適切に報告し、孤立させない</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-danger">
+            <h4>🚫 絶対に避けるべき対応</h4>
+            <ul>
+              <li>行為者を庇う発言・態度をとる</li>
+              <li>「大げさではないか」「誤解では」と相談者の認識を否定する</li>
+              <li>調査もせずに「問題なかった」と結論付ける</li>
+              <li>相談者を異動させて問題を有耶無耶にする</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="checklist-section container">
+    <h2>✅ セクハラ対応チェックリスト</h2>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">セクハラを許容しない旨の方針が明確化・周知されているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">相談窓口が設置され、適切に機能しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">申出があった場合、迅速にヒアリング調査を開始できる体制があるか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">第三者へのヒアリング前に相談者の意向・情報開示範囲を確認しているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">調査結果に基づき、懲戒処分・配置転換等の適切な措置を講じているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span style="font-size:13.5px;">事後の職場環境調整（被害者のフォロー・再発防止策）まで実施しているか</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>LABOR &amp; LEGAL COMPLIANCE ADVISORY &nbsp;|&nbsp; 土橋社労士事務所</p>
+  </div>
+
+</body>
+</html>
