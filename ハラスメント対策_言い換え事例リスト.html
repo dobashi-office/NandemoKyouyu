@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハラスメント対策 言い換え事例集</title>
+<style>
+  :root {
+    --out-color: #e53935;
+    --out-bg: #ffebee;
+    --gray-color: #f57c00;
+    --gray-bg: #fff3e0;
+    --safe-color: #2e7d32;
+    --safe-bg: #e8f5e9;
+    --point-color: #1565c0;
+    --point-bg: #e3f2fd;
+    --tab-active: #1a237e;
+    --tab-hover: #3949ab;
+    --header-bg: #1a237e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Noto Sans JP", "Yu Gothic", "游ゴシック", sans-serif;
+    background: #f5f5f5;
+    color: #212121;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ===== ヘッダー ===== */
+  header {
+    background: var(--header-bg);
+    color: #fff;
+    padding: 24px 32px 16px;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  header p {
+    font-size: 12px;
+    opacity: 0.8;
+    line-height: 1.6;
+    max-width: 800px;
+  }
+
+  /* ===== 凡例 ===== */
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 10px 32px;
+    background: #283593;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #fff;
+  }
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ===== 検索 ===== */
+  .search-bar {
+    background: #fff;
+    padding: 10px 32px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .search-bar input {
+    flex: 1;
+    max-width: 360px;
+    border: 1px solid #bdbdbd;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-bar input:focus { border-color: var(--tab-active); }
+  .search-count {
+    font-size: 12px;
+    color: #757575;
+  }
+
+  /* ===== タブ ===== */
+  .tab-bar {
+    display: flex;
+    overflow-x: auto;
+    background: #fff;
+    border-bottom: 3px solid var(--tab-active);
+    padding: 0 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #616161;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.2s;
+    font-family: inherit;
+  }
+  .tab-btn:hover { color: var(--tab-hover); }
+  .tab-btn.active {
+    color: var(--tab-active);
+  }
+  .tab-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0; right: 0;
+    height: 3px;
+    background: var(--tab-active);
+    border-radius: 2px 2px 0 0;
+  }
+  .tab-badge {
+    display: inline-block;
+    background: #e8eaf6;
+    color: var(--tab-active);
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 11px;
+    margin-left: 4px;
+    font-weight: 700;
+  }
+  .tab-btn.active .tab-badge {
+    background: var(--tab-active);
+    color: #fff;
+  }
+
+  /* ===== コンテンツ ===== */
+  .tab-content { display: none; padding: 20px 24px 40px; }
+  .tab-content.active { display: block; }
+
+  .chapter-desc {
+    background: #fff;
+    border-left: 4px solid var(--tab-active);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #424242;
+  }
+
+  /* ===== カードグリッド ===== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  /* ===== ケースカード ===== */
+  .case-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .case-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+    transform: translateY(-2px);
+  }
+  .case-card.hidden { display: none; }
+
+  .card-header {
+    background: var(--tab-active);
+    color: #fff;
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .case-number {
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .card-header h3 {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .card-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+
+  .speech-bubble {
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .speech-bubble .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .speech-bubble .text { color: #212121; }
+
+  .bubble-out {
+    background: var(--out-bg);
+    border-left: 3px solid var(--out-color);
+  }
+  .bubble-out .label { color: var(--out-color); }
+
+  .bubble-gray {
+    background: var(--gray-bg);
+    border-left: 3px solid var(--gray-color);
+  }
+  .bubble-gray .label { color: var(--gray-color); }
+
+  .bubble-safe {
+    background: var(--safe-bg);
+    border-left: 3px solid var(--safe-color);
+  }
+  .bubble-safe .label { color: var(--safe-color); }
+
+  .bubble-point {
+    background: var(--point-bg);
+    border-left: 3px solid var(--point-color);
+    font-size: 12px;
+  }
+  .bubble-point .label { color: var(--point-color); }
+
+  /* ===== 判例カード ===== */
+  .hanrei-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+  .hanrei-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .hanrei-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+    transform: translateY(-2px);
+  }
+  .hanrei-header {
+    padding: 10px 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hanrei-header.pawahara { background: #b71c1c; }
+  .hanrei-header.sekuhara { background: #6a1b9a; }
+  .hanrei-header.sogi { background: #1565c0; }
+  .hanrei-header.gyaku { background: #4e342e; }
+  .hanrei-file {
+    background: rgba(255,255,255,0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .hanrei-header h3 { font-size: 13px; font-weight: 700; }
+  .hanrei-body {
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #424242;
+  }
+
+  /* ===== 「見つかりません」 ===== */
+  .no-result {
+    text-align: center;
+    padding: 60px 20px;
+    color: #9e9e9e;
+    font-size: 14px;
+    display: none;
+  }
+  .no-result.show { display: block; }
+
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 600px) {
+    header { padding: 16px; }
+    .legend { padding: 8px 16px; }
+    .search-bar { padding: 8px 16px; }
+    .tab-content { padding: 14px 12px 40px; }
+    .card-grid, .hanrei-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛡️ ハラスメント対策 言い換え事例集</h1>
+  <p>職場で発生しやすいハラスメントを防ぐための「言い換え」事例集です。シーン別に「アウト」「グレーゾーン」「セーフ」の表現を比較し、適切なコミュニケーションのポイントを整理しています。</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot" style="background:#e53935;"></span>アウト（ハラスメント）</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#f57c00;"></span>グレーゾーン（要注意）</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#2e7d32;"></span>セーフ（お手本）</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#1565c0;"></span>ポイント（解説）</div>
+</div>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍 キーワードで絞り込む（例：ミス、妊娠、リモート）">
+  <span class="search-count" id="searchCount"></span>
+</div>
+
+<div class="tab-bar" id="tabBar">
+  <button class="tab-btn active" onclick="switchTab(0)">第1章：建設的指導<span class="tab-badge">12</span></button>
+  <button class="tab-btn" onclick="switchTab(1)">第2章：指示・依頼<span class="tab-badge">12</span></button>
+  <button class="tab-btn" onclick="switchTab(2)">第3章：称賛・雑談<span class="tab-badge">16</span></button>
+  <button class="tab-btn" onclick="switchTab(3)">第4章：制度・相談<span class="tab-badge">13</span></button>
+  <button class="tab-btn" onclick="switchTab(4)">第5章：リモート・SNS<span class="tab-badge">9</span></button>
+  <button class="tab-btn" onclick="switchTab(5)">第6章：逆ハラ・主張<span class="tab-badge">6</span></button>
+  <button class="tab-btn" onclick="switchTab(6)">📋 裁判例集<span class="tab-badge">8</span></button>
+</div>
+
+
+<!-- ===== 第1章 ===== -->
+<div class="tab-content active" id="tab0">
+  <div class="chapter-desc">
+    <strong>第1章　職場編：上司から部下へ / 先輩から後輩へ（しかる・注意する）</strong><br>
+    感情的に責め立てず、問題の原因究明や改善に向けた建設的な指導を行うことが重要です。
+  </div>
+  <div class="card-grid" id="grid0">
+
+    <div class="case-card" data-text="仕事の仕上がりに不満 できない 社会人失格 一緒に考えよう">
+      <div class="card-header"><span class="case-number">1</span><h3>仕事の仕上がりに不満</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">こんなこともできないの!? 社会人失格だね。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">ふつうこれくらい誰でもできると思うよ。なんでできないの?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">今のやり方ではよくないと私は思う。どうすればいいか一緒に考えよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">不満をぶつけずともに改善策を考える。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="ケアレスミス しかる ダメ 使えない らしくないミス 日頃の高評価">
+      <div class="card-header"><span class="case-number">2</span><h3>ケアレス・ミスをしかる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">やっぱりおまえはダメだな。ほんと使えないよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">がっかりだな。君にまかせた私が間違っていたよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">●さんらしくないミスだね。次からは気をつけて。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">日頃の高評価を示し、やんわりとクギを刺す。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="失敗 言い訳 女の腐った 男らしくない 改善策">
+      <div class="card-header"><span class="case-number">3</span><h3>失敗の言い訳をしてくる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">言い訳ばかりするな! 女の腐ったような奴だな。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">そんな態度は男らしくないよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">言いたいことはわかった。でも自己主張だけでは埒があかないよ。次からはどうすればいいと思う?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">言い訳を受け止めつつ改善策を考えさせる。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="名前 返事 高卒 礼儀知らず コミュニケーション">
+      <div class="card-header"><span class="case-number">4</span><h3>名前を呼んでも返事がない</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">おい! 名前を呼ばれたら返事をしろ。やっぱり高卒はダメだな。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">名前を呼ばれても返事をしないなんて、礼儀知らずだよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">呼ばれたら返事をするのが、コミュニケーションの基本だよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">感情的に相手を責めず知らないことは指導する。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="ミス 理由 おとしまえ 問いかけ 原因究明">
+      <div class="card-header"><span class="case-number">5</span><h3>ミスをした理由を聞く</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">何やってんだよ! お前がおとしまえつけろよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">どうしてこうなったのか、理由を言いなさい!</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">ミスをした原因は何かな? 一緒に考えよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">「問い詰める」のではなく「問いかけて」原因究明。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="報告 遅れ トラブル 責任 早めに">
+      <div class="card-header"><span class="case-number">6</span><h3>トラブルの報告が遅れた</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">今さら報告してどうすんだよ。おまえが責任とれよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">すぐに報告すべきだよね!? なんでしなかったの!</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">次回からはトラブルになりそうな時点で報告してくれるかな!?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">注意する理由を説明し報告の重要性を知らせる。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="独断 勝手 個人プレー 心くばり 評価">
+      <div class="card-header"><span class="case-number">7</span><h3>独断で行動しがち</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">能力もないクセに。勝手にやるならやめちまえ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">行き過ぎた個人プレーは迷惑だよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">私からはちょっと独断気味に見えるよ。まわりにもう少し心くばりすれば評価が上がるのに。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">行動を振り返らせる気づきのメッセージを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="反発 口ごたえ グズ 冷静 感情">
+      <div class="card-header"><span class="case-number">8</span><h3>何かにつけて反発してくる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">頭が悪いクセに口ごたえするな! おまえはグズだな。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">その態度は何様のつもり!?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">そうムキにならないで。頭を冷やして少し冷静になったら。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">感情を抑えて冷静に対処。ひと息いれる言葉かけを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="考え 行動 否定 精神障害 頭おかしい 意思表示">
+      <div class="card-header"><span class="case-number">9</span><h3>考えや行動を否定する</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">おまえは精神障害だな。頭おかしいよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">それは絶対におかしいよ! そんな考えばかりしてたらダメだよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">･･････といった理由から、それには賛成できないな。私は･･････したほうがいいと思う。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">相手に配慮したうえではっきりと意思表示。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="やる気 覇気 気合い 集中 寄り添う">
+      <div class="card-header"><span class="case-number">10</span><h3>やる気がないように見える</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">やる気があるの? そんな調子じゃ次はないから。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">覇気がないなぁ。もっと気合いを入れて!</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">仕事に集中できてないようだけど･･････。何か打ち込めないワケでもあるの?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">脅しや鼓舞するよりも寄り添うような言葉かけを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="定時 残業 帰る 積み残し 確認">
+      <div class="card-header"><span class="case-number">11</span><h3>仕事を残して定時であがる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">終わるまで帰るな! 残業は付けずにやれよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">先輩たちが残っているのに帰るの?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">お疲れさま。明日に積み残して大丈夫?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">さりげない確認の言葉でコミュニケーション。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="同じこと 何度も 聞く 頭悪い 教える 理解">
+      <div class="card-header"><span class="case-number">12</span><h3>何度も同じことを聞いてくる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">頭悪いなぁ! 何回同じこと聞くの。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">また聞くの!? あなたに教えてばかりで疲れちゃう。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">どこがわからない? 説明するよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">何度も聞いてくるのは理解を深めるためと解釈。</div></div>
+      </div>
+    </div>
+
+  </div><!-- /grid0 -->
+  <div class="no-result" id="noResult0">該当するケースが見つかりませんでした。</div>
+</div>
+
+<!-- ===== 第2章 ===== -->
+<div class="tab-content" id="tab1">
+  <div class="chapter-desc">
+    <strong>第2章　職場編：指導・指示する、依頼する</strong><br>
+    性別による役割の決めつけ（セクハラ・ジェンダーハラスメント）や、業務範囲を超えた理不尽な命令（パワハラ）を避けることがポイントです。
+  </div>
+  <div class="card-grid" id="grid1">
+
+    <div class="case-card" data-text="初めて 仕事 指導 見て覚えて 具体的">
+      <div class="card-header"><span class="case-number">13</span><h3>初めてする仕事の指導</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">（何も教えないで）こんなこともできないの!?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">忙しくて教える暇はないから、見て覚えて。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">最初は見ていればいいから、やりながらだんだん覚えてね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">「言わなくてもわかる」は幻想。具体的な指導を。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="説明 理解度 確認 頭 わかるか 復唱">
+      <div class="card-header"><span class="case-number">14</span><h3>説明の理解度を確認</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">おまえの頭じゃ理解できないだろうな。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">あなたにわかるかな?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">質問はない? 念のため、ここまでの説明を復唱してくれる?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">上から目線を感じさせる懐疑的な言い方に注意。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="飲み会 飲めない 強要 断る お酒 和食">
+      <div class="card-header"><span class="case-number">15</span><h3>飲めない部下を飲み会に誘う</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">たまには一杯付き合えよ。これも仕事のうちだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">先輩からの酒の誘いは断らないものだよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">和食のおいしい店があるんだ。お酒は無理しなくていいから。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">飲酒を強要しない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="接待 服装 女性 スカート 女性らしさ TPO 清潔感">
+      <div class="card-header"><span class="case-number">16</span><h3>接待の服装を女性に聞かれた</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">接待のときは、女性はスカートをはくものだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">君の自由だけど、女性らしさを忘れないでね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">TPOをわきまえた失礼のない、清潔感のある服装がいいね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">仕事の場にふさわしい身だしなみをすすめる。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="接待 お酌 女性の役目 社長 管理職">
+      <div class="card-header"><span class="case-number">17</span><h3>取引先の接待でお酌</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">社長のご機嫌をとるのは女性の役目だよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">●●さん、社長へお注ぎして。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">（管理職自ら）社長、私から注がせてください。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">管理職がすすんで供応する。女性の役割にしない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="朝礼 ノルマ 目標 ワンチーム やる気">
+      <div class="card-header"><span class="case-number">18</span><h3>朝礼でノルマを指示</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">ノルマを達成できなかったら、どうなるかわかってるな!?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">営業は数字がすべてだよ! いいな!</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">今週の目標は▲▲です。ワンチームになってやり遂げましょう!</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">目標を共有し統率とやる気を高める。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="ゴルフ 送迎 新人 業務外 強要 フランク">
+      <div class="card-header"><span class="case-number">19</span><h3>休日ゴルフの送迎役</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">ゴルフの送迎は新人の役目! 当たり前だよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">業務外で悪いけど、迎えに来てくれない?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">今度のゴルフは僕が車を出そうか? それとも出してくれる?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">立場を超えたフランクな関係を築き、強要しない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="クリーニング 誰でもできる 単純作業 信頼 期待">
+      <div class="card-header"><span class="case-number">20</span><h3>ちょっとした仕事を頼む</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">俺のクリーニングとってきて!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">誰でもできる仕事だから。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">単純作業だけど、大事な仕事だから頼むよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">信頼や期待を示す言葉でやる気を引き出す。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="休日 急ぎ 仕事 私生活 都合 配慮">
+      <div class="card-header"><span class="case-number">21</span><h3>休日に急ぎの仕事を頼む</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">（いきなり連絡し）●●●をやっといて!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">今、暇だよね? これできる?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">休みに申し訳ない。時間があれば手伝ってくれないかな。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">相手の私生活や都合に配慮してお願いする。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="重い荷物 男性 力 性別 能力">
+      <div class="card-header"><span class="case-number">22</span><h3>重い荷物を運んでもらう</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">男性のほうが力があるから、男性社員が運んでね。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">いつもパワー満点の●君、運んでくれない?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">持てる人は一緒に運んでもらえますか?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">性別ではなく能力で仕事を振り分ける。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="お茶 女性 上手 セルフ 役割 性別">
+      <div class="card-header"><span class="case-number">23</span><h3>休憩のお茶いれ</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">お茶いれは女性の方が上手だから、いれて!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">●さんのいれるお茶はおいしいからお願い!</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">みんな、ひと息いれよう。お茶はセルフでね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">性別で役割を決めつけず、お茶はセルフで。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="丁寧 細かい 女性 神経質 能力 先入観">
+      <div class="card-header"><span class="case-number">24</span><h3>丁寧な仕事をお願いする</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">細かい作業は女性に向いているからお願いね。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">神経質な●●さんがやってくれない!?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">いつも丁寧な仕事をしてくれる●●さんにお願いしたいな。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">性別の先入観ではなく、能力を認めて任せる。</div></div>
+      </div>
+    </div>
+
+  </div><!-- /grid1 -->
+  <div class="no-result" id="noResult1">該当するケースが見つかりませんでした。</div>
+</div>
+
+<!-- ===== 第3章 ===== -->
+<div class="tab-content" id="tab2">
+  <div class="chapter-desc">
+    <strong>第3章　職場編：ほめる、気づかう、雑談する</strong><br>
+    年齢や性別、体型、プライベート（結婚・出産）に関する不用意な発言は、相手を傷つけたりハラスメントと受け取られるリスクがあります。
+  </div>
+  <div class="card-grid" id="grid2">
+
+    <div class="case-card" data-text="ミス減 効率 ほめる 認める その調子">
+      <div class="card-header"><span class="case-number">25</span><h3>ミス減・効率アップをほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">少しくらいできたから、いい気になるなよ。ボケ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">これでやっと同期の連中に追いついたね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">ミスが少なくなったね、その調子でいこう!</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">ほめるべきところはしっかりほめて認める。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="若手 ほめる 学歴 優秀 頼りになる 年齢">
+      <div class="card-header"><span class="case-number">26</span><h3>頑張る若手をほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">若いのに優秀らしいね。学歴がないのに大したものだ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">若いくせにやるじゃない。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">しっかりしていて、頼りになるね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">年齢や世代でくくった決めつけをしない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="女性 仕事 ほめる 女だてら 張り切る 性別 先入観">
+      <div class="card-header"><span class="case-number">27</span><h3>仕事をこなす女性をほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">女だてらに張り切っているなぁ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">女性ながら頑張ってるなぁ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">●●さん、頑張るね!</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">性別による能力や役割の先入観を捨てる。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="男性 気が利く ほめる 女みたい 旦那 思い込み セクハラ">
+      <div class="card-header"><span class="case-number">28</span><h3>気が利く男性をほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">女みたいに、細かいことに気がつく奴だな。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">いい旦那さんになりそうだね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">●●さんの目くばりには感心させられるよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">「気が利くのは女性」という思い込みがセクハラを招く。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="女性 見た目 ほめる 髪形 デート 彼氏 スリム ダイエット 服装">
+      <div class="card-header"><span class="case-number">29</span><h3>女性の見た目をほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">髪形変えた? 今日はデート? 彼氏とうまくいってるんだ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">最近スリムになったね。ダイエットしたの?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">その服、よく似合ってるね!</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">プライバシーに触れなければ髪形や服装をほめてもOK。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="男性 筋肉 さわる マッチョ セクハラ トレーニング">
+      <div class="card-header"><span class="case-number">30</span><h3>力もちの男性をほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">筋肉モリモリだね。さわらせて!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">マッチョなボディだね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">●●さんは力もちだね。何かトレーニングしているの?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">体に「さわらせて」は男女問わずセクハラ。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="年上 部下 ほめる おじさん リスペクト 見直す">
+      <div class="card-header"><span class="case-number">31</span><h3>年上の部下をほめる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">おじさんのくせによくわかりましたね。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">さすが●●さん、見直しましたよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">こういう案件は、やはり●●さんでなくてはまとまりませんね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">年上へのリスペクトを含んだ言動を。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="健康 休む 迷惑 支障 体を休める">
+      <div class="card-header"><span class="case-number">32</span><h3>健康を気づかい休ませる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">休みもとらずダラダラ働いてると迷惑なんだよ。休めよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">君がいなくても仕事に支障はないから。休んだほうがいいよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">私は来週休みをもらうけど、たまには体を休めたら?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">心おきなく休める環境を整える。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="多忙 業務軽減 担当外す 無理 レベルの高い仕事 理由">
+      <div class="card-header"><span class="case-number">33</span><h3>多忙な部下の業務軽減</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">（理由なく）担当からはずすよ。これで楽になるぞ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">君には無理そうだから、別の人に任せる。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">君にはもっとレベルの高い仕事をしてほしいから、別の人に任せないか。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">理由を伝えわだかまりを残さない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="体調 更年期 寝不足 異性 健康 私生活">
+      <div class="card-header"><span class="case-number">34</span><h3>体調の悪そうな異性を気づかう</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">（冗談ぽく）まさか更年期?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">もしかして寝不足? 昨夜何してたの?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">体調はどうかな?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">健康問題や私生活に踏み込まない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="妊娠 つわり 体調不良 甘え 無理 母体 胎児">
+      <div class="card-header"><span class="case-number">35</span><h3>妊娠中で体調不良</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">つわりは病気じゃないから。甘えないでよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">あなたもやればできる。頑張って!</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">仕事は分担するから、無理なくできる範囲を相談しよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">業務より母体と胎児の健康優先。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="太る 体重 自己管理 ストレス 心配 背景">
+      <div class="card-header"><span class="case-number">36</span><h3>太ってきた部下と雑談</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">最近太り過ぎだぞ。だから仕事もできないんだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">体重気にしてるか? 自己管理も大事だよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">もしかして最近ストレスたまってない? 心配なことがあれば言って。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">体重よりその背景（ストレス等）に目を向ける。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="未婚 結婚 身を固める 個人の自由 責任感">
+      <div class="card-header"><span class="case-number">37</span><h3>未婚の部下に結婚を聞かれた</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">結婚していないから責任感が薄いんだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">そろそろ結婚して身を固めたら?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">結婚する、しないは個人の自由だからね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">結婚の話題にはあえて触れない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="子なし 既婚 出産 妊娠 軽率 事情">
+      <div class="card-header"><span class="case-number">38</span><h3>子なし既婚者に出産を聞かれた</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">子どもはまだ? 若いうちに産んだほうがいいよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">心配しすぎだよ。産んじゃえばなんとかなるって。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">私は若いうちに産んでよかったと思う。事情は違うけどね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">妊娠・出産に関わる軽率な発言は控える。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="20代 女性 かわいい 30超え 若い チャレンジ 世代 配慮">
+      <div class="card-header"><span class="case-number">39</span><h3>20代の女性と雑談</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">若くてかわいいね。女は30超えたらダメだな。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">20代か。今が華だよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">20代か。これから何でもチャレンジできるね!</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">周囲の世代にも配慮し、性別にフォーカスしない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="アダルト 雑談 不快 冗談 謝罪 撤回">
+      <div class="card-header"><span class="case-number">40</span><h3>アダルトな雑談に不快感</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">いい大人なんだから流せないでどうする。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">ごめん、ごめん。軽い冗談だから。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">申し訳ない。この場に不適切な言葉だったね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">自らの非を認めすぐに謝罪し撤回する。</div></div>
+      </div>
+    </div>
+
+  </div><!-- /grid2 -->
+  <div class="no-result" id="noResult2">該当するケースが見つかりませんでした。</div>
+</div>
+
+<!-- ===== 第4章 ===== -->
+<div class="tab-content" id="tab3">
+  <div class="chapter-desc">
+    <strong>第4章　職場編：休暇制度、時短制度、相談を受ける</strong><br>
+    各種休暇（産休・育休・介護など）の取得は労働者の権利です。不当な扱いや嫌がらせ（マタハラ・パタハラ・ケアハラなど）を防ぐ対応が必要です。
+  </div>
+  <div class="card-grid" id="grid3">
+
+    <div class="case-card" data-text="妊娠 報告 迷惑 おめでとう 前向き マタハラ">
+      <div class="card-header"><span class="case-number">41</span><h3>妊娠の報告</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">こんな忙しい時期に困るなぁ。迷惑かけないでよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">ちょうど忙しくなるときだな･･････でも仕方ないね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">おめでとう。今後の仕事の進め方は相談して決めよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">否定的な発言はせず前向きな対応を。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="産休 申請 迷惑 やめる 権利 戻ってくる">
+      <div class="card-header"><span class="case-number">42</span><h3>産休の申請</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">長く休むより、やめたほうがまわりに迷惑かけないよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">あなたの代わりはどうにかなるから心配しないで。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">後のことは心配しないで。戻ってくる日を待ってるよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">男女ともに認められる権利を尊重する。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="男性 育休 申請 子ども 奥さん パタハラ 育児参加">
+      <div class="card-header"><span class="case-number">43</span><h3>男性の育休申請</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">子どもの世話なんてする暇があったら仕事しろ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">奥さんも育休とるんでしょ? だったら休み調整してよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">了解しました。今後のことはまた相談しよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">男性の育児参加を妨げる発言は控える。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="介護 休業 親 面倒 両立 ケアハラ 支援">
+      <div class="card-header"><span class="case-number">44</span><h3>介護休業の申し出</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">休まれちゃ困るよ。ほかに面倒見てくれる人はいないの?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">どんな様子なの? 親の面倒も見て大変だな。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">わかった。何か必要なことがあれば相談してね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">介護離職を防止し両立を支援する。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="うつ病 休職 甘い 回復 サポート 病気 理解">
+      <div class="card-header"><span class="case-number">45</span><h3>うつ病休職の申請</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">これくらいで休むなんて甘いよ。もう戻ってくるなよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">頑張って早く治して帰ってきてね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">ゆっくり休んで。何かできることがあれば言ってね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">病気への理解を深め回復をサポート。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="時短 責任 仕事 決めつけ できる範囲 相談">
+      <div class="card-header"><span class="case-number">46</span><h3>時短勤務者に仕事を頼む</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">時短の人に責任ある仕事は無理だよね。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">どうせ時間的に無理だろうと思ったから、ほかへ回した。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">時間がタイトだけれど、やれそうなら頼みたいな。どうかな?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">責任ある仕事は無理と勝手に決めつけない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="時短 退社時間 帰れる 雰囲気 キリのいいところ">
+      <div class="card-header"><span class="case-number">47</span><h3>時短勤務者の退社時間が迫る</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">仕事が終わるまで帰るんじゃないぞ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">時短さーん。そろそろ時間ですよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">（さりげなく）キリのいいところであがってください。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">時間になったら帰れる雰囲気づくりを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="時短 同僚 不満 制度 支える 理解">
+      <div class="card-header"><span class="case-number">48</span><h3>時短勤務への同僚の不満</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">グダグダ文句を言うな! こんな制度があるのが悪いんだ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">気持ちはわかるけど、そこはコラえて頑張ってよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">他人事じゃないから。みんなで支えよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">不満を受け止めつつ制度への理解を求める。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="ハラスメント 相談 仕事とはそういうもの 窓口 橋渡し">
+      <div class="card-header"><span class="case-number">49</span><h3>ハラスメントの相談</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">仕事とはそういうものだよ。私の若い頃はもっとひどかった。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">へぇ、そうなんだ。（他人事のような反応）</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">嫌な思いをさせたね。これからどうしたい? 協力してほしいことはある?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">疑いやはぐらかしはNG。窓口へ橋渡しを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="通報 問題言動 否定 公平 注意 言動">
+      <div class="card-header"><span class="case-number">50</span><h3>部下の問題言動の通報</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">彼のことはよく知ってるけど、そんなことする人じゃない。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">彼について、今までそんな話は聞いたことないなぁ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">教えてくれてありがとう。これからは彼の言動を注意して見ておくよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">通報者の話を否定せず公平に対応する。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="セクハラ 相談 問題 あなたのせい 窓口 相談者">
+      <div class="card-header"><span class="case-number">51</span><h3>セクハラの相談</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">そう言われたのは、あなたにも問題があるんじゃない?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">あなたのためを思って、ここだけの話にしておくよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">社内の窓口に相談してみる? 私から話す方がいい?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">相談者に非があるような発言は慎む。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="制服 着たくない 相談 女性 理由 言い分">
+      <div class="card-header"><span class="case-number">52</span><h3>制服を着たくない相談</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">女性は制服を着るのが当社のきまり。従えないならクビ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">制服を着たくないなら、制服のない部署へ行くしかないね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">制服を着たくない理由を教えてもらえるかな?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">一方的に突っぱねず相手の言い分も聞く。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="LGBT カミングアウト ゲイ レズ 性別 個人の尊厳 SOGIハラ">
+      <div class="card-header"><span class="case-number">53</span><h3>LGBTのカミングアウト</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">ゲイ（レズ）だったの! 狙わないでよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">私は気にしないけど、大変そうだね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">話してくれてありがとう。何か私にできることがあるかな?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">性別に関することは慎重に。個人の尊厳を第一に。</div></div>
+      </div>
+    </div>
+
+  </div><!-- /grid3 -->
+  <div class="no-result" id="noResult3">該当するケースが見つかりませんでした。</div>
+</div>
+
+<!-- ===== 第5章 ===== -->
+<div class="tab-content" id="tab4">
+  <div class="chapter-desc">
+    <strong>第5章　職場編：リモートワーク、メール、SNS</strong><br>
+    姿が見えない環境では、些細な言葉が誤解やストレス（リモハラ）につながりやすいため、監視や過度な干渉を避ける配慮が必要です。
+  </div>
+  <div class="card-grid" id="grid4">
+
+    <div class="case-card" data-text="リモート 進捗確認 サボる 給料泥棒 侮辱 進捗状況">
+      <div class="card-header"><span class="case-number">54</span><h3>リモートの進捗確認</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">さっきはどこへ行ってたんだ!? まさかサボってないだろうな? 給料泥棒だぞ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">ちゃんと仕事してる?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">○○の件は、どこまで進んでる?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">進捗状況を疑うのは相手への侮辱。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="オンライン 顔 部屋 汚い インテリア プライベート 会議">
+      <div class="card-header"><span class="case-number">55</span><h3>オンラインで顔を合わせる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">汚い部屋だな。だから仕事ができないんだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">ユニークなインテリアだね。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">みんな揃ったようだね。では、始めましょうか。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">プライベートは見て見ぬフリが原則。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="会議 返答 黙る わかりにくい 気くばり すれ違い">
+      <div class="card-header"><span class="case-number">56</span><h3>会議で返答がない</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">何ぼんやりしてるんだ! だからおまえはダメなんだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">おーい! 黙っていたらわからないよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">どこかわかりにくかった? 遠慮なく言ってね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">すれ違いが生まれないよう気くばりのある声かけを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="通話 途切れる 通信 パソコン 個人 責任 お互い様">
+      <div class="card-header"><span class="case-number">57</span><h3>通話が頻繁に途切れる</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">おまえのところいつもだな! なんとかしておけよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">パソコン買い換えたら?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">気にしないで。お互い様だから。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">通信環境改善の責任を個人に負わせない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="会議 子ども 騒ぐ うるさい 静か 事情 無理難題">
+      <div class="card-header"><span class="case-number">58</span><h3>会議中に子どもが騒ぐ</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">うるさいな、黙らせろよ!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">会議の間だけでも、静かにお願いできない?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">無理しないで。何かあったら席を外していいからね。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">それぞれの事情を汲み無理難題を押しつけない。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="リモート ストレス 甘え みんな 原因 一緒に考える">
+      <div class="card-header"><span class="case-number">59</span><h3>リモートのストレス</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">みんなやっているんだ! 甘えたこと言うな!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">ストレスなんて、みんな感じてるよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">ストレスの原因について話を聞かせてくれない? 一緒に考えよう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">ストレスの原因を一緒に探して解決する。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="メール 叱咤激励 やる気 共有 名誉毀損 個人メール 期待">
+      <div class="card-header"><span class="case-number">60</span><h3>メールで叱咤激励</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">（共有メールで）やる気がないなら、会社をやめるべきです。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">（共有メールで）みんなやっているので、あなたもやる気を出してください。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">（個人メールで）あなたに期待しているから、力を合わせて乗り切りましょう。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">共有メールでの叱責や侮辱的な表現を控える。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="SNS 連絡 ID強要 了解 強制 本人 プライバシー">
+      <div class="card-header"><span class="case-number">61</span><h3>SNSで連絡をとりたい</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">ID教えろ。連絡したらすぐ返事するんだぞ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">うちはSNSでコミュニケーションするのが当たり前だから。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">もし嫌でなければ、SNSで連絡してもかまわないかな? けっして無理には言わないよ。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">SNSの利用は強制せず必ず本人に了解を得る。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="SNS 個人 監視 承認 いいね 遊ぶ 休日">
+      <div class="card-header"><span class="case-number">62</span><h3>個人のSNSを見る</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">おまえ土日いつも遊んでるな。だからダメなんだよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">リクエストするから承認してくれる?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">（SNSを見ない。見ても何も言わない。）</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">SNSでの監視はNG。「いいね」も強要しない。</div></div>
+      </div>
+    </div>
+
+  </div><!-- /grid4 -->
+  <div class="no-result" id="noResult4">該当するケースが見つかりませんでした。</div>
+</div>
+
+<!-- ===== 第6章 ===== -->
+<div class="tab-content" id="tab5">
+  <div class="chapter-desc">
+    <strong>第6章　職場編：部下から上司へ / 後輩から先輩へ（逆ハラスメント）</strong><br>
+    部下から上司に対する暴言や不当な拒否（逆ハラスメント）、または正当な指導をハラスメントと過剰に主張する行為（ハラハラ）への対応です。
+  </div>
+  <div class="card-grid" id="grid5">
+
+    <div class="case-card" data-text="PC パソコン 聞かれた 上司 知らない 謙虚 助力">
+      <div class="card-header"><span class="case-number">63</span><h3>上司にPCを聞かれた</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">こんなことも知らないで、よく部長やってられますね。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">こんなの簡単ですよ。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">私でわかることでしたら、お手伝いします。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">謙虚な態度で声かけ、助力する。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="忙しい 仕事頼まれた 無能 断る 状況説明 気づかい">
+      <div class="card-header"><span class="case-number">64</span><h3>忙しい時に仕事を頼まれた</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">（聞こえるように）チッ! バカで無能な上司がいると大変だよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">今、忙しいので無理です。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">今は立て込んでいますが、後でも大丈夫でしょうか?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">仕事を断る場合は状況説明と気づかいを。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="資料 ひどい 管理者失格 指摘 丁寧 差し支えない 修正">
+      <div class="card-header"><span class="case-number">65</span><h3>上司の資料がひどい</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">こんな資料じゃ使いものになりません。管理者失格ですよ。</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">こんな内容で本当に大丈夫ですか?</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">この部分が気になるんですが、差し支えなければ少し直してもいいですか?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">ただ批判するのではなく丁寧な言葉で指摘を。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="ミス 指摘 修正 パワハラ 正当な指導 謝罪 わからない">
+      <div class="card-header"><span class="case-number">66</span><h3>ミスを指摘・修正指示された</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">課長、それってパワハラですよ! 私を脅すんですか?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">これ、課長に言われたとおりにやったんですけど。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">申し訳ありません。わからないところがあるので教えていただけますか?</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">正当な指導とパワハラを混同するのはNG。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="飲み会 断る 強要 プライベート 苦手 角を立てない">
+      <div class="card-header"><span class="case-number">67</span><h3>上司からの飲み会を断る</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">課長に飲み会を強要された! これパワハラですよね!</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">それって強制参加ですか? プライベートをとられたくないんですけど。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">お誘いありがとうございます。飲み会は苦手なので、遠慮させてください。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">「誘い」と「強要」を区別し角を立てずに断る。</div></div>
+      </div>
+    </div>
+
+    <div class="case-card" data-text="妊娠 ハードな仕事 マタハラ 重いもの 医者 できる範囲">
+      <div class="card-header"><span class="case-number">68</span><h3>妊娠中にハードな仕事</h3></div>
+      <div class="card-body">
+        <div class="speech-bubble bubble-out"><div class="label">🚫 アウト</div><div class="text">妊娠中の私にこれをやれと!? これってマタハラですよね?</div></div>
+        <div class="speech-bubble bubble-gray"><div class="label">⚠️ グレーゾーン</div><div class="text">妊娠中なので無理です。別の人に頼んでください。</div></div>
+        <div class="speech-bubble bubble-safe"><div class="label">✅ セーフ</div><div class="text">すみません。お医者さんから重いものを持たないように言われていて難しいと思います。</div></div>
+        <div class="speech-bubble bubble-point"><div class="label">💡 ポイント</div><div class="text">何でも「マタハラ」と言わずできる範囲で仕事をする。</div></div>
+      </div>
+    </div>
+
+  </div><!-- /grid5 -->
+  <div class="no-result" id="noResult5">該当するケースが見つかりませんでした。</div>
+</div>
+
+<!-- ===== 判例集 ===== -->
+<div class="tab-content" id="tab6">
+  <div class="chapter-desc">
+    <strong>ハラスメント訴訟の判例集（リアルCASE）</strong><br>
+    実際の裁判例から、ハラスメントが法的にどのように判断されるかを確認しましょう。
+  </div>
+  <div class="hanrei-grid">
+
+    <div class="hanrei-card">
+      <div class="hanrei-header pawahara"><span class="hanrei-file">FILE 1</span><h3>職員に対する理事の暴言</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#b71c1c;">【パワハラ】</strong><br>
+        特別養護老人ホームの理事が職員に「泥棒さん」「おまえは精神障害だな」などと暴言。<br>
+        <strong>→ 慰謝料の支払いが命じられた。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header pawahara"><span class="hanrei-file">FILE 2</span><h3>管理職としての配慮に欠ける言動</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#b71c1c;">【パワハラ】</strong><br>
+        保険会社で、責任のないトラブルで上司から「マネージャーをいつ降りてもらっても構わない」と叱責されうつ病を発症。<br>
+        <strong>→ 違法とされ慰謝料支払いが命じられた。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header pawahara"><span class="hanrei-file">FILE 3</span><h3>上司からのパワハラで精神障害を発症</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#b71c1c;">【パワハラ】</strong><br>
+        運送会社で、上司が「こんなこともできないのか」と怒鳴り蹴るなどのいじめが常態化。<br>
+        <strong>→ 労災と認定された。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header sekuhara"><span class="hanrei-file">FILE 4</span><h3>M市議会議員「男いらず」事件</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#6a1b9a;">【セクハラ】</strong><br>
+        男性市議が女性市議に「男いらずの●●さん」と呼びかけ、活動報告書にも記載。<br>
+        <strong>→ 人格権侵害のセクハラと認定され慰謝料支払いが命じられた。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header sekuhara"><span class="hanrei-file">FILE 5</span><h3>アルバイト女性がうつ病を発症した事件</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#6a1b9a;">【セクハラ】</strong><br>
+        配送会社のセンター長が女性に「ここでしてよ」などと性行為を求め、会社も対応を放置。<br>
+        <strong>→ 心理的負荷が「強」とされ労災認定された。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header sogi"><span class="hanrei-file">FILE 6</span><h3>トランスジェンダー職員に対するハラスメント</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#1565c0;">【SOGIハラ】</strong><br>
+        官庁でトランスジェンダー職員に対し、女性トイレの使用制限と「手術しないなら男に戻っては」との発言。<br>
+        <strong>→ 発言は違法とされ国の賠償責任が認められた。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header pawahara"><span class="hanrei-file">FILE 7</span><h3>損害保険会社における叱責メール事件</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#b71c1c;">【パワハラ】</strong><br>
+        所長が部下に「やる気がないなら会社をやめるべき」というメールを数十人の共有宛に送信。<br>
+        <strong>→ 名誉毀損・許容範囲を超えるものとして慰謝料支払いが命じられた。</strong>
+      </div>
+    </div>
+
+    <div class="hanrei-card">
+      <div class="hanrei-header gyaku"><span class="hanrei-file">FILE 8</span><h3>地方公務員の逆ハラスメント事案</h3></div>
+      <div class="hanrei-body">
+        <strong style="color:#4e342e;">【逆パワハラ】</strong><br>
+        異動先の部署で経験の長い部下から「いいかげんにしろ」と罵倒されうつ病を発症し自殺。<br>
+        <strong>→ 公務災害（労災）と認定された。</strong>
+      </div>
+    </div>
+
+  </div><!-- /hanrei-grid -->
+</div>
+
+<script>
+  // ===== タブ切り替え =====
+  const tabs = document.querySelectorAll('.tab-content');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+
+  function switchTab(idx) {
+    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+    tabBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+    filterCards();
+  }
+
+  // ===== 検索・絞り込み =====
+  const searchInput = document.getElementById('searchInput');
+  const searchCount = document.getElementById('searchCount');
+
+  function filterCards() {
+    const q = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    tabs.forEach((tab, ti) => {
+      const cards = tab.querySelectorAll('.case-card');
+      let tabVisible = 0;
+      cards.forEach(card => {
+        const text = (card.dataset.text + ' ' + card.innerText).toLowerCase();
+        const match = !q || text.includes(q);
+        card.classList.toggle('hidden', !match);
+        if (match) tabVisible++;
+      });
+      visibleCount += tabVisible;
+
+      const noResult = document.getElementById('noResult' + ti);
+      if (noResult) noResult.classList.toggle('show', tabVisible === 0 && q !== '');
+    });
+
+    if (q) {
+      searchCount.textContent = '検索結果: ' + visibleCount + '件';
+    } else {
+      searchCount.textContent = '';
+    }
+  }
+
+  searchInput.addEventListener('input', filterCards);
+
+  // Enterで最初のタブへ
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) return;
+      for (let i = 0; i < tabs.length; i++) {
+        const cards = tabs[i].querySelectorAll('.case-card:not(.hidden)');
+        if (cards.length > 0) { switchTab(i); break; }
+      }
+    }
+  });
+</script>
+</body>
+</html>
