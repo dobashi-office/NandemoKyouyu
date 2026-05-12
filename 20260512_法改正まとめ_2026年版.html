@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>チェックしておくべき今後の人事労務法改正 2026年版 | 土橋社労士事務所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1c2e;
+      --ink-light: #3b3b5c;
+      --ink-muted: #6e6e8a;
+      --bg: #f9fafb;
+      --bg-warm: #f0f4f8;
+      --bg-card: #ffffff;
+      --accent: #d35400;
+      --navy: #1b2a4a;
+      --teal: #0e6655;
+      --red: #c0392b;
+      --border: #dce1e8;
+      --shadow: rgba(28,28,46,0.07);
+      --radius: 6px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Noto Sans JP',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.85;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0f182b 0%, #2a3c5a 50%, #c0cbd8 100%);
+      color: #fff;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -20%;
+      width: 150%; height: 150%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 40%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #aa8e45 0%, #f9f2c8 50%, #aa8e45 100%);
+      z-index: 1;
+    }
+    .hero-inner { max-width:960px; margin:0 auto; position:relative; z-index:2; }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.3); padding:6px 18px; border-radius:30px;
+      font-size:13px; font-weight:500; letter-spacing:0.08em; margin-bottom:24px;
+      backdrop-filter:blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-family:'Noto Serif JP',serif; font-size:clamp(26px,4vw,40px); font-weight:700; line-height:1.4; margin-bottom:16px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .hero h1 em { font-style:normal; color:#ffd700; }
+    .hero-sub { font-size:16px; opacity:0.9; font-weight:300; max-width:640px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+
+    /* LAYOUT */
+    .container { max-width:960px; margin:0 auto; padding:0 24px; }
+
+    /* OVERVIEW BOX */
+    .overview-box {
+      background:var(--bg-warm); border-left:4px solid var(--accent);
+      padding:32px 36px; margin:48px auto; max-width:960px;
+      border-radius:0 var(--radius) var(--radius) 0;
+    }
+    .overview-box h2 {
+      font-family:'Noto Serif JP',serif; font-size:20px; color:var(--accent);
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .overview-box h2::before { content:'📋'; font-size:22px; }
+
+    /* MEASURES GRID */
+    .measures-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px; margin-top:20px;
+    }
+    .measure-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:20px; position:relative;
+    }
+    .measure-num {
+      position:absolute; top:-10px; left:16px;
+      background:var(--navy); color:#fff; width:28px; height:28px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    }
+    .measure-card h3 { font-size:14px; font-weight:700; margin-bottom:6px; margin-top:6px; color:var(--navy); }
+    .measure-card p { font-size:13px; color:var(--ink-muted); line-height:1.7; }
+
+    /* SECTION */
+    .section { margin:56px auto; max-width:960px; }
+    .section-header {
+      display:flex; align-items:center; gap:14px; margin-bottom:28px;
+      padding-bottom:16px; border-bottom:2px solid var(--ink);
+    }
+    .section-icon {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0;
+    }
+    .section-header h2 { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; line-height:1.3; }
+    .section-header .section-sub { font-size:13px; color:var(--ink-muted); font-weight:400; }
+
+    /* CARDS */
+    .card-grid { display:grid; gap:24px; }
+    .card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden; box-shadow:0 2px 12px var(--shadow); transition:box-shadow 0.2s;
+    }
+    .card:hover { box-shadow:0 4px 24px rgba(28,28,46,0.12); }
+    .card-head {
+      padding:20px 24px; display:flex; align-items:center; gap:14px;
+      border-bottom:1px solid var(--border);
+    }
+    .card-head h3 { font-size:17px; font-weight:700; flex:1; }
+    .card-body { padding:24px; }
+    .card-body p { margin-bottom:14px; font-size:14.5px; color:var(--ink-light); }
+
+    /* CARD SUB-BOXES */
+    .card-sub { margin-top:20px; padding:18px 20px; border-radius:var(--radius); border:1px solid; }
+    .sub-point { background:#f0f4ff; border-color:#c8d8f0; }
+    .sub-do { background:#f0f8f0; border-color:#c8e0c8; }
+    .sub-warn { background:#fff8f0; border-color:#f0d8b0; }
+    .sub-danger { background:#fdf2f2; border-color:#f0c8c8; }
+
+    .card-sub h4 { font-size:13px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+    .sub-point h4 { color:var(--navy); }
+    .sub-do h4 { color:#2e7d32; }
+    .sub-warn h4 { color:#b8860b; }
+    .sub-danger h4 { color:var(--red); }
+
+    .card-sub ul { list-style:none; padding:0; }
+    .card-sub li {
+      position:relative; padding-left:20px; margin-bottom:8px;
+      font-size:13.5px; line-height:1.75; color:var(--ink-light);
+    }
+    .card-sub li::before { content:'▸'; position:absolute; left:0; color:var(--ink-muted); font-size:11px; top:2px; }
+
+    /* FLOW DIAGRAM */
+    .flow-section { margin:56px auto; max-width:960px; }
+    .flow-section h2 {
+      font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px;
+      padding-bottom:12px; border-bottom:2px solid var(--ink);
+    }
+    .flow-steps { display:flex; flex-direction:column; gap:0; }
+    .flow-step {
+      display:flex; gap:20px; align-items:flex-start; position:relative; padding-bottom:24px;
+    }
+    .flow-step:not(:last-child)::before {
+      content:''; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:var(--border);
+    }
+    .flow-num {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:#fff; z-index:1; background:var(--navy);
+    }
+    .flow-content {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:18px 22px; flex:1;
+    }
+    .flow-content h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .flow-content p { font-size:13.5px; color:var(--ink-light); line-height:1.7; }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width:100%; border-collapse:collapse; margin-top:20px;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .compare-table th {
+      background:var(--navy); color:#fff; padding:14px 18px; text-align:left; font-size:13px; font-weight:700;
+    }
+    .compare-table td {
+      padding:14px 18px; border-bottom:1px solid var(--border); font-size:13.5px; color:var(--ink-light); line-height:1.7;
+    }
+    .compare-table tr:nth-child(even) td { background:#f8f9fb; }
+
+    /* DARK BOX */
+    .dark-box {
+      background:linear-gradient(135deg,#1b2a4a,#0e6655); color:#fff; padding:40px; border-radius:var(--radius);
+      margin:56px auto; max-width:960px; position:relative; overflow:hidden;
+    }
+    .dark-box h2 { font-family:'Noto Serif JP',serif; font-size:20px; margin-bottom:20px; color:#ffd700; }
+    .dark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+    .dark-item {
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      border-radius:var(--radius); padding:20px;
+    }
+    .dark-item h3 { font-size:15px; font-weight:700; margin-bottom:8px; color:#ffd700; }
+    .dark-item p { font-size:13px; opacity:0.85; line-height:1.75; }
+
+    /* CHECKLIST */
+    .checklist-section { margin:56px auto; max-width:960px; }
+    .checklist-section h2 { font-family:'Noto Serif JP',serif; font-size:22px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .check-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+    .check-box { width:22px; height:22px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:2px; }
+
+    /* FOOTER */
+    .footer { margin-top:64px; padding:32px 24px; text-align:center; border-top:1px solid var(--border); font-size:12px; color:var(--ink-muted); }
+
+    /* BADGE */
+    .badge {
+      display:inline-block; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:0.05em;
+    }
+    .badge-red { background:#fde8e8; color:#c0392b; border:1px solid #f0c8c8; }
+    .badge-orange { background:#fef3e2; color:#b8460b; border:1px solid #f5d8b0; }
+    .badge-blue { background:#e8f0fe; color:#1b2a4a; border:1px solid #c0d0f0; }
+    .badge-gray { background:#f0f0f5; color:#6e6e8a; border:1px solid #dce1e8; }
+
+    @media (max-width:640px) {
+      .hero { padding:48px 20px 40px; }
+      .hero h1 { font-size:24px; }
+      .overview-box { padding:24px 20px; margin:32px 16px; }
+      .measures-grid { grid-template-columns:1fr; }
+      .section { margin:40px auto; }
+      .dark-box { padding:28px 20px; margin:40px 16px; }
+      .dark-grid { grid-template-columns:1fr; }
+      .flow-step { flex-direction:column; gap:12px; }
+      .flow-step:not(:last-child)::before { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">2026年5月12日時点の情報</div>
+    <h1>チェックしておくべき<br><em>今後の人事労務法改正</em></h1>
+    <p class="hero-sub">障害者雇用・社会保険・ハラスメント・確定拠出年金など、2026〜2029年にかけての重要な法改正9件をまとめました。</p>
+  </div>
+</div>
+
+<div style="padding:0 24px;">
+
+  <!-- 免責ボックス -->
+  <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:16px 20px;margin:32px auto;max-width:960px;">
+    <strong style="color:#856404;">⚠ 本資料について</strong>
+    <p style="margin-top:8px;font-size:13.5px;color:#856404;line-height:1.75;">
+      本資料はWEB検索・厚生労働省等の公式サイトにより収集した情報をまとめたものです（2026年5月12日時点）。<br>
+      法令・通達の原文および厚生労働省公式サイト・e-Gov法令検索で必ず最新情報をご確認ください。<br>
+      本資料の情報は参考情報であり、法的効力を保証するものではありません。
+    </p>
+  </div>
+
+  <!-- 概要ボックス -->
+  <div class="overview-box">
+    <h2>今後の重要法改正 全9件の概要</h2>
+    <p style="font-size:14px;color:var(--ink-light);margin-bottom:4px;">2026年内に6件、2027〜2029年に2件の施行が予定されています。施行日未確定の項目は最終確認が必要です。</p>
+    <div class="measures-grid">
+      <div class="measure-card">
+        <div class="measure-num">1</div>
+        <h3>障害者法定雇用率 2.7%へ引上げ</h3>
+        <p>2026年7月1日施行　37.5人以上の企業が対象</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">2</div>
+        <h3>ハラスメント対策義務化（カスハラ等）</h3>
+        <p>2026年10月1日施行　全業種・全規模が対象</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">3</div>
+        <h3>社会保険 適用拡大（企業規模撤廃）</h3>
+        <p>2026年10月施行　週20時間以上で規模問わず加入義務</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">4</div>
+        <h3>社会保険料調整制度 開始</h3>
+        <p>2026年10月1日～　短時間労働者の保険料3年間軽減</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">5</div>
+        <h3>DC拠出限度額 5.5万→6.2万円</h3>
+        <p>2026年12月施行　企業型DCの上限額が引き上げ</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">6</div>
+        <h3>公益通報者保護制度 強化</h3>
+        <p>2026年12月1日施行　内部通報体制整備が義務化</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">7</div>
+        <h3>厚生年金 標準報酬月額上限引上げ</h3>
+        <p>2027〜2029年（段階的）65万→75万円</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">8</div>
+        <h3>雇用保険 適用拡大（週10時間以上）</h3>
+        <p>2028年10月1日施行　加入要件が週20h→週10hに</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-num">9</div>
+        <h3>高額療養費 年間上限設定【要確認】</h3>
+        <p>施行日未確定（法案審議中）　年単位の自己負担上限を新設</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== セクション1：2026年7月施行 ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fde8e8;">♿</div>
+      <div>
+        <h2>2026年7月施行</h2>
+        <div class="section-sub">対応期限が迫っています。採用計画・雇用状況の確認を</div>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <!-- 障害者法定雇用率 -->
+      <div class="card">
+        <div class="card-head" style="background:#fdf2f2;">
+          <div>
+            <span class="badge badge-red" style="margin-bottom:8px;display:inline-block;">2026年7月1日 施行</span>
+            <h3>① 障害者法定雇用率の引上げ</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">障害者雇用促進法 ／ 厚生労働省</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>民間企業に義務づける障害者雇用率が段階的に引き上げられます。2024年4月に2.3%→2.5%と既に引き上げ済みで、2026年7月にさらに2.7%へ引き上げられます。</p>
+          <table class="compare-table">
+            <tr>
+              <th>区分</th>
+              <th>雇用率</th>
+              <th>対象事業主の規模</th>
+            </tr>
+            <tr>
+              <td>改正前（2024年3月まで）</td>
+              <td>2.3%</td>
+              <td>43.5人以上</td>
+            </tr>
+            <tr>
+              <td>2024年4月〜（施行済）</td>
+              <td>2.5%</td>
+              <td>40.0人以上</td>
+            </tr>
+            <tr>
+              <td><strong>2026年7月1日〜</strong></td>
+              <td><strong style="color:#c0392b;">2.7%</strong></td>
+              <td><strong>37.5人以上</strong></td>
+            </tr>
+          </table>
+          <div class="card-sub sub-danger" style="margin-top:16px;">
+            <h4>⚠ 対応が必要な事業所</h4>
+            <ul>
+              <li>従業員37.5人以上（常用労働者）の事業主は2026年7月以降、障害者雇用義務が発生</li>
+              <li>雇用率未達の場合は納付金（1人あたり月5万円）の対象となる可能性あり</li>
+              <li>毎年6月1日時点の障害者雇用状況をハローワークへ報告する義務あり</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>自社の常用労働者数を確認し、法定雇用率達成状況を試算する</li>
+              <li>未達の場合は採用計画を見直し、障害者雇用推進者を選任（努力義務）</li>
+              <li>特例子会社・グループ適用を活用している場合は改めて確認</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.mhlw.go.jp/content/001064502.pdf" style="color:var(--teal);">厚生労働省「令和5年度からの障害者雇用率の設定等について」</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== セクション2：2026年10月施行 ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fff3e0;">📌</div>
+      <div>
+        <h2>2026年10月施行</h2>
+        <div class="section-sub">就業規則改定・体制整備・社内周知の準備が必要</div>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <!-- ハラスメント対策義務化 -->
+      <div class="card">
+        <div class="card-head" style="background:#fff8f0;">
+          <div>
+            <span class="badge badge-orange" style="margin-bottom:8px;display:inline-block;">2026年10月1日 施行</span>
+            <h3>② ハラスメント対策義務化（カスハラ・求職者へのセクハラ）</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">改正労働施策総合推進法（令和7年6月11日公布）／ 全業種・全規模対象</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>2026年10月1日より、すべての事業主に以下2つのハラスメント防止措置が新たに義務化されます。</p>
+          <div class="card-sub sub-danger">
+            <h4>🆕 2026年10月より新規義務化される措置</h4>
+            <ul>
+              <li><strong>カスタマーハラスメント（カスハラ）防止措置：</strong>顧客・取引先等からの著しい迷惑行為から従業員を守るための体制整備</li>
+              <li><strong>求職者等に対するセクシュアルハラスメント防止措置：</strong>採用面接等の場面での性的嫌がらせを防ぐための方針策定・相談窓口設置</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-point">
+            <h4>📋 既に義務化済みのハラスメント（参考）</h4>
+            <ul>
+              <li>パワーハラスメント：2020年6月施行（中小企業は2022年4月施行）</li>
+              <li>セクシュアルハラスメント：2020年6月施行</li>
+              <li>妊娠・出産・育児介護休業等に関するハラスメント：2020年6月施行</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>カスハラ対応方針の策定・就業規則への記載</li>
+              <li>カスハラ相談窓口の設置と対応フローの明確化</li>
+              <li>求職者からのセクハラ相談対応体制の整備</li>
+              <li>管理職・採用担当者への研修・周知</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/seisaku06/index.html" style="color:var(--teal);">厚生労働省「ハラスメント対策総合情報ポータルサイト」</a></p>
+        </div>
+      </div>
+
+      <!-- 社会保険 適用拡大 -->
+      <div class="card">
+        <div class="card-head" style="background:#fff8f0;">
+          <div>
+            <span class="badge badge-orange" style="margin-bottom:8px;display:inline-block;">2026年10月 施行</span>
+            <h3>③ 社会保険の段階的適用拡大（企業規模要件の撤廃）</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">健康保険法・厚生年金保険法改正 ／ 小規模企業も段階的に適用</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>従業員数による加入義務の企業規模要件が段階的に縮小・撤廃されます。2026年10月以降、週20時間以上働く短時間労働者は勤め先の規模にかかわらず社会保険に加入することとなります（106万円の壁の撤廃）。</p>
+          <table class="compare-table">
+            <tr>
+              <th>時期</th>
+              <th>主な変更内容</th>
+            </tr>
+            <tr>
+              <td>2026年10月〜</td>
+              <td>企業規模要件撤廃。週20時間以上勤務で加入義務（賃金月額8.8万円要件はあり）</td>
+            </tr>
+            <tr>
+              <td>法公布から3年以内<br>【要確認】</td>
+              <td>賃金月額8.8万円以上の要件を撤廃（最低賃金1,016円以上を見極めて施行日決定）</td>
+            </tr>
+            <tr>
+              <td>2029年10月〜</td>
+              <td>個人事業所（法定16業種以外）への適用拡大</td>
+            </tr>
+          </table>
+          <div class="card-sub sub-warn">
+            <h4>⚠ 注意点</h4>
+            <ul>
+              <li>新たに加入対象となる短時間労働者が増加し、事業主の保険料負担も増加する</li>
+              <li>従業員50人以下の事業所向けに3年間の保険料軽減措置（社会保険料調整制度）が設けられる</li>
+              <li>賃金要件撤廃の施行日は最低賃金水準によるため、確定後に再確認が必要</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>短時間労働者の勤務時間・賃金を棚卸しし、新たに加入対象となる従業員を特定する</li>
+              <li>保険料負担増の試算を行い、給与・シフト体制の見直しを検討</li>
+              <li>対象労働者への説明・同意取得の準備</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000147284_00021.html" style="color:var(--teal);">厚生労働省「社会保険適用拡大特設サイト」</a></p>
+        </div>
+      </div>
+
+      <!-- 社会保険料調整制度 -->
+      <div class="card">
+        <div class="card-head" style="background:#fff8f0;">
+          <div>
+            <span class="badge badge-orange" style="margin-bottom:8px;display:inline-block;">2026年10月1日 施行開始</span>
+            <h3>④ 社会保険料調整制度（短時間労働者の保険料負担軽減）</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">健康保険法・厚生年金保険法改正 ／ 日本年金機構</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>適用拡大により新たに社会保険に加入する短時間労働者を対象に、事業主が被保険者の保険料を一時的に肩代わりすることで、加入者の手取り減少を和らげる制度です。事業主の最終的な保険料負担総額は変わりません。</p>
+          <table class="compare-table">
+            <tr>
+              <th>期間</th>
+              <th>被保険者負担割合</th>
+              <th>事業主負担割合</th>
+            </tr>
+            <tr>
+              <td>1〜2年目</td>
+              <td>25%</td>
+              <td>75%</td>
+            </tr>
+            <tr>
+              <td>3年目</td>
+              <td>37.5%</td>
+              <td>62.5%</td>
+            </tr>
+            <tr>
+              <td>4年目以降（通常）</td>
+              <td>50%</td>
+              <td>50%</td>
+            </tr>
+          </table>
+          <div class="card-sub sub-point">
+            <h4>📋 適用対象の施行スケジュール（段階的）</h4>
+            <ul>
+              <li><strong>2026年10月〜：</strong>任意特定適用事業所（50人以下で任意加入した事業所）が対象</li>
+              <li><strong>2027年10月〜：</strong>短時間労働者適用拡大対象事業所が順次対象化</li>
+              <li><strong>2031年・2034年・2037年10月〜：</strong>21〜35人→11〜20人→10人以下の事業所へ段階拡大</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>対象となった日から2年以内に事業主からの申し出が必要（届書様式は厚労省から公示予定）</li>
+              <li>標準報酬月額126,000円以下の短時間労働者が対象</li>
+              <li>制度利用の有無について従業員への説明・情報提供を行う</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.nenkin.go.jp/tokusetsu/hokenryochosei.html" style="color:var(--teal);">日本年金機構「社会保険料調整制度について」</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== セクション3：2026年12月施行 ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f5e9;">📅</div>
+      <div>
+        <h2>2026年12月施行</h2>
+        <div class="section-sub">年末に向けた制度改正。規程見直し・体制整備を早めに</div>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <!-- DC拠出限度額 -->
+      <div class="card">
+        <div class="card-head" style="background:#f0f8f0;">
+          <div>
+            <span class="badge badge-blue" style="margin-bottom:8px;display:inline-block;">2026年12月 施行</span>
+            <h3>⑤ 企業型DC（確定拠出年金）の拠出限度額引上げ</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">確定拠出年金法改正 ／ 厚生労働省</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>企業型確定拠出年金（企業型DC）の拠出限度額が引き上げられます。また、2026年4月にマッチング拠出（従業員が上乗せ拠出できる仕組み）の上限制限も撤廃されます。</p>
+          <table class="compare-table">
+            <tr>
+              <th>時期</th>
+              <th>変更内容</th>
+            </tr>
+            <tr>
+              <td>2026年4月1日〜</td>
+              <td>マッチング拠出の加入者掛金上限制限を撤廃（事業主掛金の範囲内で自由に設定可）</td>
+            </tr>
+            <tr>
+              <td><strong>2026年12月〜</strong></td>
+              <td>企業型DC拠出限度額：月55,000円 → <strong style="color:#2e7d32;">月62,000円</strong>（+7,000円）</td>
+            </tr>
+          </table>
+          <div class="card-sub sub-point">
+            <h4>📋 iDeCoとの合算上限</h4>
+            <ul>
+              <li>企業型DCとiDeCoを合わせた上限が月62,000円となる（DB等他制度との調整あり）</li>
+              <li>DB（確定給付年金）等を併用している場合は他制度掛金相当額との調整が必要</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>企業型DC規約の改定（限度額変更への対応）</li>
+              <li>マッチング拠出の上限変更を従業員へ周知</li>
+              <li>DB等他制度との合算計算の確認（運営管理機関・コンサルタントへの相談を推奨）</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/nenkin/nenkin/kyoshutsu/taishousha.html" style="color:var(--teal);">厚生労働省「確定拠出年金制度の概要」</a></p>
+        </div>
+      </div>
+
+      <!-- 公益通報者保護 -->
+      <div class="card">
+        <div class="card-head" style="background:#f0f8f0;">
+          <div>
+            <span class="badge badge-blue" style="margin-bottom:8px;display:inline-block;">2026年12月1日 施行</span>
+            <h3>⑥ 公益通報者保護制度の強化</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">改正公益通報者保護法（令和7年法律第62号）／ 消費者庁</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>内部通報制度の実効性を高めるため、公益通報者保護法が改正されます。事業者に対し、通報対応業務従事者の選任と内部通報体制の整備等が求められます。</p>
+          <div class="card-sub sub-danger">
+            <h4>⚠ 改正により強化される主な義務</h4>
+            <ul>
+              <li>公益通報対応業務従事者（通報を受け付ける担当者）の適切な選任</li>
+              <li>内部公益通報対応体制の整備（相談窓口の設置・運用手順の明文化）</li>
+              <li>外部労働者（派遣社員・取引先従業員等）からの通報受付体制の構築</li>
+              <li>通報者の匿名性・プライバシーの保護体制の強化</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>内部通報窓口の設置・運用規程の整備または見直し</li>
+              <li>通報対応業務従事者を指定し、秘密保持義務を周知</li>
+              <li>外部窓口（弁護士等）の設置を検討</li>
+              <li>従業員への通報制度の説明・研修</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.caa.go.jp/policies/policy/consumer_partnerships/whisleblower_protection_system/overview" style="color:var(--teal);">消費者庁「公益通報者保護制度の概要」</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== セクション4：2027年以降施行 ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f0fe;">📆</div>
+      <div>
+        <h2>2027〜2028年施行予定</h2>
+        <div class="section-sub">中長期的な準備が必要。給与計算・保険料試算への影響を把握しておく</div>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <!-- 標準報酬月額上限引上げ -->
+      <div class="card">
+        <div class="card-head" style="background:#e8f0fe;">
+          <div>
+            <span class="badge badge-blue" style="margin-bottom:8px;display:inline-block;">2027〜2029年 段階施行</span>
+            <h3>⑦ 厚生年金 標準報酬月額の上限引上げ</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">厚生年金保険法改正 ／ 厚生労働省</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>高収入者（月額賃金が65万円を超える方）に対し、収入に見合った保険料負担と年金受給ができるよう、標準報酬月額（社会保険料の計算基準となる報酬の区分）の上限が3段階で引き上げられます。</p>
+          <table class="compare-table">
+            <tr>
+              <th>施行時期</th>
+              <th>上限額の変化</th>
+              <th>月保険料増加（本人分）</th>
+            </tr>
+            <tr>
+              <td>2027年9月〜</td>
+              <td>65万円 → 68万円</td>
+              <td>月約3,000円増（65万円超の方）</td>
+            </tr>
+            <tr>
+              <td>2028年9月〜</td>
+              <td>68万円 → 71万円</td>
+              <td>月約3,000円増（68万円超の方）</td>
+            </tr>
+            <tr>
+              <td>2029年9月〜</td>
+              <td>71万円 → 75万円</td>
+              <td>月約4,000円増（71万円超の方）</td>
+            </tr>
+          </table>
+          <div class="card-sub sub-point">
+            <h4>📋 最大影響の試算（月75万円以上の方）</h4>
+            <ul>
+              <li>保険料本人負担増：月約9,100円（社会保険料控除考慮後は月約6,100円の実質負担増）</li>
+              <li>年金給付増：10年間納付後、月約5,100円の年金増額（課税後約4,300円）が見込まれる</li>
+              <li>事業主（会社）も同額の保険料増加が生じる</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応</h4>
+            <ul>
+              <li>月額賃金65万円超の役員・高収入社員の保険料試算</li>
+              <li>給与計算システムの上限等級対応の確認（システムベンダーへの確認を推奨）</li>
+              <li>対象社員への制度説明</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000147284_00024.html" style="color:var(--teal);">厚生労働省「標準報酬月額の上限の引上げについて」</a></p>
+        </div>
+      </div>
+
+      <!-- 雇用保険 適用拡大 -->
+      <div class="card">
+        <div class="card-head" style="background:#e8f0fe;">
+          <div>
+            <span class="badge badge-blue" style="margin-bottom:8px;display:inline-block;">2028年10月1日 施行</span>
+            <h3>⑧ 雇用保険の適用拡大（週10時間以上に拡大）</h3>
+            <div style="font-size:12px;color:var(--ink-muted);margin-top:4px;">改正雇用保険法（令和6年改正）／ 厚生労働省</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>雇用保険への加入要件が大幅に緩和されます。現行の「週20時間以上」という勤務時間要件が「週10時間以上」に引き下げられ、これまで加入できなかった超短時間勤務のパート・アルバイトも対象となります。</p>
+          <table class="compare-table">
+            <tr>
+              <th>要件</th>
+              <th>現行</th>
+              <th>2028年10月〜</th>
+            </tr>
+            <tr>
+              <td>所定労働時間</td>
+              <td>週20時間以上</td>
+              <td><strong style="color:#c0392b;">週10時間以上</strong></td>
+            </tr>
+            <tr>
+              <td>雇用見込み</td>
+              <td>31日以上</td>
+              <td>31日以上（変更なし）</td>
+            </tr>
+          </table>
+          <div class="card-sub sub-warn">
+            <h4>⚠ 企業への影響</h4>
+            <ul>
+              <li>週10〜19時間勤務のパート・アルバイトが新たに雇用保険加入対象となり、雇用保険料の徴収・納付が必要になる</li>
+              <li>対象者数が大幅に増加するため、人事労務管理システムの対応確認が必要</li>
+              <li>労働者にとっては失業給付・育児休業給付等の受給資格が得やすくなるメリットあり</li>
+            </ul>
+          </div>
+          <div class="card-sub sub-do">
+            <h4>✅ 企業側の対応（施行まで時間あり、早めに確認）</h4>
+            <ul>
+              <li>週10時間以上勤務のパート・アルバイトの人数を把握</li>
+              <li>雇用保険料負担増の試算（企業負担分・本人分）</li>
+              <li>雇用契約書・シフト管理の見直し</li>
+              <li>給与計算システムの対応確認（2028年10月に向けて）</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--ink-muted);">情報源：<a href="https://www.mhlw.go.jp/content/001207213.pdf" style="color:var(--teal);">厚生労働省「雇用保険の適用拡大について」（PDF）</a> ／ 施行日：令和10年（2028年）10月1日</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== ダークボックス：要確認 ========== -->
+  <div class="dark-box">
+    <h2>⏳ 施行日未確定・今後の動向に注意が必要な項目</h2>
+    <div class="dark-grid">
+      <div class="dark-item">
+        <h3>⑨ 高額療養費制度の見直し【要確認】</h3>
+        <p>月単位の自己負担上限に加え、<strong>年単位の自己負担上限（年間上限）を新設</strong>する改正が予定されています。長期療養患者の経済的負担軽減が目的です。<br><br>
+        2026年5月時点では「今後所要の法令改正を予定」とされており、国会提出中の関係法案の成立待ちです。施行日は確定していません。<br><br>
+        <strong style="color:#ffd700;">→ 厚生労働省公式サイトで随時ご確認ください。</strong></p>
+      </div>
+      <div class="dark-item">
+        <h3>社会保険 賃金要件（月8.8万円）の撤廃【施行日未確定】</h3>
+        <p>社会保険の適用要件のうち「賃金月額8.8万円以上」という賃金基準の撤廃は、法律の公布から3年以内かつ<strong>全国最低賃金が時給1,016円以上となることを見極めて施行日を決定</strong>するとされています。<br><br>
+        全国最低賃金の引上げ状況によって施行時期が変動するため、最低賃金の動向と合わせて継続監視が必要です。<br><br>
+        <strong style="color:#ffd700;">→ 最低賃金改定（毎年10月）の状況に応じて確認を。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 参考情報源 -->
+  <div class="flow-section">
+    <h2>📚 公式情報源・参考リンク</h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <h3>厚生労働省 法令・制度解説ポータル</h3>
+          <p>労働基準法・雇用保険・社会保険・育児介護休業法等の最新改正情報はこちらから。<br>
+          URL: <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/" style="color:var(--teal);">https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/</a></p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <h3>e-Gov 法令検索</h3>
+          <p>改正後の法令条文を確認する際に使用。施行日別の条文対照表も確認可能。<br>
+          URL: <a href="https://elaws.e-gov.go.jp/" style="color:var(--teal);">https://elaws.e-gov.go.jp/</a></p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <h3>日本年金機構 適用・保険料関係</h3>
+          <p>社会保険料調整制度・標準報酬月額の手続き・届出様式はこちら。<br>
+          URL: <a href="https://www.nenkin.go.jp/" style="color:var(--teal);">https://www.nenkin.go.jp/</a></p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <h3>消費者庁 公益通報者保護制度</h3>
+          <p>改正公益通報者保護法の解説・Q&A・ガイドラインはこちら。<br>
+          URL: <a href="https://www.caa.go.jp/policies/policy/consumer_partnerships/whisleblower_protection_system/" style="color:var(--teal);">https://www.caa.go.jp/policies/policy/consumer_partnerships/</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- チェックリスト -->
+  <div class="checklist-section">
+    <h2>✅ 今すぐ確認すべき対応チェックリスト</h2>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【2026年7月まで】障害者雇用率の確認</div>
+          <div style="font-size:13px;color:var(--ink-muted);">37.5人以上の事業所は自社の雇用率・達成状況を確認する</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【2026年10月まで】カスハラ対応方針の策定</div>
+          <div style="font-size:13px;color:var(--ink-muted);">就業規則へのカスハラ規定追加・相談窓口の整備を行う</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【2026年10月まで】短時間労働者の社保加入対象把握</div>
+          <div style="font-size:13px;color:var(--ink-muted);">週20時間以上勤務のパート・アルバイトを洗い出し保険料試算を行う</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【2026年12月まで】DC規約の改定確認</div>
+          <div style="font-size:13px;color:var(--ink-muted);">企業型DCを導入している場合、運営管理機関に限度額変更への対応を確認する</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【2026年12月まで】内部通報体制の見直し</div>
+          <div style="font-size:13px;color:var(--ink-muted);">通報窓口・対応業務従事者の選任・運用規程の整備状況を確認する</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【中長期】標準報酬月額上限の影響試算</div>
+          <div style="font-size:13px;color:var(--ink-muted);">月65万円超の役員・高収入社員の保険料増加額を把握し経営計画に織り込む</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【中長期】雇用保険の影響人数確認</div>
+          <div style="font-size:13px;color:var(--ink-muted);">週10〜19時間勤務のスタッフ数を把握し、2028年10月以降の対応を準備する</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">【随時】高額療養費・賃金要件撤廃の動向確認</div>
+          <div style="font-size:13px;color:var(--ink-muted);">施行日未確定のため、厚生労働省公式サイトで定期的に最新情報を確認する</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /padding wrapper -->
+
+<div class="footer">
+  <p>情報源：厚生労働省・日本年金機構・消費者庁 各公式サイト（2026年5月12日時点）</p>
+  <p>SOCIAL INSURANCE &amp; LABOR CONSULTANT &nbsp;|&nbsp; 土橋社労士事務所</p>
+</div>
+
+</body>
+</html>
