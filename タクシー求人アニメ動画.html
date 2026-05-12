@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>タクシー求人アニメ企画書｜新人タクシーくんと車内の小さな先輩たち</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Reggae+One&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fdf6e3;
+  --bg-deep: #f4e9c8;
+  --ink: #1a1a1a;
+  --taxi-yellow: #f5c518;
+  --taxi-red: #d63031;
+  --taxi-green: #2d6a4f;
+  --taxi-blue: #1d3557;
+  --paper: #fffaee;
+  --line: #1a1a1a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.75;
+  font-weight: 500;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(245, 197, 24, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(214, 48, 49, 0.06) 0%, transparent 40%);
+  min-height: 100vh;
+}
+
+/* 紙のテクスチャ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(0,0,0,0.012) 3px, rgba(0,0,0,0.012) 4px);
+  z-index: 1;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== ヘッダー ===== */
+.hero {
+  background: var(--taxi-yellow);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  padding: 48px 40px;
+  margin-bottom: 32px;
+  position: relative;
+  box-shadow: 8px 8px 0 var(--line);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: 'TAXI';
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-family: 'Reggae One', sans-serif;
+  font-size: 180px;
+  color: rgba(0,0,0,0.06);
+  letter-spacing: -8px;
+  line-height: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--line);
+  color: var(--taxi-yellow);
+  font-family: 'DotGothic16', monospace;
+  font-size: 12px;
+  padding: 6px 14px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.hero h1 {
+  font-family: 'Reggae One', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: var(--line);
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 .small {
+  display: block;
+  font-size: 0.5em;
+  margin-bottom: 8px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-meta {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.tag {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+}
+
+/* ===== セクション共通 ===== */
+section {
+  margin-bottom: 48px;
+}
+
+.section-num {
+  font-family: 'Reggae One', sans-serif;
+  font-size: 14px;
+  color: var(--taxi-red);
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+h2 {
+  font-family: 'Reggae One', sans-serif;
+  font-size: clamp(22px, 3.5vw, 32px);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 4px solid var(--line);
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30%;
+  height: 4px;
+  background: var(--taxi-yellow);
+}
+
+h3 {
+  font-family: 'Reggae One', sans-serif;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+/* ===== コンセプトカード ===== */
+.concept-card {
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 6px 6px 0 var(--line);
+  margin-bottom: 16px;
+}
+
+.concept-card .lead {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.concept-card .lead strong {
+  background: linear-gradient(transparent 60%, var(--taxi-yellow) 60%);
+  padding: 0 2px;
+}
+
+.title-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.title-card {
+  background: var(--bg);
+  border: 2px dashed var(--line);
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.title-card .label {
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--taxi-red);
+  margin-bottom: 8px;
+}
+
+.title-card .name {
+  font-family: 'Reggae One', sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .title-pair { grid-template-columns: 1fr; }
+}
+
+/* ===== キャラクター ===== */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.char {
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--line);
+  transition: transform 0.15s ease;
+}
+
+.char:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--line);
+}
+
+.char-num {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 36px;
+  height: 36px;
+  background: var(--taxi-red);
+  color: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Reggae One', sans-serif;
+  font-size: 16px;
+}
+
+.char-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--taxi-yellow);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.char h4 {
+  font-family: 'Reggae One', sans-serif;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.char .role {
+  display: inline-block;
+  background: var(--taxi-blue);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.char .personality {
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.char .quote {
+  background: var(--bg-deep);
+  border-left: 4px solid var(--taxi-red);
+  padding: 8px 12px;
+  font-size: 13px;
+  margin-bottom: 6px;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+}
+
+/* ===== エピソード ===== */
+.episode {
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 5px 5px 0 var(--line);
+}
+
+.ep-head {
+  background: var(--taxi-blue);
+  color: var(--paper);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ep-num {
+  background: var(--taxi-yellow);
+  color: var(--line);
+  font-family: 'Reggae One', sans-serif;
+  font-size: 18px;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+.ep-title {
+  font-family: 'Reggae One', sans-serif;
+  font-size: 18px;
+  flex: 1;
+}
+
+.ep-body {
+  padding: 24px;
+}
+
+.ep-summary {
+  font-size: 15px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.ep-message {
+  background: var(--bg-deep);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.ep-message .label {
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--taxi-red);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ===== 比較テーブル ===== */
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 var(--line);
+}
+
+.compare-table th {
+  background: var(--taxi-blue);
+  color: var(--paper);
+  padding: 14px 16px;
+  text-align: left;
+  font-family: 'Reggae One', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.compare-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:nth-child(even) td { background: rgba(245, 197, 24, 0.05); }
+
+.compare-table .arrow {
+  color: var(--taxi-red);
+  font-weight: 900;
+}
+
+/* ===== サンプル脚本 ===== */
+.script {
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 6px 6px 0 var(--line);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+.script-line {
+  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.script-line.narration {
+  grid-template-columns: 1fr;
+  background: var(--bg-deep);
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-left: 4px solid var(--taxi-blue);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.script-line.narration::before {
+  content: 'ナレーション';
+  display: block;
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--taxi-red);
+  margin-bottom: 4px;
+}
+
+.script-line .speaker {
+  font-weight: 900;
+  color: var(--taxi-red);
+  font-size: 13px;
+  padding-top: 2px;
+}
+
+.script-line .dialog {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.script-end {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--taxi-yellow);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.script-end .label {
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.script-end .text {
+  font-family: 'Reggae One', sans-serif;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .script-line { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ===== フォーマット ===== */
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.format-card {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.format-card .step {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--taxi-red);
+  color: var(--paper);
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.format-card .text {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ===== 拡張アイデア ===== */
+.idea-card {
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 4px 4px 0 var(--line);
+  position: relative;
+}
+
+.idea-card::before {
+  content: '案';
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  background: var(--taxi-green);
+  color: var(--paper);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: 'Reggae One', sans-serif;
+  font-size: 14px;
+}
+
+.idea-card h3 {
+  margin-bottom: 12px;
+  color: var(--taxi-green);
+}
+
+.idea-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.idea-table td {
+  padding: 8px 12px;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.idea-table tr:first-child td {
+  background: var(--bg-deep);
+  font-weight: 700;
+}
+
+/* ===== まとめ ===== */
+.summary {
+  background: var(--line);
+  color: var(--paper);
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 8px 8px 0 var(--taxi-yellow);
+  margin-top: 48px;
+}
+
+.summary h2 {
+  color: var(--paper);
+  border-color: var(--taxi-yellow);
+}
+
+.summary h2::after { background: var(--taxi-red); }
+
+.summary-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.summary-list li {
+  padding: 12px 0 12px 36px;
+  position: relative;
+  border-bottom: 1px dashed rgba(255,255,255,0.2);
+  font-size: 15px;
+}
+
+.summary-list li:last-child { border-bottom: none; }
+
+.summary-list li::before {
+  content: counter(s);
+  counter-increment: s;
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 26px;
+  height: 26px;
+  background: var(--taxi-yellow);
+  color: var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Reggae One', sans-serif;
+  font-size: 13px;
+}
+
+.summary-list { counter-reset: s; }
+
+.summary-mapping {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.map-item {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--taxi-yellow);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+}
+
+.map-item .char-name {
+  font-family: 'Reggae One', sans-serif;
+  color: var(--taxi-yellow);
+  font-size: 15px;
+}
+
+.map-item .arrow { margin: 0 8px; color: var(--paper); }
+
+.map-item .meaning {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ===== フッター ===== */
+footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--line);
+  text-align: center;
+  font-size: 12px;
+  font-family: 'DotGothic16', monospace;
+  letter-spacing: 2px;
+  color: rgba(0,0,0,0.5);
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 600px) {
+  .wrap { padding: 20px 16px 60px; }
+  .hero { padding: 32px 24px; box-shadow: 5px 5px 0 var(--line); }
+  .concept-card, .script { padding: 20px; }
+  .ep-head { padding: 12px 16px; }
+  .ep-body { padding: 16px; }
+  .summary { padding: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ===== ヘッダー ===== -->
+<header class="hero">
+  <span class="hero-badge">ANIMATION SERIES PROPOSAL</span>
+  <h1>
+    <span class="small">タクシー求人アニメ動画 企画書</span>
+    新人タクシーくん、<br>今日も出発できません。
+  </h1>
+  <p class="hero-sub">
+    「求人を説明する動画」ではなく、<br>
+    タクシーの仕事への不安を、車の仲間たちがゆるく解消するショートアニメ。
+  </p>
+  <div class="hero-meta">
+    <span class="tag">YouTube用</span>
+    <span class="tag">30〜60秒</span>
+    <span class="tag">シリーズ展開</span>
+    <span class="tag">未経験者向け</span>
+  </div>
+</header>
+
+<!-- ===== 1. コンセプト ===== -->
+<section>
+  <span class="section-num">— 01 CONCEPT —</span>
+  <h2>基本コンセプト</h2>
+  <div class="concept-card">
+    <p class="lead"><strong>「新人ドライバー本人を主役にしない」</strong>のが、この企画のキモです。</p>
+    <p>主役を<strong>「新人タクシー」</strong>にして、周りの装備や車の部品がしゃべる設定にすると、求人臭さが消え、自然に仕事紹介ができる。</p>
+    <p style="margin-top:14px;">新人ドライバーが乗るタクシーには、実は小さな"車内の住人"がいる。<br>みんな少し変だけど、新人を助けてくれる——という世界観。</p>
+
+    <div class="title-pair">
+      <div class="title-card">
+        <div class="label">TITLE A</div>
+        <div class="name">新人タクシーくん、<br>今日も出発できません。</div>
+      </div>
+      <div class="title-card">
+        <div class="label">TITLE B</div>
+        <div class="name">タクシーの中の<br>小さな先輩たち</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. メッセージ ===== -->
+<section>
+  <span class="section-num">— 02 MESSAGE —</span>
+  <h2>伝えたいこと</h2>
+  <div class="concept-card">
+    <p>会社説明を前面に出さず、次の3つを自然に伝える。</p>
+    <ul style="list-style:none; margin-top:16px;">
+      <li style="padding:10px 0 10px 32px; position:relative; border-bottom:1px dashed rgba(0,0,0,0.15);">
+        <span style="position:absolute; left:0; color:var(--taxi-red); font-weight:900;">▶</span>
+        <strong>未経験でも一人じゃない</strong>
+      </li>
+      <li style="padding:10px 0 10px 32px; position:relative; border-bottom:1px dashed rgba(0,0,0,0.15);">
+        <span style="position:absolute; left:0; color:var(--taxi-red); font-weight:900;">▶</span>
+        <strong>機械や仕組みがサポートしてくれる</strong>
+      </li>
+      <li style="padding:10px 0 10px 32px; position:relative;">
+        <span style="position:absolute; left:0; color:var(--taxi-red); font-weight:900;">▶</span>
+        <strong>タクシーの仕事は意外と人間味がある</strong>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 3. 比較表 ===== -->
+<section>
+  <span class="section-num">— 03 TRANSLATION —</span>
+  <h2>普通の求人表現 → アニメでの見せ方</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:30%;">普通の求人表現</th>
+        <th style="width:5%;"></th>
+        <th>アニメでの見せ方</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>カーナビ完備</td><td class="arrow">→</td><td>新人が迷うと、カーナビくんがドヤ顔で道案内する</td></tr>
+      <tr><td>ドラレコ搭載</td><td class="arrow">→</td><td>ドラレコくんが「僕、見てるだけじゃないよ」と見守り役になる</td></tr>
+      <tr><td>GOアプリ対応</td><td class="arrow">→</td><td>GOアプリちゃんが「お客さん、こっちにいるよ」と呼んでくれる</td></tr>
+      <tr><td>雨の日も需要あり</td><td class="arrow">→</td><td>ワイパー兄弟が張り切りすぎて酔う</td></tr>
+      <tr><td>洗車も仕事</td><td class="arrow">→</td><td>洗車ブラシ先輩が妙に職人気質</td></tr>
+      <tr><td>未経験歓迎</td><td class="arrow">→</td><td>新人タクシーくんが毎回びびるが、周囲に助けられる</td></tr>
+      <tr><td>地域密着</td><td class="arrow">→</td><td>街の常連さんや道がキャラ化する</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== 4. キャラクター ===== -->
+<section>
+  <span class="section-num">— 04 CHARACTERS —</span>
+  <h2>登場キャラクター</h2>
+  <div class="char-grid">
+
+    <div class="char">
+      <div class="char-num">1</div>
+      <div class="char-icon">🚕</div>
+      <h4>新人タクシーくん</h4>
+      <span class="role">未経験者の不安を代弁</span>
+      <div class="personality">まじめ・心配性・すぐ「無理かも」と言う</div>
+      <div class="quote">「えっ、僕が人を乗せるんですか？」</div>
+      <div class="quote">「道、間違えたらどうしよう……」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">2</div>
+      <div class="char-icon">🗺️</div>
+      <h4>カーナビくん</h4>
+      <span class="role">地理不安の解消</span>
+      <div class="personality">賢いが、少し上から目線</div>
+      <div class="quote">「右です。いや、あなたの右です。」</div>
+      <div class="quote">「道は私が知っています。あなたは落ち着いてください。」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">3</div>
+      <div class="char-icon">📹</div>
+      <h4>ドラレコくん</h4>
+      <span class="role">安全・トラブル対策</span>
+      <div class="personality">無口っぽいが、実は心配性</div>
+      <div class="quote">「見てます。」</div>
+      <div class="quote">「でも、責めるためじゃなくて、守るためです。」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">4</div>
+      <div class="char-icon">💧</div>
+      <h4>ワイパー兄弟</h4>
+      <span class="role">悪天候時の需要</span>
+      <div class="personality">双子・テンション高め・動きすぎて酔う</div>
+      <div class="quote">兄「雨だ！」 弟「出番だ！」</div>
+      <div class="quote">兄弟「うおおおおお！」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">5</div>
+      <div class="char-icon">📱</div>
+      <h4>GOアプリちゃん</h4>
+      <span class="role">仕事獲得の安心</span>
+      <div class="personality">明るく、ちょっと強引</div>
+      <div class="quote">「お客さん、呼んでます！」</div>
+      <div class="quote">「考えるより、通知です！」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">6</div>
+      <div class="char-icon">🧮</div>
+      <h4>メーターさん</h4>
+      <span class="role">業務の仕組み化</span>
+      <div class="personality">几帳面・数字にうるさい</div>
+      <div class="quote">「はい、実車です。」</div>
+      <div class="quote">「仕事は感覚ではなく、記録です。」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">7</div>
+      <div class="char-icon">🧽</div>
+      <h4>洗車ブラシ先輩</h4>
+      <span class="role">接客品質</span>
+      <div class="personality">職人気質・なぜか熱い</div>
+      <div class="quote">「車が光れば、心も光る。」</div>
+      <div class="quote">「汚れは昨日の不安だ。落としていけ。」</div>
+    </div>
+
+    <div class="char">
+      <div class="char-num">8</div>
+      <div class="char-icon">📻</div>
+      <h4>無線おじさん</h4>
+      <span class="role">待機時間の意味</span>
+      <div class="personality">落ち着いた声・人生訓を語りがち</div>
+      <div class="quote">「待つのも仕事だ。」</div>
+      <div class="quote">「ただし、寝すぎは違う。」</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 5. エピソード ===== -->
+<section>
+  <span class="section-num">— 05 EPISODES —</span>
+  <h2>シリーズ構成（全5話）</h2>
+
+  <div class="episode">
+    <div class="ep-head">
+      <span class="ep-num">第1話</span>
+      <span class="ep-title">出発編｜新人タクシーくん、初日から帰りたい</span>
+    </div>
+    <div class="ep-body">
+      <p class="ep-summary">営業所で震える新人タクシーくんを、カーナビくん・ドラレコくんが支える。「最初から完璧な人なんていない」と先輩ドライバーが一言。</p>
+      <div class="ep-message">
+        <span class="label">求人メッセージ</span>
+        未経験でも、研修と車内設備で安心して始められる。
+      </div>
+    </div>
+  </div>
+
+  <div class="episode">
+    <div class="ep-head">
+      <span class="ep-num">第2話</span>
+      <span class="ep-title">GOアプリ編｜お客さんは、突然スマホから現れる</span>
+    </div>
+    <div class="ep-body">
+      <p class="ep-summary">「お客さん、どこにいるんだろう」と不安な新人。スマホからGOアプリちゃんが飛び出し、「呼ばれてます！」と通知してくれる。</p>
+      <div class="ep-message">
+        <span class="label">求人メッセージ</span>
+        配車アプリがあるので、未経験でも仕事のきっかけをつかみやすい。
+      </div>
+    </div>
+  </div>
+
+  <div class="episode">
+    <div class="ep-head">
+      <span class="ep-num">第3話</span>
+      <span class="ep-title">雨の日編｜ワイパー兄弟、張り切りすぎる</span>
+    </div>
+    <div class="ep-body">
+      <p class="ep-summary">雨が降るとワイパー兄弟が全力で動き、自分たちが酔ってしまう。ナレーションで「雨の日は、タクシーを必要とする人が増える日」と伝える。</p>
+      <div class="ep-message">
+        <span class="label">求人メッセージ</span>
+        天候によって需要が生まれる仕事。困っている人の役に立てる。
+      </div>
+    </div>
+  </div>
+
+  <div class="episode">
+    <div class="ep-head">
+      <span class="ep-num">第4話</span>
+      <span class="ep-title">洗車編｜洗車ブラシ先輩の謎の哲学</span>
+    </div>
+    <div class="ep-body">
+      <p class="ep-summary">洗車を面倒に感じる新人に、ブラシ先輩が「車の汚れを落とすんじゃない。不安を落とすんだ。」と謎の名言を放つ。</p>
+      <div class="ep-message">
+        <span class="label">求人メッセージ</span>
+        タクシーの仕事は、運転だけでなく接客・安心感づくりでもある。
+      </div>
+    </div>
+  </div>
+
+  <div class="episode">
+    <div class="ep-head">
+      <span class="ep-num">第5話</span>
+      <span class="ep-title">待機編｜待っている時間にも、仕事は進んでいる</span>
+    </div>
+    <div class="ep-body">
+      <p class="ep-summary">駅前で待機中、無線おじさんが「待つのも仕事だ」と語る。常連のおばあちゃんが「病院までお願いね」と乗ってくる。</p>
+      <div class="ep-message">
+        <span class="label">求人メッセージ</span>
+        地域の移動を支える仕事。待機時間も大切な役割がある。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. フォーマット ===== -->
+<section>
+  <span class="section-num">— 06 FORMAT —</span>
+  <h2>動画フォーマット</h2>
+  <div class="concept-card">
+    <p class="lead">YouTube用なら、まずは長尺よりも <strong>30秒〜60秒のショートアニメシリーズ</strong> が向いています。</p>
+    <p>毎回の構成は、この5ステップで固定できます。</p>
+
+    <div class="format-grid">
+      <div class="format-card">
+        <span class="step">STEP 01</span>
+        <div class="text">新人タクシーくんが<br>不安になる</div>
+      </div>
+      <div class="format-card">
+        <span class="step">STEP 02</span>
+        <div class="text">車内キャラが<br>変な登場をする</div>
+      </div>
+      <div class="format-card">
+        <span class="step">STEP 03</span>
+        <div class="text">少し笑える<br>やり取り</div>
+      </div>
+      <div class="format-card">
+        <span class="step">STEP 04</span>
+        <div class="text">実は仕事の<br>安心材料だったとわかる</div>
+      </div>
+      <div class="format-card">
+        <span class="step">STEP 05</span>
+        <div class="text">短い<br>求人メッセージ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. サンプル脚本 ===== -->
+<section>
+  <span class="section-num">— 07 SAMPLE SCRIPT —</span>
+  <h2>第1話 完成イメージ</h2>
+  <div class="script">
+    <h3 style="margin-bottom:20px;">「新人タクシーくん、初日から帰りたい」</h3>
+
+    <div class="script-line narration">
+      はじめての出勤日。<br>
+      新人タクシーくんは、営業所のすみっこで震えていました。
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">新人タクシーくん</div>
+      <div class="dialog">「道も知らないし……<br>お客さんと話せるかわからないし……<br>僕、今日もう帰っていいですか？」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">カーナビくん</div>
+      <div class="dialog">「だめです。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">新人タクシーくん</div>
+      <div class="dialog">「誰！？」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">カーナビくん</div>
+      <div class="dialog">「カーナビです。<br>道は私が案内します。<br>あなたは、まず落ち着いてください。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">ドラレコくん</div>
+      <div class="dialog">「見てます。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">新人タクシーくん</div>
+      <div class="dialog">「怖い！」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">ドラレコくん</div>
+      <div class="dialog">「守るためです。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">先輩ドライバー</div>
+      <div class="dialog">「最初から完璧な人はいないよ。<br>研修もあるし、困ったときはちゃんと聞けるから。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">新人タクシーくん</div>
+      <div class="dialog">「……じゃあ、ちょっとだけ走ってみます。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">カーナビくん</div>
+      <div class="dialog">「まずは右です。」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">新人タクシーくん</div>
+      <div class="dialog">「右ってどっち！？」</div>
+    </div>
+
+    <div class="script-line">
+      <div class="speaker">カーナビくん</div>
+      <div class="dialog">「そこからですか。」</div>
+    </div>
+
+    <div class="script-end">
+      <div class="label">— FINAL TELOP —</div>
+      <div class="text">未経験でも大丈夫。<br>最初の一歩を、みんなで支えます。<br>タクシードライバー募集中。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. 拡張アイデア ===== -->
+<section>
+  <span class="section-num">— 08 EXPANSION —</span>
+  <h2>水平思考で広げるアイデア</h2>
+
+  <div class="idea-card">
+    <h3>案1：タクシー会社を「学校」にする</h3>
+    <p>新人タクシーくんが「タクシー学校」に入学する設定。求人動画というより、新人の成長アニメに展開できる。</p>
+    <table class="idea-table">
+      <tr><td>授業</td><td>担当</td></tr>
+      <tr><td>道案内の授業</td><td>カーナビ先生</td></tr>
+      <tr><td>安全確認の授業</td><td>ドラレコ先生</td></tr>
+      <tr><td>接客の授業</td><td>シートベルト隊長</td></tr>
+      <tr><td>雨の日の授業</td><td>ワイパー兄弟</td></tr>
+      <tr><td>売上の授業</td><td>メーター先生</td></tr>
+      <tr><td>清掃の授業</td><td>洗車ブラシ先輩</td></tr>
+    </table>
+  </div>
+
+  <div class="idea-card">
+    <h3>案2：車内キャラが面接する</h3>
+    <p>応募者が面接に来るが、面接官が人間ではなく車内の部品たち。</p>
+    <div style="background:var(--bg-deep); padding:14px; border-radius:6px; margin-top:12px; font-size:14px;">
+      <p><strong style="color:var(--taxi-red);">カーナビくん：</strong>「あなたは迷ったとき、どうしますか？」</p>
+      <p><strong style="color:var(--taxi-red);">応募者：</strong>「人に聞きます。」</p>
+      <p><strong style="color:var(--taxi-red);">カーナビくん：</strong>「正解です。私にも聞いてください。」</p>
+      <p><strong style="color:var(--taxi-red);">ドラレコくん：</strong>「私はずっと見ています。」</p>
+      <p><strong style="color:var(--taxi-red);">応募者：</strong>「圧迫面接ですか？」</p>
+      <p><strong style="color:var(--taxi-red);">ドラレコくん：</strong>「見守り面接です。」</p>
+    </div>
+    <p style="margin-top:12px; font-weight:700;">求人メッセージ：未経験でも、人に聞ける人なら大丈夫。</p>
+  </div>
+
+  <div class="idea-card">
+    <h3>案3：タクシーの一日を「車の中の会議」にする</h3>
+    <p>車内のキャラたちが毎朝ミーティングする。</p>
+    <div style="background:var(--bg-deep); padding:14px; border-radius:6px; margin-top:12px; font-size:14px;">
+      <p><strong style="color:var(--taxi-red);">カーナビくん：</strong>「本日のルート担当、私。」</p>
+      <p><strong style="color:var(--taxi-red);">ドラレコくん：</strong>「安全記録、私。」</p>
+      <p><strong style="color:var(--taxi-red);">ワイパー兄弟：</strong>「天気待ち、我々。」</p>
+      <p><strong style="color:var(--taxi-red);">メーターさん：</strong>「売上管理、私。」</p>
+      <p><strong style="color:var(--taxi-red);">新人タクシーくん：</strong>「僕は？」</p>
+      <p><strong style="color:var(--taxi-red);">全員：</strong>「安全運転。」</p>
+    </div>
+    <p style="margin-top:12px; font-weight:700;">求人メッセージ：タクシーの仕事は、全部を一人で抱える仕事ではない。</p>
+  </div>
+</section>
+
+<!-- ===== 9. まとめ ===== -->
+<div class="summary">
+  <h2>この企画をおすすめする理由</h2>
+  <p style="font-size:16px; margin-bottom:8px;">
+    一番おすすめは <strong style="color:var(--taxi-yellow);">「新人タクシーくん × 車内の小さな先輩たち」シリーズ</strong> です。
+  </p>
+
+  <ol class="summary-list">
+    <li>求人感が薄く、YouTubeで見やすい</li>
+    <li>未経験者の不安を自然に解消できる</li>
+    <li>カーナビ・ドラレコ・GOアプリ・洗車・待機などをシリーズ化しやすい</li>
+  </ol>
+
+  <p style="margin-top:24px; font-size:14px; opacity:0.85;">
+    ポイントは、それぞれのキャラに <strong style="color:var(--taxi-yellow);">「求人上の意味」</strong> を持たせること。<br>
+    単なる"かわいい車のキャラ"にすると弱くなります。
+  </p>
+
+  <div class="summary-mapping">
+    <div class="map-item">
+      <span class="char-name">カーナビくん</span><span class="arrow">＝</span>
+      <div class="meaning">地理不安の解消</div>
+    </div>
+    <div class="map-item">
+      <span class="char-name">ドラレコくん</span><span class="arrow">＝</span>
+      <div class="meaning">安全・トラブル対策</div>
+    </div>
+    <div class="map-item">
+      <span class="char-name">GOアプリちゃん</span><span class="arrow">＝</span>
+      <div class="meaning">仕事獲得の安心</div>
+    </div>
+    <div class="map-item">
+      <span class="char-name">ワイパー兄弟</span><span class="arrow">＝</span>
+      <div class="meaning">雨の日需要</div>
+    </div>
+    <div class="map-item">
+      <span class="char-name">洗車ブラシ先輩</span><span class="arrow">＝</span>
+      <div class="meaning">接客品質</div>
+    </div>
+    <div class="map-item">
+      <span class="char-name">メーターさん</span><span class="arrow">＝</span>
+      <div class="meaning">業務の仕組み化</div>
+    </div>
+  </div>
+
+  <p style="margin-top:28px; padding-top:20px; border-top:2px dashed rgba(255,255,255,0.2); font-size:15px; font-weight:700; color:var(--taxi-yellow);">
+    この形にすると、面白いのに、ちゃんと採用につながる動画になります。
+  </p>
+</div>
+
+<footer>
+  TAXI DRIVER RECRUIT ANIMATION ／ PROPOSAL DOCUMENT
+</footer>
+
+</div>
+</body>
+</html>
