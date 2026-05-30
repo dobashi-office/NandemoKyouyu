@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教養としての「労働法」入門 〜教材用マスターテキスト〜</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Biストレス:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .serif-title {
+      font-family: 'Playfair Display', 'Noto Sans JP', serif;
+    }
+    /* スムーズスクロール */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* 印刷時のスタイル定義 */
+    @media print {
+      body {
+        background-color: white !important;
+        color: black !important;
+        font-size: 12pt !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-page-break {
+        page-break-before: always;
+      }
+      #main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      .shadow-md, .shadow-lg, .shadow-xl {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+      }
+    }
+    /* カスタムスクロールバー */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 transition-colors duration-200" id="body-root">
+
+  <!-- ヘッダー（印刷非表示） -->
+  <header class="no-print sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur px-6 py-4 flex items-center justify-between shadow-sm dark:bg-slate-900 dark:border-slate-800 dark:text-white">
+    <div class="flex items-center space-x-3">
+      <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold shadow-md">
+        労
+      </div>
+      <div>
+        <h1 class="text-lg font-bold tracking-tight">教養としての「労働法」入門</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400">社労士・企業人事向け 教材用マスターテキスト</p>
+      </div>
+    </div>
+    
+    <!-- 操作ツールバー -->
+    <div class="flex items-center space-x-4">
+      <!-- 簡易検索バー -->
+      <div class="relative hidden md:block">
+        <input type="text" id="search-input" onkeyup="searchKeyword()" placeholder="キーワード検索..." class="w-48 lg:w-64 pl-9 pr-4 py-1.5 text-sm bg-slate-100 border-0 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all dark:bg-slate-800 dark:text-white">
+        <div class="absolute left-3 top-2.5 text-slate-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+      </div>
+
+      <!-- フォント調整ボタン -->
+      <div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full p-1 text-xs">
+        <button onclick="adjustFontSize(-2)" class="px-2.5 py-1 hover:bg-white dark:hover:bg-slate-700 rounded-full transition font-semibold">A-</button>
+        <button onclick="adjustFontSize(0)" class="px-2.5 py-1 hover:bg-white dark:hover:bg-slate-700 rounded-full transition font-semibold">標準</button>
+        <button onclick="adjustFontSize(2)" class="px-2.5 py-1 hover:bg-white dark:hover:bg-slate-700 rounded-full transition font-semibold">A+</button>
+      </div>
+
+      <!-- ダークモード切替 -->
+      <button onclick="toggleDarkMode()" class="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full transition">
+        <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <svg id="theme-icon-dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+      </button>
+
+      <!-- 印刷ボタン -->
+      <button onclick="window.print()" class="flex items-center space-x-1 px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full text-sm font-medium shadow-sm transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        <span class="hidden sm:inline">印刷 / PDF保存</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 全体レイアウト -->
+  <div class="flex min-h-screen">
+
+    <!-- サイドバーナビゲーション（印刷非表示） -->
+    <aside class="no-print w-72 bg-white border-r border-slate-200 hidden lg:block sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto px-6 py-8 flex-shrink-0 dark:bg-slate-900 dark:border-slate-800">
+      <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">教材目次</h3>
+      <nav class="space-y-1">
+        <a href="#hashigaki" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">序</span>
+          <span>はしがきに代えて</span>
+        </a>
+        <a href="#intro" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">0</span>
+          <span>序章：労働法とは</span>
+        </a>
+        <a href="#ch1" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">1</span>
+          <span>第1章：歴史と現在</span>
+        </a>
+        <a href="#ch2" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">2</span>
+          <span>第2章：解雇と配置転換</span>
+        </a>
+        <a href="#ch3" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">3</span>
+          <span>第3章：多様な雇用と格差</span>
+        </a>
+        <a href="#ch4" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">4</span>
+          <span>第4章：労働時間と有給休暇</span>
+        </a>
+        <a href="#ch5" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">5</span>
+          <span>第5章：労働環境を整える</span>
+        </a>
+        <a href="#ch6" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">6</span>
+          <span>第6章：懲戒ルール</span>
+        </a>
+        <a href="#ch7" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 px-3 py-2 rounded-lg text-sm font-medium transition duration-150">
+          <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">7</span>
+          <span>第7章：労働組合の仕組み</span>
+        </a>
+      </nav>
+
+      <!-- ミニ情報（社労士視点のアドバイス） -->
+      <div class="mt-8 p-4 bg-amber-50 dark:bg-amber-950/30 rounded-xl border border-amber-200/60 dark:border-amber-900/40">
+        <h4 class="text-xs font-bold text-amber-800 dark:text-amber-400 flex items-center space-x-1 mb-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>社労士・教員向けアドバイス</span>
+        </h4>
+        <p class="text-xs text-amber-900/80 dark:text-amber-300/80 leading-relaxed">
+          本書は単なる条文の暗記ではなく、なぜそのルールになったのかという「成立史」や「各国の法思想」を深く掘り下げています。受講生に対して、実務事例を提示したグループワークと併せると効果的です。
+        </p>
+      </div>
+    </aside>
+
+    <!-- メインコンテンツ -->
+    <main id="main-content" class="flex-1 w-full max-w-4xl mx-auto px-6 py-12 md:px-12 dark:text-slate-100 transition-all">
+
+      <!-- はしがき -->
+      <section id="hashigaki" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Preface</span>
+          <h2 class="serif-title text-3xl md:text-4xl font-extrabold mt-3 tracking-tight">はしがきに代えて――「役に立たない知識が役に立つ」</h2>
+        </div>
+        
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6 text-base" id="content-area">
+          <p>
+            本書は、日本の労働法制の歴史と制定経緯、および世界の労働法制との比較を中心にしつつ、ごく基本的な日本の労働法制、裁判例を取り上げて説明しています。
+          </p>
+          <p>
+            労働法制の歴史や世界の労働法制との比較により得られる知識が教養になることは間違いありませんが、これらの知識は一見すると学習や実務に直接役に立つものではないように思えるかもしれません。すなわち、本書の多くの内容は司法試験の答案にそのまま書くためのテクニックではありませんし、裁判所に提出する準備書面や労働基準監督署に対する是正報告書に直接役立つ実務ノウハウでもありません。
+          </p>
+
+          <div class="p-5 bg-indigo-50/50 dark:bg-slate-800/50 border-l-4 border-indigo-500 rounded-r-xl">
+            <h4 class="font-bold text-indigo-900 dark:text-indigo-300 mb-1">なぜ「教養」が必要なのか？</h4>
+            <p class="text-sm">これらの「教養」こそが、労働法を本質から改めて考える強力なきっかけになります。異なるアプローチや歴史を紐解くことで、実務上のトラブルの根底にある問題意識が見えるようになるのです。</p>
+          </div>
+
+          <p>
+            別の角度から物事を考えることは極めて重要です。たとえば、外国においては解雇規制が、実は人種差別や信条差別の歴史と深く関わっていることが分かります。特にアメリカは、解雇規制が日本に比べるとかなり緩やかですが、その反面、解雇問題が人種差別問題に発展することがよくあります。日本では外国人労働者が増えつつあるものの、まだ全人口に占める割合は少なく、人種も欧米ほど多様ではありません。しかし、これからの日本を考える上では、差別問題が労働の場でよりクループアップされることは容易に想像できます。
+          </p>
+
+          <p>
+            また、戦後の労働基準法制定に関する歴史を紐解くと、現在のルールが戦後の大混乱期や特殊な復興事情を色濃く反映していることが見えてきます。
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800">
+              <span class="text-xs font-semibold text-rose-500">有給休暇制定のトリビア</span>
+              <h5 class="font-bold text-lg my-2">なぜ1日単位で取れるのか？</h5>
+              <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                当時のILO条約に照らせば、有給休暇は「まとまった日数（連続した休暇）」で取得することが国際的スタンダードでした。しかし戦後すぐの日本は、材料不足や製造設備の未整備により工場の製造ラインが頻繁に止まり、出勤しても仕事がない日が生じるなど、出勤自体が極めて不安定でした。そのため、「連続した休暇」を義務付けるのではなく、物資の買い出しなどのために1日単位で柔軟に有給休暇を取得することを認める制度に落ち着いたのです。
+              </p>
+            </div>
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800">
+              <span class="text-xs font-semibold text-teal-500">多角的視点の重要性</span>
+              <h5 class="font-bold text-lg my-2">「役に立たない知識」の応用</h5>
+              <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                編著者の向井蘭弁護士は、中華人民共和国上海市での労働法コンサルティングに関与した際、「なぜ、これほどまでに激しい労働紛争が発生するのだろうか」「日本の労働法と何が異なるのか」を調べた経験から、日本の人事労務紛争への向き合い方が大きく変わりました。他者との差異を知ることで、当たり前の中に潜む「特殊性」に気づくことができます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 序章 -->
+      <section id="intro" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 0</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">序章：労働法とは</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. なぜ労働法を知る必要があるのか</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+            <div class="bg-indigo-50/30 dark:bg-slate-800/40 p-5 rounded-xl border border-indigo-100 dark:border-slate-700">
+              <h4 class="font-bold text-indigo-900 dark:text-indigo-400 mb-2">① 労働者の視点から</h4>
+              <p class="text-sm leading-relaxed">
+                年次有給休暇の取得義務化、解雇、各種ハラスメントなど、労働法に関連するテーマは日常に深く根付いています。正しい知識は、不当な不利益から自らを守り、家族や友人が労務トラブルに直面した際の重要な盾となります。
+              </p>
+            </div>
+            <div class="bg-indigo-50/30 dark:bg-slate-800/40 p-5 rounded-xl border border-indigo-100 dark:border-slate-700">
+              <h4 class="font-bold text-indigo-900 dark:text-indigo-400 mb-2">② 使用者の視点から</h4>
+              <p class="text-sm leading-relaxed">
+                現代の企業経営において、コンプライアンス（法令遵守）は単なるスローガンではなく「生存戦略」です。SNSや転職口コミサイトにより、ブラックな労務環境は瞬時に拡散され、採用難を引き起こします。法令を守ることは、中長期的な成長に直結する先行投資です。
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. 各国の価値観が労働法制に与える影響</h3>
+          <p>
+            労働法は無味乾燥な条文の集まりではありません。その背景には、国がどのような労働環境を望ましいとしているかという「社会の価値観」が反映されています。
+          </p>
+
+          <!-- 日米比較テーブル -->
+          <div class="overflow-x-auto my-6 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white dark:bg-slate-800">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-100 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
+                  <th class="p-4 font-bold text-slate-700 dark:text-slate-200">比較項目</th>
+                  <th class="p-4 font-bold text-slate-700 dark:text-slate-200">アメリカ労働法</th>
+                  <th class="p-4 font-bold text-slate-700 dark:text-slate-200">日本の労働法</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">雇用の原則</td>
+                  <td class="p-4">随意雇用の原則 (Employment at will)<br><span class="text-xs text-slate-500">（お互い、いつでもいかなる理由でも契約解除できる）</span></td>
+                  <td class="p-4">長期雇用・終身雇用を前提<br><span class="text-xs text-slate-500">（簡単には解雇できない厳しい規制）</span></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">解雇に対するアプローチ</td>
+                  <td class="p-4">原則自由だが、<span class="font-bold text-rose-500">人種・信条・年齢等による「差別的解雇」</span>は極めて厳格に禁止。</td>
+                  <td class="p-4">「客観的に合理的な理由」と「社会通念上の相当性」がない限り、いかなる場合も<span class="font-bold text-rose-500">原則無効（解雇権濫用法理）</span>。</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">紛争の焦点</td>
+                  <td class="p-4">人種差別、性差別、年齢差別、障害者差別など、憲法的権利や人権を問う。</td>
+                  <td class="p-4">解雇の経済的妥当性、雇用の維持責任、就業規則変更の不利益、企業の配慮義務。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. 労働法の多層的な構造：実務における注意点</h3>
+          <p>
+            実務で活躍する社労士や人事担当者が陥りやすいミスに、**「労働基準法（公法関係）」**と**「労働契約法（私法関係）」**の混同があります。この二つの違いを明確に区別して理解することが第一歩です。
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800">
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 text-xs px-2.5 py-1 rounded-full font-bold">公法関係</span>
+                <h4 class="font-bold text-lg">労働基準法</h4>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <li class="flex items-start"><span class="text-red-500 mr-2">✔</span>国家が定める最低基準の労働条件</li>
+                <li class="flex items-start"><span class="text-red-500 mr-2">✔</span>違反した場合、<strong>罰則（懲役・罰金）</strong>がある</li>
+                <li class="flex items-start"><span class="text-red-500 mr-2">✔</span>労働基準監督官が立ち入り検査を行う</li>
+              </ul>
+            </div>
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800">
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 text-xs px-2.5 py-1 rounded-full font-bold">私法関係</span>
+                <h4 class="font-bold text-lg">労働契約法</h4>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <li class="flex items-start"><span class="text-blue-500 mr-2">✔</span>労働者と使用者の契約のルール</li>
+                <li class="flex items-start"><span class="text-blue-500 mr-2">✔</span><strong>罰則は存在しない</strong>（民事事件の解決基準）</li>
+                <li class="flex items-start"><span class="text-blue-500 mr-2">✔</span>違反による解雇無効などは、主に民事訴訟等で決着する</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 記述確認テスト (インタラクティブ) -->
+        <div class="no-print mt-10 p-6 bg-slate-100 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-700">
+          <h4 class="font-bold text-slate-950 dark:text-white flex items-center space-x-2 mb-3">
+            <span class="bg-indigo-600 text-white text-xs px-2 py-0.5 rounded">確認クイズ</span>
+            <span>労働基準法と労働契約法の違い</span>
+          </h4>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+            労働基準監督官に「不当解雇されたので、解雇を取り消すように会社を指導してください」と駆け込んでも、監督官が即座に解雇取消の命令を下せないのはなぜでしょうか？
+          </p>
+          <button onclick="toggleQuizAnswer('ans-intro')" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-medium">回答と解説を表示</button>
+          <div id="ans-intro" class="hidden mt-4 p-4 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-sm">
+            <p class="font-semibold text-indigo-900 dark:text-indigo-300 mb-1">【解答】</p>
+            <p class="text-slate-700 dark:text-slate-300">
+              「解雇の有効性」は契約関係（私法関係）に関わる問題であり、<strong>労働契約法</strong>の範疇です。労働基準監督官は主に罰則の伴う<strong>労働基準法</strong>の違反を取り締まる行政官であるため、明確な解雇手当未払い（労基法20条違反）などの事実がない限り、民事上の争いである「不当解雇の効力」自体に直接的に介入し、解雇の取消を命ずる権限を持たないからです。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第1章 -->
+      <section id="ch1" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 1</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第1章：労働法の歴史と現在</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 工場法モデルから始まった日本の労働法</h3>
+          <p>
+            日本の労働法のルーツは、明治44年（1911年）に制定された**「工場法」**に遡ります（施行は1916年）。
+            当時、急速な近代化の中で富国強兵を支えたのは、紡績工場などに代表される、過酷な低賃金・長時間労働を強いられた「女工」たちでした。国家が彼女たちの生命と健康の危機を認識し、労働力維持の目的で制定されたのが、この労働時間制限などを盛り込んだ工場法です。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. GHQ統治と現在の労働三法の誕生</h3>
+          <p>
+            大きな画期となったのは、第二次世界大戦後のGHQによる民主化政策です。
+            憲法第27条（勤労の権利・義務、労働条件の基準）および第28条（労働基本権：団結権・団体交渉権・団体行動権）に基づき、以下の<strong>「労働三法」</strong>が立て続けに制定されました。
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+            <div class="bg-indigo-50/20 dark:bg-slate-800/40 p-4 rounded-xl border border-indigo-100/50 dark:border-slate-700 text-center">
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">1945年 制定</span>
+              <h5 class="font-bold text-lg my-1">労働組合法</h5>
+              <p class="text-xs text-slate-500">労働者が団結して使用者と対等に交渉する権利を保障。</p>
+            </div>
+            <div class="bg-indigo-50/20 dark:bg-slate-800/40 p-4 rounded-xl border border-indigo-100/50 dark:border-slate-700 text-center">
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">1946年 制定</span>
+              <h5 class="font-bold text-lg my-1">労働関係調整法</h5>
+              <p class="text-xs text-slate-500">労働争議の予防および自主的な解決を助けるための枠組み。</p>
+            </div>
+            <div class="bg-indigo-50/20 dark:bg-slate-800/40 p-4 rounded-xl border border-indigo-100/50 dark:border-slate-700 text-center">
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">1947年 制定</span>
+              <h5 class="font-bold text-lg my-1">労働基準法</h5>
+              <p class="text-xs text-slate-500">人道的見地から最低限守るべき労働条件（時間、賃金等）を厳格に規定。</p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. 「判例法理の成文化」という流れ</h3>
+          <p>
+            日本の戦後労働法における最大の特徴は、解雇や配転などの非常に重要な問題が、長らく法律の条文に書かれていなかったことにあります。それらは裁判所における膨大な判例の蓄積、すなわち<strong>「判例法理」</strong>として確立され、社会を規律してきました。
+          </p>
+          <p>
+            これが大きく変化したのが、2007年（平成19年）に制定された<strong>「労働契約法」</strong>です。この法律は、それまで解雇権濫用法理などの判例法理として判例の中にだけ記述されていたルールを、初めて文字化・成文化した画期的な法律です。
+          </p>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第2章 -->
+      <section id="ch2" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 2</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第2章：解雇と裏表となる規制</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 解雇規制：厳しいハードルとその理由</h3>
+          <p>
+            日本における解雇の法的ハードルは国際的に見ても極めて高いと評価されています。
+            労働契約法第16条は以下のように定めています。
+          </p>
+
+          <blockquote class="border-l-4 border-amber-500 bg-amber-50/40 dark:bg-slate-800/60 p-4 rounded-r-xl italic my-4 text-sm">
+            「解雇は、客観的に合理的な理由を欠き、社会通念上相当であると認められない場合は、その権利を濫用したものとして、無効とする。」
+          </blockquote>
+
+          <p>
+            実務上、この「客観的合理性」と「社会通念上の相当性」を満たして解雇が認められるためには、教育指導や他部署への配置転換（配転）などの改善機会を尽くしてもなお、勤務態度が著しく不良であること、または深刻な経営危機による整理解雇の4要件（人員削減の必要性、解雇回避努力義務の履行、人選の合理性、手続の妥当性）を証明せねばならず、容易なことではありません。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. 表の「解雇規制」、裏の「強力な配転・人事命令権」</h3>
+          <p>
+            「日本は従業員を簡単に解雇できないため、企業運営に著しい支障が出るのではないか？」
+            この疑問に答える鍵となるのが、解雇規制と<strong>「表裏一体（裏の規制・権利）」</strong>の関係をなす、日本の強力な<strong>「配置転換・配転命令権」</strong>です。
+          </p>
+
+          <div class="p-6 bg-indigo-50/30 dark:bg-slate-800/40 border border-indigo-100 dark:border-slate-700 rounded-2xl my-6">
+            <h4 class="font-bold text-lg text-indigo-950 dark:text-indigo-300 mb-3">【表裏一体の構造】なぜ配転はこれほど強大な権限なのか？</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm leading-relaxed">
+              <div>
+                <p class="font-bold text-rose-600 dark:text-rose-400">解雇規制の厳しさ（表）</p>
+                <p class="mt-1">一度雇用した労働者を、職務が合わない・不要になったという理由で簡単には解雇できない。</p>
+              </div>
+              <div>
+                <p class="font-bold text-teal-600 dark:text-teal-400">配転・職種変更の広さ（裏）</p>
+                <p class="mt-1">その代わりに、使用者は従業員に対し「今日から営業に」「来月から大阪に転勤」といった、職種や勤務地の広範な変更命令を、合意なく下す権限を有する。</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 leading-relaxed">
+              ※この判例上の根拠となったのが<strong>「東亜ペイント事件」</strong>（最判昭和61年7月14日）です。転勤命令について、業務上の必要性があり、不当な動機や労働者に「通常甘受すべき程度を著しく超える不利益」がない限り、有効であると判断されました。
+            </p>
+          </div>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. 内定・試用期間・休職のルール</h3>
+          <p>
+            雇用契約の様々な段階においても、この「解雇に準ずる規制」が働いています。
+          </p>
+
+          <div class="space-y-4 my-6">
+            <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+              <h5 class="font-bold text-base text-slate-900 dark:text-white">① 採用内定の取消</h5>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                内定が出た時点で、法律上は「始期付・解約権留保付労働契約」が成立したとみなされます（大日本印刷事件）。よって、<strong>内定取消は「解雇」と同等の極めて厳格な要件</strong>を満たさなければ認められません。
+              </p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+              <h5 class="font-bold text-base text-slate-900 dark:text-white">② 試用期間中の本採用拒否</h5>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                「お試し期間」である試用期間であっても、本採用を拒否（クビにする）ことは解雇と同じ法理が働きます（三菱重工長崎造船所事件）。通常の解雇よりは幾分広い範囲で解雇理由が認められるものの、客観的・合理的な理由がない限り無効となります。
+              </p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+              <h5 class="font-bold text-base text-slate-900 dark:text-white">③ 休職制度と解雇猶予</h5>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                日本の傷病休職制度は、いわば<strong>「直ちに解雇するのを待つ（解雇猶予）の仕組み」</strong>です。病気により就労できなくなった労働者に対し、一定の休職期間を設け、その間に治癒すれば復職させ、期間が満了しても治癒しない場合に初めて退職または解雇とする契約上の設計となっています。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第3章 -->
+      <section id="ch3" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 3</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第3章：多様な雇用の在り方とそれらを取り巻く法制度</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 「労働者」とは誰か：非雇用の境界線</h3>
+          <p>
+            現代ではクラウドワーカーやフリーランス、ギグワーカー（配達パートナー等）など、労働契約（雇用関係）を結ばない「非雇用型」の働き方が急速に広がっています。
+            彼らは自由な働き方を享受できる反面、労働基準法や労働契約法による「手厚い保護」を原則として受けられません。そこで実務上、契約の形式が「業務委託」であっても、実態として労働法上の保護を与えるべきかという**「労働者性（使用従属関係・労働対償性）」**の判断が非常に重要となっています。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. 同一労働同一賃金（待遇格差の是正）</h3>
+          <p>
+            日本の伝統的雇用システムが長期雇用（正社員）を優遇してきた結果、パート・有期契約社員・派遣社員といった非正規雇用労働者との「不合理な待遇格差」が深刻な社会問題となりました。
+            これを是正するため、労働契約法第20条（旧）やパートタイム・有期雇用労働法第8条等に基づき、**「同一労働同一賃金」**を求めるルールが整備されています。
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-sm">
+            <li><strong>均等不合理の禁止：</strong>職務内容、職務内容・配置の変更範囲が同じである場合、基本給、賞与、手当などのあらゆる待遇に差を設けてはならない。</li>
+            <li><strong>均衡不合理の禁止：</strong>待遇の相違を設ける場合でも、その相違は、職務内容、変更範囲、その他の事情を考慮して「不合理」なものであってはならない。</li>
+          </ul>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. 高齢者雇用と各国の定年制比較</h3>
+          <p>
+            少子高齢化が進む日本において、高齢者の活躍は不可欠であり、高年齢者雇用安定法により「65歳までの雇用確保」が義務付けられ、70歳までの就業機会確保措置が努力義務となっています。
+            しかし、この「一律定年制」は世界の視点で見ると決して当たり前の制度ではありません。
+          </p>
+
+          <div class="overflow-x-auto my-6 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white dark:bg-slate-800">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-100 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
+                  <th class="p-4 font-bold text-slate-700 dark:text-slate-200">国名</th>
+                  <th class="p-4 font-bold text-slate-700 dark:text-slate-200">定年制度の現状</th>
+                  <th class="p-4 font-bold text-slate-700 dark:text-slate-200">特徴・年齢差別保護</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">アメリカ</td>
+                  <td class="p-4 text-rose-600 dark:text-rose-400 font-semibold">原則禁止</td>
+                  <td class="p-4">1967年雇用における年齢差別禁止法により、定年制そのものが差別とされ原則違法。高齢者も解雇から非常に厚く保護される。</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">イギリス</td>
+                  <td class="p-4 text-rose-600 dark:text-rose-400 font-semibold">原則禁止</td>
+                  <td class="p-4">かつては認められていたが、EU指令に伴う国内法改正により、客観的・合理的な正当化事由がない限り原則定年制を廃止。</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">ドイツ</td>
+                  <td class="p-4">条件付きで可能</td>
+                  <td class="p-4">年金の満額受給権が得られる年齢（段階的に67歳へ引き上げ）を定年とする労働協約等の定めがある場合に認められる。</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold bg-slate-50/50 dark:bg-slate-800/50">日本</td>
+                  <td class="p-4">可能（60歳未満は不可）</td>
+                  <td class="p-4">定年制そのものは有効と評価される。ただし、定年後は嘱託再雇用等で契約が切り替わり、実質的な賃金引き下げが紛争化するケースが多い。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第4章 -->
+      <section id="ch4" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 4</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第4章：労働時間と有給休暇</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 法定労働時間の原則：なぜ「1日8時間・週40時間」なのか</h3>
+          <p>
+            労働基準法第32条が定める「原則1日8時間、週40時間」という大原則。これも歴史の進展によって獲得されたものです。
+            産業革命期、工場主はより多くの富を求め、労働者を1日14〜16時間も働かせました。これに対し労働者は「8時間は仕事、8時間は休息、8時間は私たちの好きにさせて（趣味・教育・家族等）」と要求を掲げて闘い（8時間労働制を求めるメイデーの起源）、これが現在の国際標準基準となりました。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. 有給休暇制度の日本の歪みと世界の違い</h3>
+          <p>
+            はがきにも記述されたとおり、日本の年次有給休暇（労基法39条）は、戦後の特殊事情から「労働者が個別に1日単位で自由に取得する」という性格を強く帯びるようになりました。
+          </p>
+          <p>
+            これに対し、フランスなどのヨーロッパは**「まとまった長期バカンス」**による心身の真の解放を重視します。このため、「有給休暇はお金に代えるべきではない」とする原則も国によってその捉え方が大きく異なります。
+          </p>
+
+          <!-- 買取り制度の各国の違い -->
+          <div class="p-5 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-sm">
+            <h5 class="font-bold text-base text-slate-900 dark:text-white mb-2">● 有給休暇「買取り」の対比</h5>
+            <div class="space-y-3 leading-relaxed">
+              <p>
+                <strong class="text-indigo-600 dark:text-indigo-400">【日本における例外的な買取り】</strong><br>
+                本来、有給休暇は実際に休むことで労働者の心身をリフレッシュするための制度であるため、原則として事前買い取りをして休ませないことは<strong>法違反</strong>とされます。しかし、例外的に<strong>「退職時に消化しきれなかった有給休暇」</strong>や<strong>「時効（2年）で消滅する有給休暇」</strong>については、企業が任意で買い取ることが認められています。しかし買い取るか否かは「会社の判断（裁量）」に委ねられており、従業員から請求があっても強制力はありません。
+              </p>
+              <p>
+                <strong class="text-indigo-600 dark:text-indigo-400">【他国（中国など）における義務的な買取り】</strong><br>
+                中国などの労働法では、その年に有給を消化しきれなかった場合、企業は未消化日数分を<strong>300%（実質的なペナルティ金銭）で買い取る義務</strong>を負う設計がなされています。企業に高額な買い取り費用を強制することで、「買い取りを嫌う企業が、自発的に労働者に休暇を消化させるようにする」という逆説的なインセンティブ構造を機能させています。
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. 年次有給休暇「年5日取得」の義務化</h3>
+          <p>
+            日本独特の「同僚に申し訳ない」「有給を取ると罪悪感を抱く」という根強い国民性から、取得率は世界最低レベルを推移し続けてきました。
+            これを国が重く捉え、働き方改革関連法（2019年4月施行）によって、**「年10日以上の年休を付与された全ての労働者に対し、年5日については必ず時季を指定して取得させること」**が使用者の法的義務（違反時は30万円以下の罰金等）とされました。
+          </p>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第5章 -->
+      <section id="ch5" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 5</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第5章：労働環境を整える</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 安全配慮義務：拡大し続けるその射程</h3>
+          <p>
+            企業は単に「賃金を支払う」だけで義務を果たしたわけではありません。
+            判例（陸上自衛隊八戸車両整備中隊事件等）により確立され、現在は労働契約法第5条に明文化されているのが**「安全配慮義務」**です。
+          </p>
+
+          <blockquote class="border-l-4 border-indigo-500 bg-indigo-50/40 dark:bg-slate-800/60 p-4 rounded-r-xl italic my-4 text-sm">
+            「使用者は、労働契約に伴い、労働者がその生命、身体等の安全を確保しつつ労働することができるよう、必要な配慮をするものとする。」
+          </blockquote>
+
+          <p>
+            この「身体等の安全」には、近年、物理的な事故防止のみならず、過労死や、パワハラ・セクハラ等のハラスメントによる<strong>メンタルヘルス（精神的な安全・健康）の保護</strong>が深く含まれるようになっています。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. 過重労働と過失相殺をめぐる２つの重要判例</h3>
+          <p>
+            安全配慮義務違反に伴う過労死や自殺による損害賠償訴訟において、被害者側の「心因的な要因（もともと繊細な性格だった等）」を理由に賠償額を減額すべきか（過失相殺の適用）が争われた２つの最高裁・高裁判決は、現代の実務に多大な影響を与えています。
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800">
+              <span class="text-xs font-semibold text-rose-500">過失を8割認め減額した例</span>
+              <h5 class="font-bold text-lg my-2">東加古川幼稚園事件</h5>
+              <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                自殺した保母の損害賠償について、裁判所は「本人の主観的な性格（業務の難しさに著しく悩みすぎた等）や家庭環境の影響」を重視。自殺という結果に対して労働者側の過失が極めて大きいとし、<strong>「8割」の過失相殺を認定</strong>。会社が支払う損害賠償を2割に減額しました。
+              </p>
+            </div>
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800">
+              <span class="text-xs font-semibold text-teal-500">労働者の多様な性格を擁護した例</span>
+              <h5 class="font-bold text-lg my-2">電通事件（最高裁判決）</h5>
+              <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                最高裁（平成12年）は、労働者の個性が多様であることは言うまでもなく、通常の個性（適応範囲）を大きく逸脱しない限り、労働者の心理的な要因が過重労働による精神疾患・自殺の発生に寄与したとしても、それを理由に<strong>過失相殺（損害賠償の減額）をしてはならない</strong>と判断しました。これにより、企業の過労死に対する法的・道義的責任はさらに厳格なものとなりました。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第6章 -->
+      <section id="ch6" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 6</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第6章：懲戒ルールが生まれるまで</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 懲戒処分が必要とされる理由</h3>
+          <p>
+            労働契約は単なるお金のやりとりではなく、継続的な人間集団としての「企業秩序」を伴います。
+            厳しい解雇規制がある日本社会において、会社のルールに違反した者を簡単に解雇（即クビ）にすることができないからこそ、その雇用関係を維持し、社内秩序を保つために「譴責・減給・出勤停止・降格」などの段階的なペナルティ、すなわち**「懲戒処分」**を下す必要があります。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. 就業規則への明記義務：あらかじめ定めておくルール</h3>
+          <p>
+            使用者は自らの都合や感情で勝手に懲戒処分を行うことはできません。
+            最高裁判例の確立されたルールとして、懲戒処分を行うためには、あらかじめ<strong>就業規則（または雇用契約）に「どのような違反をすれば、どのような処分をするか（事由と手段）」を明確に規定し、かつそれを事前に周知していること</strong>が絶対条件となります。これがない処分は、事後にどんな大問題行動を起こした労働者であってもすべて無効になります。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. プライベートの非違行為：懲戒の限界</h3>
+          <p>
+            従業員が勤務時間外、すなわち私生活（プライベート）で罪を犯したりトラブルを起こしたりした場合、会社は懲戒処分を下せるでしょうか。
+          </p>
+
+          <div class="p-5 border border-slate-200 dark:border-slate-700 bg-amber-50/20 dark:bg-slate-800 rounded-xl text-sm">
+            <h5 class="font-bold text-base text-slate-900 dark:text-white mb-2">● 私生活上の非違行為における最高裁判断のポイント</h5>
+            <div class="space-y-3 leading-relaxed">
+              <p>
+                労働者はプライベートの時間については、会社に対して労務提供義務を負っておらず、個人としての自由があります。
+                そのため、私生活上の行為は原則として<strong>「企業秩序を直接害するとは言えない」</strong>ため、懲戒処分の対象にすることはできません。
+              </p>
+              <p class="font-bold text-rose-600 dark:text-rose-400">【例外的に可能となる場合】</p>
+              <p>
+                その非違行為が、会社の社会的評価や信用を著しく傷つけた、あるいは直接的に会社の業務に重大な影響を与えたと言える場合に限られます。
+                （例：大企業の従業員が住居侵入罪で罰金刑を受けた件で、会社の事業活動に直接関係ない私生活の犯罪として懲戒解雇が無効とされた判例がある一方、会社の品位を著しく損なう飲酒運転や性犯罪等の特定の業種では、解雇が有効とされる傾向が強い。）
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-slate-200 dark:border-slate-800 my-12 print-page-break">
+
+      <!-- 第7章 -->
+      <section id="ch7" class="mb-16 scroll-mt-24">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 dark:text-indigo-400 px-3 py-1.5 rounded-full">Chapter 7</span>
+          <h2 class="serif-title text-3xl font-extrabold mt-3 tracking-tight">第7章：労働組合を知る</h2>
+        </div>
+
+        <div class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3">1. 労働組合の重要性とその意義</h3>
+          <p>
+            個人の労働者が巨大な企業と対等に渡り合い、労働条件（給与アップ等）を勝ち取ることは極めて困難です。
+            そこで、憲法第28条に保障された団結の権利に基づき、組織的に労働条件の維持改善を目指す集団が**「労働組合」**です。労働組合法により、労働者が労働組合の活動を理由に不利益に扱われないことが強力に保障されています。
+          </p>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">2. ユニオン・ショップ制：組織維持のための協力システム</h3>
+          <p>
+            労働組合の力を維持し、発言力を強めるためには、一定以上の労働者が参加していることが望まれます。そこで、多くの伝統的な日本企業（企業内労働組合）が採用してきたのが**「ユニオン・ショップ制度」**です。
+          </p>
+
+          <div class="p-5 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl text-sm leading-relaxed">
+            <h5 class="font-semibold text-slate-900 dark:text-white mb-2">■ ユニオン・ショップ制の仕組み</h5>
+            <p class="mb-2">
+              「使用者が労働協約において、雇用する労働者がその労働組合に加入しない場合、または組合員でなくなった場合に、<strong>当該労働者を解雇する義務を負う契約</strong>」を指します。
+            </p>
+            <p class="text-xs text-slate-500">
+              ※これにより労働組合は組織力を自動的に保つことができますが、一方で労働者が他の労働組合を選択する自由を侵してはならないため、他の有効な組合に所属している労働者に対しては、ユニオン・ショップ協定に基づく解雇義務は適用されない（効力は及ばない）と最高裁で判断されています。
+            </p>
+          </div>
+
+          <h3 class="text-xl font-bold border-l-4 border-indigo-600 pl-3 mt-8">3. 不当労働行為の禁止</h3>
+          <p>
+            労働者の団結権を会社が意図的に切り崩そうとすることを防ぐため、労働組合法第7条は、使用者が行ってはならない不当な介入や不利益な取扱いを**「不当労働行為」**として禁止しています。
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-sm">
+            <li><strong>不利益取扱い：</strong>組合員であることや、組合活動を行ったことを理由に解雇、降格、減給などの差別的取り扱いをすること。</li>
+            <li><strong>団体交渉拒否：</strong>正当な理由なく、労働組合からの団体交渉の申し入れを拒否、あるいは形式的に会うだけで誠実な交渉を怠ること。</li>
+            <li><strong>支配介入：</strong>労働組合の結成や運営、あるいは経費等に関して会社側から影響力を及ぼしコントロールしようとすること。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 最後に確認クイズ全体 -->
+      <section class="no-print mt-16 p-8 bg-indigo-900 text-white rounded-3xl shadow-xl">
+        <h3 class="serif-title text-2xl font-bold mb-4 flex items-center space-x-2">
+          <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>理解度セルフチェックテスト</span>
+        </h3>
+        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+          本教材の内容を踏まえ、理解度を確認するためのチェッククイズです。回答をクリックすると詳細な解説が表示されます。
+        </p>
+
+        <div class="space-y-4 text-slate-800">
+          <!-- クイズ1 -->
+          <div class="bg-white dark:bg-slate-800 dark:text-slate-200 p-5 rounded-xl shadow-sm">
+            <p class="font-bold text-sm mb-2"><span class="text-indigo-600 mr-2">Q1.</span>日本の強力な「配転命令権」は、何と表裏一体であるために強力になっているか？</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <button onclick="checkQuizAnswer('q1', false)" class="px-4 py-1.5 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">A. 高額な退職金支給</button>
+              <button onclick="checkQuizAnswer('q1', true)" class="px-4 py-1.5 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">B. 厳しい解雇規制</button>
+              <button onclick="checkQuizAnswer('q1', false)" class="px-4 py-1.5 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">C. 時間外労働の制限</button>
+            </div>
+            <div id="q1-explanation" class="hidden text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-lg border border-slate-100 dark:border-slate-800 mt-2">
+              <span class="font-bold text-green-600 dark:text-green-400">正解！ Bです。</span><br>
+              一度雇い入れた従業員を簡単には解雇できない（＝解雇規制の厳しさ）ため、会社がその経営環境に合わせて人員を適材適所に移動できるよう、判例法理上、企業に強大な配転命令権が与えられている、という「表裏一体」の構造となっています。
+            </div>
+          </div>
+
+          <!-- クイズ2 -->
+          <div class="bg-white dark:bg-slate-800 dark:text-slate-200 p-5 rounded-xl shadow-sm">
+            <p class="font-bold text-sm mb-2"><span class="text-indigo-600 mr-2">Q2.</span>日本で年次有給休暇が「1日単位」で柔軟に取得できるルールが一般的になった戦後の背景は？</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <button onclick="checkQuizAnswer('q2', true)" class="px-4 py-1.5 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">A. 物資不足による買い出し等の生活事情</button>
+              <button onclick="checkQuizAnswer('q2', false)" class="px-4 py-1.5 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">B. バカンス文化を好まない精神論</button>
+              <button onclick="checkQuizAnswer('q2', false)" class="px-4 py-1.5 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">C. ILO条約の厳格な勧告</button>
+            </div>
+            <div id="q2-explanation" class="hidden text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-lg border border-slate-100 dark:border-slate-800 mt-2">
+              <span class="font-bold text-green-600 dark:text-green-400">正解！ Aです。</span><br>
+              戦後すぐの混乱期は工場への電力・物資不足等で操業自体が途切れがちだったこと、また食糧を確保するための「物資買い出し」のために柔軟に休暇を取れるよう、当時の大混乱期の日本社会を前提として、1日単位の取得が定着しました。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p>© 2026 向井蘭 編著『教養としての「労働法」入門』より再構成</p>
+        <p class="mt-1">土橋社会保険労務士事務所 監修 教材ウェブマスターテキスト</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // ダークモード切替
+    function toggleDarkMode() {
+      const root = document.getElementById('body-root');
+      const iconLight = document.getElementById('theme-icon-light');
+      const iconDark = document.getElementById('theme-icon-dark');
+      
+      root.classList.toggle('dark');
+      root.classList.toggle('bg-slate-950');
+      root.classList.toggle('bg-slate-50');
+      
+      if (root.classList.contains('dark')) {
+        iconLight.classList.remove('hidden');
+        iconDark.classList.add('hidden');
+      } else {
+        iconLight.classList.add('hidden');
+        iconDark.classList.remove('hidden');
+      }
+    }
+
+    // 文字サイズ調整
+    let currentFontSize = 16; // 標準
+    function adjustFontSize(step) {
+      const contentArea = document.getElementById('content-area');
+      const sections = document.querySelectorAll('section');
+      
+      if (step === 0) {
+        currentFontSize = 16;
+      } else {
+        currentFontSize += step;
+      }
+      
+      // 制限
+      if (currentFontSize < 12) currentFontSize = 12;
+      if (currentFontSize > 24) currentFontSize = 24;
+      
+      sections.forEach(sec => {
+        const paragraphs = sec.querySelectorAll('p, li, blockquote');
+        paragraphs.forEach(p => {
+          p.style.fontSize = currentFontSize + 'px';
+        });
+      });
+    }
+
+    // クイズの個別回答開閉
+    function toggleQuizAnswer(id) {
+      const element = document.getElementById(id);
+      element.classList.toggle('hidden');
+    }
+
+    // 択一クイズの解説
+    function checkQuizAnswer(qId, isCorrect) {
+      const explanation = document.getElementById(qId + '-explanation');
+      explanation.classList.remove('hidden');
+      if (isCorrect) {
+        explanation.style.borderLeft = '4px solid #10B981'; // グリーン
+      } else {
+        explanation.style.borderLeft = '4px solid #EF4444'; // レッド
+        explanation.innerHTML = '<span class="font-bold text-red-600">残念！ 違います。</span><br>解説をよく読んでみましょう。' + explanation.innerHTML.substring(explanation.innerHTML.indexOf('<br>') + 4);
+      }
+    }
+
+    // キーワード簡易検索 (マッチした部分を強調、それ以外を薄く)
+    function searchKeyword() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const sections = document.querySelectorAll('section');
+      
+      if (!query) {
+        sections.forEach(sec => {
+          sec.style.opacity = '1';
+        });
+        return;
+      }
+
+      sections.forEach(sec => {
+        const text = sec.innerText.toLowerCase();
+        if (text.includes(query)) {
+          sec.style.opacity = '1';
+          sec.style.borderLeft = '2px solid #6366f1';
+        } else {
+          sec.style.opacity = '0.35';
+          sec.style.borderLeft = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
