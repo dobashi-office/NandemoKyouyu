@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>面接の精度を上げる「構造化面接」のすすめ｜顧問先向け採用ガイド</title>
+<style>
+  :root{
+    --navy:#1f3a5f;
+    --navy-dark:#152a42;
+    --accent:#c8a24a;
+    --accent-soft:#f7f0dd;
+    --blue:#2f6db3;
+    --blue-soft:#e8f0f9;
+    --bg:#f6f7f9;
+    --paper:#ffffff;
+    --ink:#2b2f36;
+    --ink-soft:#5b626c;
+    --line:#e5e8ec;
+    --green:#2f7d5b;
+    --green-soft:#eaf4ee;
+    --red:#b5493f;
+    --red-soft:#faf0ee;
+    --shadow:0 6px 24px rgba(20,40,70,.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 70px;}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:#fff;
+    padding:60px 20px 56px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;left:-80px;bottom:-80px;
+    width:280px;height:280px;border-radius:50%;
+    background:rgba(47,109,179,.18);
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;
+    width:240px;height:240px;border-radius:50%;
+    background:rgba(200,162,74,.15);
+  }
+  .hero .kicker{
+    display:inline-block;
+    letter-spacing:.28em;
+    font-size:12.5px;
+    color:var(--accent);
+    border:1px solid rgba(200,162,74,.5);
+    border-radius:999px;
+    padding:5px 18px;
+    margin-bottom:24px;
+    position:relative;z-index:1;
+  }
+  .hero .pre{
+    font-size:clamp(15px,2.4vw,19px);
+    color:rgba(255,255,255,.7);
+    margin:0 0 6px;
+    position:relative;z-index:1;
+  }
+  .hero h1{
+    font-size:clamp(26px,4.6vw,42px);
+    margin:0 0 20px;
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1.4;
+    position:relative;z-index:1;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero p.sub{
+    max-width:640px;margin:0 auto;
+    font-size:15.5px;color:rgba(255,255,255,.85);
+    position:relative;z-index:1;
+  }
+
+  /* ===== Intro ===== */
+  .intro{
+    background:var(--paper);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    padding:30px 34px;
+    margin-top:-32px;
+    position:relative;z-index:2;
+    border-top:4px solid var(--accent);
+  }
+  .intro p{margin:0;font-size:15.5px;color:var(--ink-soft);}
+  .intro strong{color:var(--navy);}
+
+  /* ===== Section head ===== */
+  .sec-head{
+    display:flex;align-items:center;gap:16px;
+    margin:54px 0 22px;
+  }
+  .sec-num{
+    flex:0 0 auto;
+    width:52px;height:52px;border-radius:12px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;font-weight:800;
+    box-shadow:var(--shadow);
+  }
+  .sec-head h2{
+    margin:0;font-size:clamp(19px,2.7vw,24px);
+    color:var(--navy);font-weight:800;line-height:1.45;
+  }
+  .sec-head .tag{
+    display:block;font-size:11.5px;letter-spacing:.16em;
+    color:var(--accent);font-weight:700;margin-bottom:2px;
+  }
+
+  .card{
+    background:var(--paper);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:28px 32px;
+    border:1px solid var(--line);
+  }
+  .card p{margin:0 0 15px;}
+  .card p:last-child{margin-bottom:0;}
+  .lead{font-size:15.5px;}
+
+  /* compare */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+  .vs .col{border-radius:12px;padding:22px 22px 18px;font-size:14.5px;}
+  .vs .col h3{margin:0 0 4px;font-size:17px;}
+  .vs .col .sub{font-size:12.5px;font-weight:700;letter-spacing:.08em;margin-bottom:12px;display:block;}
+  .vs .past{background:var(--red-soft);border:1px solid #eccbc7;}
+  .vs .past h3{color:var(--red);}
+  .vs .past .sub{color:var(--red);}
+  .vs .future{background:var(--green-soft);border:1px solid #c8e2d3;}
+  .vs .future h3{color:var(--green);}
+  .vs .future .sub{color:var(--green);}
+  .vs ul{margin:0;padding-left:0;list-style:none;}
+  .vs li{padding:7px 0 7px 24px;position:relative;border-bottom:1px dashed rgba(0,0,0,.08);}
+  .vs li:last-child{border-bottom:none;}
+  .vs .past li::before{content:"−";position:absolute;left:2px;color:var(--red);font-weight:800;}
+  .vs .future li::before{content:"＋";position:absolute;left:0;color:var(--green);font-weight:800;}
+
+  /* metaphor card */
+  .metaphor{
+    background:linear-gradient(135deg,#fdfaf3,#f7f0dd);
+    border:1px solid #e8d9b0;
+    border-radius:14px;
+    padding:30px 34px;
+    margin-top:20px;
+    text-align:center;
+  }
+  .metaphor .icon{font-size:34px;line-height:1;margin-bottom:10px;}
+  .metaphor p.big{
+    font-size:clamp(17px,2.6vw,21px);
+    font-weight:800;color:var(--navy);
+    margin:0 0 10px;line-height:1.7;
+  }
+  .metaphor p.small{margin:0;font-size:14px;color:var(--ink-soft);}
+
+  .callout{
+    background:var(--accent-soft);
+    border-left:5px solid var(--accent);
+    border-radius:0 10px 10px 0;
+    padding:16px 20px;margin-top:20px;
+    font-size:14.5px;
+  }
+  .callout strong{color:var(--navy-dark);}
+  .callout.blue{background:var(--blue-soft);border-left-color:var(--blue);}
+
+  ul.points{list-style:none;padding:0;margin:8px 0 0;}
+  ul.points li{
+    position:relative;padding:10px 0 10px 30px;
+    border-bottom:1px dashed var(--line);
+    font-size:15px;
+  }
+  ul.points li:last-child{border-bottom:none;}
+  ul.points li::before{
+    content:"✓";position:absolute;left:0;top:9px;
+    color:var(--green);font-weight:800;
+  }
+
+  /* step flow */
+  .steps{margin-top:22px;}
+  .step{
+    display:flex;gap:18px;align-items:flex-start;
+    padding:18px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .step:last-child{border-bottom:none;}
+  .step .s-num{
+    flex:0 0 auto;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:17px;
+  }
+  .step h4{margin:0 0 6px;font-size:16px;color:var(--navy);}
+  .step p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+  .step .ex{
+    display:block;margin-top:8px;
+    background:var(--bg);border-radius:8px;
+    padding:10px 14px;font-size:13.5px;color:var(--ink);
+  }
+
+  /* STAR */
+  .star-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px;}
+  .star{
+    background:var(--paper);border:1px solid var(--line);
+    border-top:4px solid var(--blue);
+    border-radius:10px;padding:16px 14px;text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .star .en{font-size:22px;font-weight:800;color:var(--blue);line-height:1.2;}
+  .star .jp{font-size:13px;font-weight:700;color:var(--navy);margin:4px 0 8px;}
+  .star p{margin:0;font-size:12.5px;color:var(--ink-soft);line-height:1.7;}
+
+  /* question samples */
+  .q-list{margin-top:18px;}
+  .q-item{
+    background:var(--blue-soft);
+    border-radius:10px;
+    padding:14px 18px;
+    margin-bottom:10px;
+    font-size:14.5px;
+  }
+  .q-item:last-child{margin-bottom:0;}
+  .q-item .q-label{
+    display:inline-block;font-size:11.5px;font-weight:800;
+    color:#fff;background:var(--blue);
+    border-radius:999px;padding:1px 12px;margin-bottom:6px;
+    letter-spacing:.05em;
+  }
+  .q-item p{margin:0;}
+  .q-item p b{color:var(--navy);}
+
+  /* rating table */
+  table.rating{
+    width:100%;border-collapse:collapse;margin-top:20px;
+    font-size:14px;
+  }
+  table.rating th{
+    background:var(--navy);color:#fff;
+    padding:10px 12px;text-align:left;font-weight:700;
+    border:1px solid var(--navy);
+  }
+  table.rating td{
+    padding:10px 12px;border:1px solid var(--line);
+    background:var(--paper);vertical-align:top;
+  }
+  table.rating tr td:first-child{
+    white-space:nowrap;font-weight:800;text-align:center;
+  }
+  table.rating .r5{color:var(--green);}
+  table.rating .r3{color:var(--blue);}
+  table.rating .r1{color:var(--red);}
+
+  /* big quote */
+  .bigq{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:#fff;
+    border-radius:16px;
+    padding:40px 36px;
+    margin-top:22px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .bigq::after{
+    content:"”";
+    position:absolute;right:18px;bottom:-40px;
+    font-size:180px;color:rgba(200,162,74,.15);
+    font-family:Georgia,serif;line-height:1;
+  }
+  .bigq .label{
+    display:inline-block;font-size:12px;letter-spacing:.25em;
+    color:var(--accent);border:1px solid rgba(200,162,74,.5);
+    border-radius:999px;padding:4px 16px;margin-bottom:18px;
+  }
+  .bigq p.q{
+    font-size:clamp(18px,3vw,24px);
+    font-weight:800;line-height:1.75;
+    margin:0 0 12px;position:relative;z-index:1;
+  }
+  .bigq p.q em{font-style:normal;color:var(--accent);}
+  .bigq p.note{
+    margin:0;font-size:14px;color:rgba(255,255,255,.8);
+    position:relative;z-index:1;
+  }
+
+  /* summary */
+  .summary{
+    background:var(--navy);color:#fff;
+    border-radius:14px;padding:34px 36px;margin-top:22px;
+  }
+  .summary h3{margin:0 0 18px;font-size:20px;color:#fff;}
+  .summary ol{margin:0;padding-left:0;list-style:none;counter-reset:sm;}
+  .summary li{
+    counter-increment:sm;
+    padding:12px 0 12px 44px;position:relative;
+    border-bottom:1px solid rgba(255,255,255,.12);font-size:15px;
+  }
+  .summary li:last-child{border-bottom:none;}
+  .summary li::before{
+    content:counter(sm);
+    position:absolute;left:0;top:10px;
+    width:28px;height:28px;border-radius:50%;
+    background:var(--accent);color:var(--navy-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:14px;
+  }
+  .summary b{color:var(--accent);}
+
+  /* footer credit */
+  .foot{
+    margin-top:60px;text-align:center;
+    padding:34px 20px 0;border-top:2px solid var(--line);
+    color:var(--ink-soft);font-size:13.5px;
+  }
+  .foot .credit{display:inline-block;margin-bottom:12px;font-size:13px;color:var(--ink-soft);}
+  .foot .credit .role{letter-spacing:.1em;margin-right:8px;}
+  .foot .credit .name{font-size:14px;font-weight:700;color:var(--navy);letter-spacing:.12em;}
+  .foot p{margin:6px 0;}
+  .foot .fine{font-size:12px;color:#9aa1aa;margin-top:12px;}
+
+  @media(max-width:640px){
+    .vs{grid-template-columns:1fr;}
+    .star-grid{grid-template-columns:1fr 1fr;}
+    .card{padding:22px;}
+    .intro{padding:22px;}
+    .bigq{padding:30px 22px;}
+    .summary{padding:26px 22px;}
+    table.rating{font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="kicker">INTERVIEW GUIDE Ⅱ</span>
+  <p class="pre">面接の「勘」を「仕組み」に変える──</p>
+  <h1>「<em>構造化面接</em>」のすすめ</h1>
+  <p class="sub">「なんとなく良さそうだったから採用した」が失敗のもと。誰が面接しても同じ物差しで評価できる<b>構造化面接</b>の考え方と、明日から使える作り方をご紹介します。</p>
+</div>
+
+<div class="wrap">
+
+  <div class="intro">
+    <p>前回の資料では、面接では「人格＝この会社で何がやりたいか」を見るべきとお伝えしました。では、それを<strong>面接官の勘や相性に頼らず、毎回同じ精度で見極める</strong>にはどうすればよいか──その答えが「構造化面接」です。<strong>質問と評価基準をあらかじめ決めておく</strong>だけで、面接の精度は大きく変わります。</p>
+  </div>
+
+  <!-- 1 -->
+  <div class="sec-head">
+    <div class="sec-num">1</div>
+    <div><span class="tag">課題</span><h2>なぜ「フリートークの面接」は失敗するのか</h2></div>
+  </div>
+  <div class="card">
+    <p class="lead">準備なしのフリートーク面接では、採否の判断が<b>「面接官の印象」</b>に大きく左右されます。人の第一印象は数分で固まり、その後の会話は無意識に「印象を裏付ける情報」ばかり集めてしまう──これは誰にでも起こる心理的なクセです。</p>
+    <ul class="points">
+      <li>話が上手い人・自分と似ている人を高く評価してしまう（類似性バイアス）</li>
+      <li>最初の数分の印象で、その後の評価が引っ張られる（第一印象・ハロー効果）</li>
+      <li>面接官によって聞く内容がバラバラで、応募者同士を比較できない</li>
+      <li>「なんとなく良い／悪い」の理由を、後から説明できない</li>
+    </ul>
+    <div class="metaphor">
+      <div class="icon">⚖️</div>
+      <p class="big">面接官ごとに「物差し」が違えば、<br>測るたびに結果が変わるのは当たり前。</p>
+      <p class="small">構造化面接とは、面接の前に<b>全員で同じ物差しを作っておく</b>こと。特別な道具は要りません。「何を聞くか」「どう評価するか」を先に決める──それだけです。</p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="sec-head">
+    <div class="sec-num">2</div>
+    <div><span class="tag">基本</span><h2>構造化面接とは──「質問」と「評価基準」を先に決める面接</h2></div>
+  </div>
+  <div class="card">
+    <p class="lead">構造化面接とは、<b>①全員に同じ質問を、同じ順序で聞き、②あらかじめ決めた評価基準で採点する</b>面接手法です。採用研究の分野では、フリートーク型に比べて<b>入社後の活躍を予測する精度が高い</b>ことが繰り返し確認されており、Googleをはじめ多くの企業が採用しています。</p>
+    <div class="vs">
+      <div class="col past">
+        <h3>フリートーク面接</h3>
+        <span class="sub">── 勘と印象に頼る</span>
+        <ul>
+          <li>質問はその場の流れ次第</li>
+          <li>面接官ごとに評価がバラバラ</li>
+          <li>応募者同士を比較できない</li>
+          <li>採否の理由を説明できない</li>
+          <li>面接官の力量に依存する</li>
+        </ul>
+      </div>
+      <div class="col future">
+        <h3>構造化面接</h3>
+        <span class="sub">── 仕組みで見極める</span>
+        <ul>
+          <li>質問を事前に設計し全員に同じものを聞く</li>
+          <li>評価基準・採点尺度が統一されている</li>
+          <li>応募者を同じ物差しで比較できる</li>
+          <li>採否の根拠を記録として残せる</li>
+          <li>面接に不慣れな人でも精度が出る</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">💡 <strong>完全にガチガチにする必要はありません。</strong>核となる質問と評価基準だけ固定し、深掘りやアイスブレイクは自由に行う「半構造化」で十分効果があります。中小企業にはこの形が現実的です。</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="sec-head">
+    <div class="sec-num">3</div>
+    <div><span class="tag">作り方</span><h2>構造化面接をつくる4つのステップ</h2></div>
+  </div>
+  <div class="card">
+    <p class="lead">構造化面接は、次の4ステップで作れます。最初は1つの職種からで構いません。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="s-num">1</div>
+        <div>
+          <h4>評価項目を決める（3〜5個に絞る）</h4>
+          <p>「求める人物像」から、面接で確認したい項目を絞り込みます。欲張らないことがコツです。</p>
+          <span class="ex">例：誠実さ／チームでの協調性／お客様志向／学ぶ姿勢／当社でやりたいことの明確さ</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="s-num">2</div>
+        <div>
+          <h4>評価項目ごとに質問を用意する</h4>
+          <p>各項目につき1〜2問、「過去の行動」を聞く質問を作ります（作り方は次のセクションで解説）。</p>
+          <span class="ex">例：「協調性」→「意見が合わない相手と仕事をした経験を教えてください。どう対応しましたか？」</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="s-num">3</div>
+        <div>
+          <h4>採点の物差し（評価尺度）を決める</h4>
+          <p>「5点はどんな回答か、1点はどんな回答か」の目安を言葉にしておきます。これが評価のブレを防ぐ心臓部です。</p>
+          <span class="ex">例：5点＝具体的な行動と結果を自分の言葉で語れる ／ 1点＝一般論のみで自分の行動が出てこない</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="s-num">4</div>
+        <div>
+          <h4>面接官全員で共有し、面接後すぐ採点する</h4>
+          <p>面接前に質問と基準を面接官全員で確認。面接直後に各自が独立して採点し、その後にすり合わせます。</p>
+          <span class="ex">ポイント：他の面接官の意見を聞く前に採点する（声の大きい人に引っ張られるのを防ぐ）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="sec-head">
+    <div class="sec-num">4</div>
+    <div><span class="tag">質問設計</span><h2>質問は「過去の行動」を聞く──STAR面接の基本</h2></div>
+  </div>
+  <div class="card">
+    <p class="lead">「あなたは協調性がありますか？」と聞けば、誰でも「あります」と答えます。人柄や仕事ぶりは、<b>本人の自己申告ではなく、過去の具体的な行動</b>に現れます。行動を聞き出すフレームが<b>STAR</b>です。</p>
+    <div class="star-grid">
+      <div class="star">
+        <div class="en">S</div>
+        <div class="jp">Situation<br>状況</div>
+        <p>どんな場面・環境だったか</p>
+      </div>
+      <div class="star">
+        <div class="en">T</div>
+        <div class="jp">Task<br>課題</div>
+        <p>何が求められていたか・何が問題だったか</p>
+      </div>
+      <div class="star">
+        <div class="en">A</div>
+        <div class="jp">Action<br>行動</div>
+        <p><b>本人が</b>実際に何をしたか（ここが核心）</p>
+      </div>
+      <div class="star">
+        <div class="en">R</div>
+        <div class="jp">Result<br>結果</div>
+        <p>どうなったか・何を学んだか</p>
+      </div>
+    </div>
+    <div class="q-list">
+      <div class="q-item">
+        <span class="q-label">質問例①　協調性</span>
+        <p>「意見の合わない相手と一緒に仕事をした経験を教えてください。<b>そのとき、あなたはどう動きましたか？</b>」</p>
+      </div>
+      <div class="q-item">
+        <span class="q-label">質問例②　お客様志向</span>
+        <p>「お客様（利用者・取引先）のために、決められた仕事以上の工夫をした経験はありますか。<b>具体的に何をしましたか？</b>」</p>
+      </div>
+      <div class="q-item">
+        <span class="q-label">質問例③　学ぶ姿勢</span>
+        <p>「うまくいかなかった仕事・失敗した経験を教えてください。<b>その後、何を変えましたか？</b>」</p>
+      </div>
+    </div>
+    <div class="callout">💡 回答が抽象的なときは「<strong>そのとき、あなたは具体的に何をしましたか？</strong>」と深掘りします。「私たちは」ではなく「私は」で語れるか──本人の行動が出てくるかが見極めのポイントです。</div>
+    <div class="callout blue">💡 <strong>前回の「人格採用」との関係：</strong>構造化面接は人格採用と対立するものではありません。「やりたいこと」と「会社が求める役割」の重なりを、<strong>勘ではなく仕組みで確認するための道具</strong>が構造化面接です。評価項目に「当社でやりたいことの明確さ」を入れれば、2つは一本につながります。</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="sec-head">
+    <div class="sec-num">5</div>
+    <div><span class="tag">評価</span><h2>評価シートはシンプルでいい──5段階＋ひとことメモ</h2></div>
+  </div>
+  <div class="card">
+    <p class="lead">評価シートは凝ったものは不要です。<b>評価項目×5段階＋気づきメモ</b>の1枚で十分。大切なのは、点数の意味（何点がどんな回答か）を先に決めておくことです。</p>
+    <table class="rating">
+      <tr><th style="width:90px;">評価</th><th>回答の目安（例：協調性の場合）</th></tr>
+      <tr><td class="r5">5</td><td>具体的な状況・自分の行動・結果まで一貫して語れる。相手の立場への配慮が行動に表れている。</td></tr>
+      <tr><td class="r3">3</td><td>経験は語れるが、行動がやや一般的。深掘りすると具体性が出てくる。</td></tr>
+      <tr><td class="r1">1</td><td>一般論・理想論のみで、自分の行動が出てこない。他責の表現が目立つ。</td></tr>
+    </table>
+    <ul class="points" style="margin-top:20px;">
+      <li>面接<b>直後</b>に記入する（記憶は面接後すぐに薄れ、印象だけが残ります）</li>
+      <li>点数と一緒に「根拠となった発言」をひとことメモする</li>
+      <li>複数面接官の場合は、<b>すり合わせ前に各自独立で採点</b>する</li>
+      <li>評価シートは保管しておく（採否の説明根拠・次回採用の改善材料になります）</li>
+    </ul>
+    <div class="callout">⚠️ <strong>社労士からのひとこと：</strong>採否の判断は、応募者の<strong>適性・能力を基準</strong>に行うのが大原則です。本籍・家族構成・思想信条・結婚や出産の予定など、適性・能力と無関係な事項を質問・評価項目にすることは避けてください。構造化面接で質問を事前に固定しておくこと自体が、<strong>不適切質問の防止策</strong>にもなります。</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="sec-head">
+    <div class="sec-num">6</div>
+    <div><span class="tag">運用</span><h2>「尋問」にしないための運用のコツ</h2></div>
+  </div>
+  <div class="card">
+    <p class="lead">構造化面接の弱点は、やり方を間違えると<b>質問リストを淡々と消化する「尋問」</b>になってしまうこと。応募者が緊張したままでは、本来の姿は見えません。仕組みと温かさは両立できます。</p>
+    <ul class="points">
+      <li>冒頭は雑談・アイスブレイクで緊張をほぐしてから本題に入る</li>
+      <li>質問リストは「読み上げる」のではなく、会話の流れに乗せて聞く</li>
+      <li>回答にはうなずき・相づちで反応し、興味を持って深掘りする</li>
+      <li>面接の後半は応募者からの質問時間を十分に取り、期待値をすり合わせる</li>
+      <li>会社の魅力・大変さを正直に伝える時間も忘れずに（面接は口説きの場でもある）</li>
+    </ul>
+    <div class="bigq">
+      <span class="label">POINT</span>
+      <p class="q">仕組みで<em>見極め</em>、<br>人間味で<em>選ばれる</em>。</p>
+      <p class="note">評価は構造化で厳密に。場の空気は温かく。この両輪が揃ったとき、面接の質は最も高くなります。</p>
+    </div>
+  </div>
+
+  <!-- summary -->
+  <div class="summary">
+    <h3>📌 本日のまとめ ── 構造化面接・6つのポイント</h3>
+    <ol>
+      <li>フリートーク面接は<b>印象とバイアス</b>に左右される。面接の物差しを全員でそろえる</li>
+      <li>構造化面接＝<b>「同じ質問」×「同じ評価基準」</b>。核だけ固定する半構造化で十分</li>
+      <li>作り方は4ステップ：<b>評価項目を絞る → 質問を用意 → 採点基準を決める → 面接官で共有</b></li>
+      <li>質問は自己申告ではなく<b>過去の行動（STAR）</b>を聞く。「あなたは何をしましたか？」</li>
+      <li>評価は<b>面接直後・独立採点・根拠メモ</b>。シートは1枚のシンプルなもので良い</li>
+      <li>仕組みで見極め、<b>人間味で選ばれる</b>。尋問にせず、期待値のすり合わせと口説きも忘れない</li>
+    </ol>
+  </div>
+
+  <div class="foot">
+    <div class="credit">
+      <span class="role">監修・執筆</span>
+      <span class="name">特定社会保険労務士　土橋　豪</span>
+    </div>
+    <p>評価項目の設計や面接質問の作成など、貴社に合わせた具体化はお気軽にご相談ください。</p>
+    <p class="fine">本資料は顧問先向けの一般的な情報提供を目的としたものです。個別の対応は事案により異なりますので、詳細はお問い合わせください。</p>
+  </div>
+
+</div>
+</body>
+</html>
