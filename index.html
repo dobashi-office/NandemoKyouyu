@@ -2,230 +2,1083 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>事務所資料一覧</title>
-    
-<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="2027年1月1日施行 療養・育児・介護により報酬が急減した方の標準報酬月額の特例改定に関する顧問先向け解説資料（土橋社労士事務所）">
+<title>【2027年1月施行】社会保険料の特例改定ガイド｜土橋社労士事務所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 
 <style>
-body {
-    font-family: Arial, "Hiragino Sans", Meiryo, sans-serif;
-    background:#f5f7fa;
-    margin:0;
-    padding:20px;
+:root{
+  --ground:#f4f6f8;
+  --surface:#ffffff;
+  --surface-2:#eef1f5;
+  --navy:#1f3a5f;
+  --navy-deep:#152a42;
+  --navy-soft:#3d5f8a;
+  --badge-bg:#1f3a5f;
+  --badge-fg:#ffffff;
+  --gold:#a8842c;
+  --gold-deco:#c8a24a;
+  --gold-wash:#f8f2e2;
+  --ink:#232a33;
+  --ink-soft:#5c6674;
+  --ink-faint:#8a94a2;
+  --rule:#dde3ea;
+  --rule-strong:#c4cdd8;
+  --caution:#a8443c;
+  --caution-wash:#fbeeed;
+  --ok:#2f7d5b;
+  --ok-wash:#edf6f1;
+  --info:#2f6db3;
+  --info-wash:#eef3fa;
+  --shadow:0 1px 2px rgba(21,42,66,.05), 0 8px 28px rgba(21,42,66,.06);
+  --measure:860px;
 }
-.container {
-    max-width:900px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101620;
+    --surface:#18202b;
+    --surface-2:#1f2937;
+    --navy:#9dbde0;
+    --navy-deep:#0c1219;
+    --navy-soft:#7fa3cc;
+    --badge-bg:#2f4d70;
+    --badge-fg:#eaf1f9;
+    --gold:#d9b661;
+    --gold-deco:#c8a24a;
+    --gold-wash:#2a2418;
+    --ink:#e3e8ef;
+    --ink-soft:#a3aebd;
+    --ink-faint:#78838f;
+    --rule:#2a3441;
+    --rule-strong:#3a4657;
+    --caution:#e79187;
+    --caution-wash:#2c1d1b;
+    --ok:#7cc2a0;
+    --ok-wash:#16261f;
+    --info:#8ab4e8;
+    --info-wash:#151f2c;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 28px rgba(0,0,0,.35);
+  }
 }
-h1 {
-    text-align:center;
-    margin-bottom:10px;
+:root[data-theme="dark"]{
+  --ground:#101620;
+  --surface:#18202b;
+  --surface-2:#1f2937;
+  --navy:#9dbde0;
+  --navy-deep:#0c1219;
+  --navy-soft:#7fa3cc;
+  --badge-bg:#2f4d70;
+  --badge-fg:#eaf1f9;
+  --gold:#d9b661;
+  --gold-deco:#c8a24a;
+  --gold-wash:#2a2418;
+  --ink:#e3e8ef;
+  --ink-soft:#a3aebd;
+  --ink-faint:#78838f;
+  --rule:#2a3441;
+  --rule-strong:#3a4657;
+  --caution:#e79187;
+  --caution-wash:#2c1d1b;
+  --ok:#7cc2a0;
+  --ok-wash:#16261f;
+  --info:#8ab4e8;
+  --info-wash:#151f2c;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 28px rgba(0,0,0,.35);
 }
-p {
-    text-align:center;
-    color:#555;
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  font-size:16px;
+  line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:"palt" 1;
 }
-.list {
-    margin-top:30px;
+h1,h2,h3,h4{
+  font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-weight:700;
+  line-height:1.5;
+  text-wrap:balance;
+  margin:0;
 }
-.item {
-    padding:15px;
-    border-bottom:1px solid #ddd;
+p{margin:0 0 1.1em;}
+p:last-child{margin-bottom:0;}
+a{color:var(--info);}
+strong{font-weight:700;}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(760px 340px at 88% -10%, rgba(200,162,74,.22), transparent 62%),
+    linear-gradient(168deg,#1f3a5f 0%,#152a42 62%,#101f33 100%);
+  color:#eef2f7;
+  padding:76px 24px 0;
+  border-bottom:3px solid var(--gold-deco);
 }
-.item a {
-    text-decoration:none;
-    font-size:18px;
-    color:#2563eb;
-    font-weight:bold;
+.hero-inner{max-width:var(--measure);margin:0 auto;padding-bottom:64px;}
+.kicker{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-deco);margin:0 0 20px;
 }
-.date {
-    font-size:13px;
-    color:#888;
+.hero h1{
+  font-size:clamp(1.85rem,4.4vw,2.9rem);
+  color:#fff;font-weight:900;letter-spacing:.01em;margin-bottom:22px;
+}
+.hero h1 em{font-style:normal;color:#e8c877;}
+.hero-lead{
+  font-size:1.03rem;color:#c3cfdd;max-width:44em;margin:0;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;
+  padding-top:22px;border-top:1px solid rgba(255,255,255,.16);
+  font-size:.83rem;color:#a9b8ca;
+}
+.hero-meta span strong{color:#e2eaf3;font-weight:500;}
+
+/* ---------- facts strip ---------- */
+.facts{
+  max-width:var(--measure);margin:-34px auto 0;padding:0 24px;
+  position:relative;z-index:2;
+}
+.facts-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--surface);border:1px solid var(--rule);
+  border-top:3px solid var(--gold-deco);
+  border-radius:4px;box-shadow:var(--shadow);overflow:hidden;
+}
+.fact{padding:20px 18px;border-right:1px solid var(--rule);}
+.fact:last-child{border-right:none;}
+.fact-label{
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;
+  color:var(--ink-faint);text-transform:uppercase;display:block;margin-bottom:6px;
+}
+.fact-value{font-size:1.02rem;font-weight:700;color:var(--navy);line-height:1.5;display:block;}
+.fact-note{font-size:.76rem;color:var(--ink-soft);display:block;margin-top:2px;}
+
+/* ---------- shell ---------- */
+.shell{
+  max-width:1240px;margin:0 auto;padding:56px 24px 0;
+  display:grid;grid-template-columns:1fr;gap:0;
+}
+@media (min-width:1120px){
+  .shell{grid-template-columns:236px minmax(0,1fr);gap:56px;padding-top:64px;}
+  .toc{position:sticky;top:28px;align-self:start;max-height:calc(100vh - 56px);overflow-y:auto;}
+}
+.main{max-width:var(--measure);min-width:0;}
+
+/* ---------- toc ---------- */
+.toc{
+  border-top:2px solid var(--navy);padding-top:16px;margin-bottom:44px;
+  font-size:.86rem;
+}
+.toc-title{
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.16em;
+  color:var(--ink-faint);text-transform:uppercase;margin-bottom:12px;
+}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.toc a{
+  display:grid;grid-template-columns:2.1em 1fr;gap:4px;
+  color:var(--ink-soft);text-decoration:none;padding:3px 0;line-height:1.6;
+}
+.toc a:hover,.toc a:focus-visible{color:var(--navy);}
+.toc a .n{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--gold);}
+
+/* ---------- letter ---------- */
+.letter{
+  background:var(--surface);border:1px solid var(--rule);border-radius:4px;
+  padding:36px 34px;box-shadow:var(--shadow);margin-bottom:56px;
+}
+.letter-head{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:.84rem;color:var(--ink-soft);
+  padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid var(--rule);
+}
+.letter-head .to{font-weight:700;color:var(--ink);}
+.letter p{font-size:.97rem;}
+
+/* ---------- sections ---------- */
+section{margin-bottom:64px;scroll-margin-top:24px;}
+.sec-head{
+  display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:14px;
+  padding-bottom:14px;margin-bottom:26px;border-bottom:2px solid var(--navy);
+}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace;font-size:.9rem;font-weight:600;
+  color:var(--gold);letter-spacing:.06em;
+}
+.sec-head h2{font-size:clamp(1.3rem,2.6vw,1.6rem);color:var(--navy);}
+h3{
+  font-size:1.06rem;color:var(--ink);margin:34px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold-deco);
+}
+h3:first-of-type{margin-top:0;}
+
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:4px;
+  padding:24px 26px;box-shadow:var(--shadow);margin:18px 0;
+}
+
+/* ---------- callouts ---------- */
+.callout{
+  border-radius:4px;padding:18px 22px;margin:20px 0;
+  border-left:4px solid var(--info);background:var(--info-wash);
+}
+.callout.warn{border-left-color:var(--caution);background:var(--caution-wash);}
+.callout.good{border-left-color:var(--ok);background:var(--ok-wash);}
+.callout.gold{border-left-color:var(--gold-deco);background:var(--gold-wash);}
+.callout-label{
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;display:block;margin-bottom:7px;color:var(--info);font-weight:600;
+}
+.callout.warn .callout-label{color:var(--caution);}
+.callout.good .callout-label{color:var(--ok);}
+.callout.gold .callout-label{color:var(--gold);}
+.callout p{font-size:.95rem;}
+
+/* ---------- tables ---------- */
+.table-wrap{overflow-x:auto;margin:20px 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.9rem;}
+caption{
+  text-align:left;font-size:.8rem;color:var(--ink-soft);padding:12px 16px 0;
+}
+th,td{padding:12px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule);line-height:1.75;}
+thead th{
+  background:var(--surface-2);color:var(--navy);font-weight:700;font-size:.83rem;
+  letter-spacing:.03em;border-bottom:2px solid var(--rule-strong);white-space:nowrap;
+}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+tbody th{font-weight:700;color:var(--ink);background:transparent;white-space:nowrap;}
+td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.tag{
+  display:inline-block;font-size:.74rem;font-weight:700;padding:1px 8px;border-radius:99px;
+  border:1px solid currentColor;line-height:1.7;white-space:nowrap;
+}
+.tag.warn{color:var(--caution);}
+.tag.ok{color:var(--ok);}
+.tag.navy{color:var(--navy-soft);}
+
+/* ---------- timeline diagram ---------- */
+.tl{display:flex;flex-direction:column;gap:20px;margin:22px 0;}
+.tl-row{
+  background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:18px 20px;
+}
+.tl-row.hi{border-color:var(--gold-deco);border-width:1px;box-shadow:var(--shadow);}
+.tl-name{
+  font-size:.82rem;font-weight:700;letter-spacing:.04em;margin-bottom:14px;color:var(--ink-soft);
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.tl-row.hi .tl-name{color:var(--gold);}
+.tl-track{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.tl-cell{
+  border:1px solid var(--rule);border-radius:3px;padding:10px 8px;text-align:center;
+  font-size:.78rem;color:var(--ink-soft);background:var(--surface-2);line-height:1.6;
+}
+.tl-cell .m{
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:.9rem;font-weight:600;
+  color:var(--ink);margin-bottom:2px;
+}
+.tl-cell.drop{border-color:var(--caution);background:var(--caution-wash);color:var(--caution);}
+.tl-cell.drop .m{color:var(--caution);}
+.tl-cell.apply{border-color:var(--ok);background:var(--ok-wash);color:var(--ok);font-weight:700;}
+.tl-cell.apply .m{color:var(--ok);}
+.tl-cell.wait{opacity:.62;}
+.tl-note{font-size:.82rem;color:var(--ink-soft);margin-top:12px;}
+
+/* ---------- flow ---------- */
+.flow{display:flex;flex-direction:column;gap:0;margin:22px 0;}
+.flow-step{
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+  padding:0 0 22px;position:relative;
+}
+.flow-step:last-child{padding-bottom:0;}
+.flow-step::before{
+  content:"";position:absolute;left:17px;top:36px;bottom:0;width:1px;background:var(--rule-strong);
+}
+.flow-step:last-child::before{display:none;}
+.flow-num{
+  width:35px;height:35px;border-radius:50%;background:var(--badge-bg);color:var(--badge-fg);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"IBM Plex Mono",monospace;font-size:.82rem;font-weight:600;flex-shrink:0;z-index:1;
+}
+.flow-body h4{font-size:1rem;margin-bottom:5px;color:var(--ink);}
+.flow-body p{font-size:.91rem;color:var(--ink-soft);margin:0;}
+
+/* ---------- lists ---------- */
+ul.plain{list-style:none;margin:14px 0;padding:0;display:flex;flex-direction:column;gap:9px;}
+ul.plain li{padding-left:1.15em;position:relative;font-size:.95rem;}
+ul.plain li::before{
+  content:"";position:absolute;left:0;top:.78em;width:5px;height:5px;
+  background:var(--gold-deco);border-radius:50%;
+}
+ol.req{list-style:none;counter-reset:r;margin:14px 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+ol.req li{
+  counter-increment:r;position:relative;padding-left:40px;
+  font-size:.96rem;
+}
+ol.req li::before{
+  content:counter(r);
+  position:absolute;left:0;top:.34em;
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:600;
+  width:26px;height:26px;border-radius:3px;background:var(--badge-bg);color:var(--badge-fg);
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ---------- checklist ---------- */
+.check-group{margin:22px 0;}
+.check-group h3{margin-bottom:14px;}
+ul.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
+ul.check li{
+  position:relative;padding:11px 14px 11px 41px;
+  border-bottom:1px solid var(--rule);font-size:.94rem;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check li::before{
+  content:"";position:absolute;left:14px;top:1.05em;
+  width:15px;height:15px;border:1.5px solid var(--rule-strong);border-radius:2px;
+}
+
+/* ---------- faq ---------- */
+details{
+  border:1px solid var(--rule);border-radius:4px;background:var(--surface);margin-bottom:9px;
+}
+details[open]{border-color:var(--rule-strong);}
+summary{
+  cursor:pointer;padding:15px 20px;font-weight:700;font-size:.95rem;color:var(--navy);
+  list-style:none;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;
+}
+summary::-webkit-details-marker{display:none;}
+summary .qn{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--gold);font-weight:600;}
+summary:hover{background:var(--surface-2);}
+summary:focus-visible{outline:2px solid var(--info);outline-offset:-2px;}
+.faq-body{padding:0 20px 18px 52px;font-size:.93rem;color:var(--ink-soft);}
+.faq-body p{margin-bottom:.7em;}
+
+/* ---------- footer ---------- */
+.contact{
+  background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--gold-deco);
+  border-radius:4px;padding:30px 32px;box-shadow:var(--shadow);margin-bottom:44px;
+}
+.contact h2{font-size:1.2rem;color:var(--navy);margin-bottom:12px;}
+.source{
+  font-size:.82rem;color:var(--ink-soft);line-height:1.85;
+  border-top:1px solid var(--rule);padding-top:22px;margin-bottom:44px;
+}
+.source dt{font-weight:700;color:var(--ink);float:left;clear:left;width:7.5em;}
+.source dd{margin:0 0 4px 7.5em;}
+footer{
+  background:var(--navy-deep);color:#8ea3ba;padding:30px 24px;text-align:center;
+  font-size:.8rem;border-top:3px solid var(--gold-deco);
+}
+footer .mark{
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.2em;
+  color:var(--gold-deco);display:block;margin-bottom:8px;
+}
+
+@media (max-width:760px){
+  .facts-grid{grid-template-columns:1fr 1fr;}
+  .fact:nth-child(2){border-right:none;}
+  .fact:nth-child(1),.fact:nth-child(2){border-bottom:1px solid var(--rule);}
+  .tl-track{grid-template-columns:1fr 1fr;}
+  .letter,.card,.contact{padding:22px 20px;}
+  .source dt{float:none;width:auto;}
+  .source dd{margin-left:0;margin-bottom:12px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>事務所資料一覧</h1>
-    <p>過去の資料をまとめています。下記よりご確認ください。</p>
-
-    <div class="list">
-
-
-<div class="item">
-    <a href="裁判例集計.html">裁判例集計</a>
-    <div class="date">最終更新　2026年7月10日</div>
-</div>
-
-<div class="item">
-    <a href="リスト1_解雇理由ごとの使用者側の立証ポイント.html">リスト1_解雇理由ごとの使用者側の立証ポイント</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト2_管理監督者該当性判断の主張・証拠整理.html">リスト2_管理監督者該当性判断の主張・証拠整理</a>
-    <div class="date">2026年3月31日</div>
-</div>
-        
-
-<div class="item">
-    <a href="リスト3_退職勧奨を行う前のチェックリスト.html">リスト3_退職勧奨を行う前のチェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-
-<div class="item">
-    <a href="リスト4_従業員行方不明に伴う退職処理チェックリスト.html">リスト4_従業員行方不明に伴う退職処理チェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト5_企業から内定取り消しを行う場合のチェックポイント.html">リスト5_企業から内定取り消しを行う場合のチェックポイント</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト6_退職合意書作成時の基本チェックポイント.html">リスト6_退職合意書作成時の基本チェックポイント</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト7_従業員に対し損害賠償請求を行う場合の事前チェックリスト.html">リスト7_従業員に対し損害賠償請求を行う場合の事前チェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト8_年俸制を設ける場合のチェックリスト.html">リスト8_年俸制を設ける場合のチェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト9_身元保証書をとりつける場合のチェックポイント.html">リスト9_身元保証書をとりつける場合のチェックポイント</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-<div class="item">
-    <a href="リスト10_労基署からの是正勧告、是正指導の違い.html">リスト10_労基署からの是正勧告、是正指導の違い</a>
-    <div class="date">2026年3月31日</div>
-</div>
-<div class="item">
-    <a href="リスト11_従業員代表選出にあたってのチェックリスト.html">リスト11_従業員代表選出にあたってのチェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-<div class="item">
-    <a href="リスト12_私傷病休職からの復職可否判断にあたってのチェックリスト.html">リスト12_私傷病休職からの復職可否判断にあたってのチェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-<div class="item">
-    <a href="リスト13_労働法の「公法」と「私法」の比較整理.html">リスト13_労働法の「公法」と「私法」の比較整理</a>
-    <div class="date">2026年3月31日</div>
-</div>
-<div class="item">
-    <a href="リスト14_「正当な業務指導」と「パワーハラスメント」の境界線.html">リスト14_「正当な業務指導」と「パワーハラスメント」の境界線</a>
-    <div class="date">2026年3月31日</div>
-</div>
-<div class="item">
-    <a href="リスト15_同一労働同一賃金 対応状況確認チェックリスト.html">リスト15_同一労働同一賃金 対応状況確認チェックリスト</a>
-    <div class="date">2026年3月31日</div>
-</div>
-
-
-
-<div class="item">
-    <a href="労務ケーススタディ.html">労務ケーススタディ</a>
-    <div class="date">2026年4月6日</div>
-</div>
-        
-
-        
-<div class="item">
-    <a href="安全パトロール是正指示書.html">安全パトロール是正指示書</a>
-    <div class="date">2026年3月28日</div>
-</div>
-
-<div class="item">
-    <a href="カスハラ研修案内.html">カスハラ研修案内</a>
-    <div class="date">2026年4月20日</div>
-</div>
-
-<div class="item">
-    <a href="出張旅費規程注意点.html">出張旅費規程注意点</a>
-    <div class="date">2026年4月20日</div>
-</div>
-
-<div class="item">
-    <a href="20260424_健康診断結果に対する医師等からの意見聴取.html">健康診断結果に対する医師等からの意見聴取</a>
-    <div class="date">2026年4月24日</div>
-</div>
-
-<div class="item">
-    <a href="20260424_部下から上司への評価に基づく人事制度の注意点.html">部下から上司への評価に基づく人事制度の注意点</a>
-    <div class="date">2026年4月24日</div>
-</div>
-
-<div class="item">
-    <a href="20260424_無菌室の職場が若手を殺す.html">無菌室の職場が若手を殺す</a>
-    <div class="date">2026年4月24日</div>
-</div>
-
-<div class="item">
-    <a href="20260424_セクハラ相談を受けた場合の対応.html">セクハラ相談を受けた場合の対応</a>
-    <div class="date">2026年4月24日</div>
-</div>
-        
-<div class="item">
-    <a href="20260422_ClaudeCode_スキル解説.html">ClaudeCode_スキル解説</a>
-    <div class="date">2026年4月24日</div>
-</div>
-
-<div class="item">
-    <a href="ハラスメント対策_言い換え事例リスト.html">ハラスメント対策_言い換え事例リスト</a>
-    <div class="date">2026年5月8日</div>
-</div>
-
-<div class="item">
-    <a href="20260512_法改正まとめ_2026年版.html">20260512_法改正まとめ_2026年版</a>
-    <div class="date">2026年5月12日</div>
-</div>
-
-<div class="item">
-    <a href="タクシー求人アニメ動画.html">タクシー求人アニメ動画</a>
-    <div class="date">2026年5月12日</div>
-</div>
-
-<div class="item">
-    <a href="教養としての「労働法」入門.html">教養としての「労働法」入門</a>
-    <div class="date">2026年6月1日</div>
-</div>
-
-
-<div class="item">
-    <a href="労務質問回答_建設業1年変形_休日賃金.html">労務質問回答_建設業1年変形_休日賃金</a>
-    <div class="date">2026年6月23日</div>
-</div>
-
-<div class="item">
-    <a href="採用のコツ_人格採用面接.html">採用のコツ_人格採用面接</a>
-    <div class="date">2026年7月7日</div>
-</div>
-
-<div class="item">
-    <a href="採用のコツ_構造化面接.html">採用のコツ_構造化面接</a>
-    <div class="date">2026年7月7日</div>
-</div>
-
-<div class="item">
-    <a href="20260827_法改正案内_社会保険特例改定_2027年1月施行.html">法改正案内_社会保険特例改定_2027年1月施行</a>
-    <div class="date">2026年8月27日</div>
-</div>
-        
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">2027.01.01 &nbsp;/&nbsp; Revision Notice</p>
+    <h1>療養・育児・介護で報酬が急減した方の<br><em>社会保険料「特例改定」</em>がはじまります</h1>
+    <p class="hero-lead">
+      働き方を落とした月の給与だけで標準報酬月額を見直し、通常より2か月早く保険料を下げられる制度です。
+      届出は任意ですが、遡って適用できない・ご本人の書面同意が必須など、運用上の注意点が多くあります。
+    </p>
+    <div class="hero-meta">
+      <span><strong>発信日</strong>　2026年8月27日</span>
+      <span><strong>作成</strong>　土橋社労士事務所</span>
+      <span><strong>対象</strong>　顧問先各位</span>
     </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="facts-grid">
+    <div class="fact">
+      <span class="fact-label">Effective</span>
+      <span class="fact-value">2027年1月1日</span>
+      <span class="fact-note">令和9年1月1日から適用</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Scope</span>
+      <span class="fact-value">全企業</span>
+      <span class="fact-note">健康保険・厚生年金保険</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Filing</span>
+      <span class="fact-value">届出は任意</span>
+      <span class="fact-note">ただし終了時の届出は義務</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Consent</span>
+      <span class="fact-value">書面同意が必須</span>
+      <span class="fact-note">本人の同意なしには不可</span>
+    </div>
+  </div>
 </div>
 
+<div class="shell">
+
+  <nav class="toc" aria-label="目次">
+    <p class="toc-title">Contents</p>
+    <ol>
+      <li><a href="#s01"><span class="n mono">01</span><span>制度の概要</span></a></li>
+      <li><a href="#s02"><span class="n mono">02</span><span>通常の随時改定との違い</span></a></li>
+      <li><a href="#s03"><span class="n mono">03</span><span>対象となる方（3要件）</span></a></li>
+      <li><a href="#s04"><span class="n mono">04</span><span>療養・育児・介護とは</span></a></li>
+      <li><a href="#s05"><span class="n mono">05</span><span>対象とならない場合</span></a></li>
+      <li><a href="#s06"><span class="n mono">06</span><span>2等級以上低下の判定</span></a></li>
+      <li><a href="#s07"><span class="n mono">07</span><span>支払基礎日数の特例</span></a></li>
+      <li><a href="#s08"><span class="n mono">08</span><span>届出の時期と遡及</span></a></li>
+      <li><a href="#s09"><span class="n mono">09</span><span>就労調整が終わったとき</span></a></li>
+      <li><a href="#s10"><span class="n mono">10</span><span>手続きと必要書類</span></a></li>
+      <li><a href="#s11"><span class="n mono">11</span><span>ご本人への説明</span></a></li>
+      <li><a href="#s12"><span class="n mono">12</span><span>書類の2年間保存</span></a></li>
+      <li><a href="#s13"><span class="n mono">13</span><span>定時決定等との関係</span></a></li>
+      <li><a href="#s14"><span class="n mono">14</span><span>よくある落とし穴</span></a></li>
+      <li><a href="#s15"><span class="n mono">15</span><span>準備チェックリスト</span></a></li>
+      <li><a href="#faq"><span class="n mono">Q&amp;A</span><span>よくあるご質問</span></a></li>
+    </ol>
+  </nav>
+
+  <main class="main">
+
+    <div class="letter">
+      <div class="letter-head">
+        <span class="to">顧問先各位</span>
+        <span>2026年8月27日　土橋社労士事務所</span>
+      </div>
+      <p>拝啓　時下ますますご清栄のこととお慶び申し上げます。平素より格別のご高配を賜り、厚く御礼申し上げます。</p>
+      <p>
+        さて、令和8年7月31日付けの厚生労働省通知により、<strong>療養・育児・介護と仕事を両立するために働き方を調整した方</strong>について、
+        社会保険の標準報酬月額を通常より<strong>2か月早く</strong>引き下げられる特例が創設され、<strong>2027年（令和9年）1月1日</strong>から適用されることとなりました。
+      </p>
+      <p>
+        時短勤務中の従業員の方にとっては保険料負担の軽減となる一方、届出が遅れた月分は遡って適用できない、
+        ご本人の書面同意が必須であるなど、実務上の注意点が多い制度です。
+        制度開始前にご準備いただきたい事項もございますので、下記のとおりご案内申し上げます。
+      </p>
+      <p>ご不明な点や、対象となりそうな従業員の方がいらっしゃる場合は、お早めに弊所までご相談ください。</p>
+      <p style="text-align:right;margin-bottom:0;">敬具</p>
+    </div>
+
+    <!-- 01 -->
+    <section id="s01">
+      <div class="sec-head"><span class="sec-num">01</span><h2>制度の概要 ─ 一言でいうと</h2></div>
+      <p>
+        療養・育児・介護（以下「療養等」）と仕事を両立するため、ご本人と職場の合意のもとで
+        <strong>所定労働時間の短縮や時間外労働の抑制など（以下「就労調整」）</strong>を行うと、その分だけ報酬が急に減ります。
+      </p>
+      <p>
+        ところが通常の随時改定では、報酬が下がってから<strong>3か月の平均</strong>を見るため、保険料が下がるのは<strong>4か月目</strong>から。
+        それまでは減る前の高い標準報酬月額のまま保険料を負担することになります。
+      </p>
+      <p>
+        今回の特例は、この時間差を埋めるものです。<strong>報酬が減った最初の月（以下「報酬減初月」）の1か月分の給与だけ</strong>で標準報酬月額を改定し、
+        <strong>その翌月から</strong>適用できます。
+      </p>
+
+      <div class="tl">
+        <div class="tl-row">
+          <div class="tl-name">通常の随時改定<span class="tag navy">4か月目から</span></div>
+          <div class="tl-track">
+            <div class="tl-cell drop"><span class="m">9月</span>報酬が減る</div>
+            <div class="tl-cell wait"><span class="m">10月</span>従前のまま</div>
+            <div class="tl-cell wait"><span class="m">11月</span>従前のまま</div>
+            <div class="tl-cell apply"><span class="m">12月</span>ここで改定</div>
+          </div>
+          <p class="tl-note">9〜11月の平均で判定。10月・11月分の保険料は下がりません。</p>
+        </div>
+        <div class="tl-row hi">
+          <div class="tl-name">今回の特例改定<span class="tag ok">2か月早い</span></div>
+          <div class="tl-track">
+            <div class="tl-cell drop"><span class="m">9月</span>報酬が減る<br>＝この月に届出</div>
+            <div class="tl-cell apply"><span class="m">10月</span>ここで改定</div>
+            <div class="tl-cell"><span class="m">11月</span>改定後の額</div>
+            <div class="tl-cell"><span class="m">12月</span>改定後の額</div>
+          </div>
+          <p class="tl-note">9月の1か月分だけで判定。10月分の保険料から下がります。</p>
+        </div>
+      </div>
+
+      <div class="callout gold">
+        <span class="callout-label">Point</span>
+        <p style="margin:0;">
+          この特例は<strong>恒久的な制度</strong>です（新型コロナ特例のような期限付きの措置ではありません）。
+          また、法律上は随時改定ではなく<strong>保険者算定</strong>（健康保険法44条1項・厚生年金保険法24条1項）という位置づけで整理されています。
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="s02">
+      <div class="sec-head"><span class="sec-num">02</span><h2>通常の随時改定との違い</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">項目</th><th scope="col">通常の随時改定</th><th scope="col">今回の特例改定</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">根拠</th><td>健保法43条1項／厚年法23条1項</td><td>健保法44条1項／厚年法24条1項</td></tr>
+            <tr><th scope="row">固定的賃金の変動</th><td>必要</td><td><strong>不要</strong></td></tr>
+            <tr><th scope="row">見る月数</th><td>継続した3か月の平均</td><td><strong>報酬減初月の1か月のみ</strong></td></tr>
+            <tr><th scope="row">改定月</th><td>変動月から4か月目</td><td><strong>報酬減初月の翌月</strong></td></tr>
+            <tr><th scope="row">届出</th><td>義務</td><td><strong>任意</strong></td></tr>
+            <tr><th scope="row">ご本人の同意</th><td>不要</td><td><strong>書面での同意が必要</strong></td></tr>
+            <tr><th scope="row">支払基礎日数</th><td>各月17日以上</td><td>17日以上（<strong>欠勤日も算入可</strong>）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">Caution</span>
+        <p style="margin:0;">
+          支払基礎日数の緩和などは<strong>この特例限りの取扱い</strong>です。通知にも「通常の随時改定には適用されるものでない」と明記されています。
+          通常の随時改定の判定に持ち込まないようご注意ください。
+        </p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="s03">
+      <div class="sec-head"><span class="sec-num">03</span><h2>対象となる方（3つの要件）</h2></div>
+      <p>
+        健康保険・厚生年金保険の被保険者、および厚生年金保険の70歳以上被用者が対象です。
+        <strong>法人の役員の方</strong>も、その法人に使用される者として被保険者資格をお持ちであれば対象になります。
+      </p>
+      <div class="card">
+        <ol class="req">
+          <li>療養等と仕事を両立するための<strong>就労調整が行われている</strong>こと（ご本人と職場の合意のもとで行われるもの）</li>
+          <li>その就労調整により報酬が急減し、急減後の報酬総額による標準報酬月額が従前と比べて<strong>2等級以上低下</strong>し、かつ<strong>その状態が3か月以上続くことが予め見込まれる</strong>こと</li>
+          <li>特例による改定を行うことについて、<strong>対象となる方が書面で同意している</strong>こと</li>
+        </ol>
+      </div>
+      <ul class="plain">
+        <li><strong>固定的賃金（日給等の単価）の変動があったかどうかは問いません。</strong>残業の抑制だけで2等級以上下がった場合も対象になり得ます。</li>
+        <li>要件②は「<strong>見込み</strong>」で足ります。結果として3か月続かず報酬が戻った場合は、報酬増の届出（<a href="#s09">09</a>）で処理します。</li>
+        <li>会社が一方的に労働時間を削減したケースは、通知が想定する「両立のための就労調整」には当たりません。</li>
+      </ul>
+    </section>
+
+    <!-- 04 -->
+    <section id="s04">
+      <div class="sec-head"><span class="sec-num">04</span><h2>「療養」「育児」「介護」とは</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">事由</th><th scope="col">通知上の定義</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">療養</th><td>被保険者ご本人が傷病の治療等を受ける場合、<strong>又はご家族の傷病の治療等に伴い、被保険者が看護等の必要な対応をする場合</strong></td></tr>
+            <tr><th scope="row">育児</th><td>被保険者の<strong>小学校就学の始期に達するまでの子</strong>を養育する場合</td></tr>
+            <tr><th scope="row">介護</th><td><strong>介護保険法に基づく要介護認定又は要支援認定</strong>を受けているご家族を介護する場合</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">誤解の多い2点</span>
+        <p><strong>「育児は3歳まで」ではありません。</strong>育児休業等終了時改定や養育期間の従前標準報酬月額のみなし措置（3歳未満）とは対象年齢が異なり、この特例は<strong>小学校就学前まで</strong>と広く設定されています。</p>
+        <p style="margin-bottom:0;"><strong>「療養は本人の病気だけ」ではありません。</strong>ご家族の看護のために働き方を落とした場合も「療養」に含まれます。見落としやすい点です。</p>
+      </div>
+
+      <h3>「家族」の範囲</h3>
+      <p>
+        配偶者（<strong>婚姻の届出をしていないが事実上婚姻関係と同様の事情にある方を含む</strong>）、父母および子
+        （これらに準ずる者として<strong>祖父母・兄弟姉妹・孫</strong>を含む）、配偶者の父母、その他<strong>同居</strong>の親族。
+      </p>
+    </section>
+
+    <!-- 05 -->
+    <section id="s05">
+      <div class="sec-head"><span class="sec-num">05</span><h2>対象とならない場合</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">対象外となるケース</th><th scope="col">理由・補足</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">報酬減初月の翌月に資格喪失する方</th><td>その月の保険料が賦課されないため。なお、初月の<strong>翌月末</strong>に退職する方は資格喪失日が翌々月1日となるため、これには当たりません</td></tr>
+            <tr><th scope="row">被保険者期間が初月を含めて3か月未満の方</th><td>届出の対象とならないため。入社直後に就労調整を始めた場合は使えません</td></tr>
+            <tr><th scope="row">その月の全部にわたって勤務せず、報酬が一切支払われなかった場合</th><td>「両立している」とは言い難いため。この場合は傷病手当金等のご案内が適切です</td></tr>
+            <tr><th scope="row">支払基礎日数が17日（該当者は11日）未満となる場合</th><td>欠勤日を算入しても届かない月は対象外（<a href="#s07">07</a>）</td></tr>
+            <tr><th scope="row">療養等<strong>以外</strong>の理由による報酬減</th><td>テレワーク導入で残業や通勤手当が減った、といった事情それ自体は理由になりません</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section id="s06">
+      <div class="sec-head"><span class="sec-num">06</span><h2>「2等級以上低下」の判定</h2></div>
+      <p>
+        <strong>報酬減初月に受けた報酬の総額</strong>による標準報酬月額が、<strong>従前の標準報酬月額</strong>と比べて2等級以上低下していることが要件です。
+        通常の随時改定と違い、3か月平均は取りません。
+      </p>
+      <ul class="plain">
+        <li>「2等級以上低下する月」とは、<strong>その報酬が実際に支払われる月</strong>を指します。給与が<strong>翌月払い</strong>の事業所では、支払日の属する月が基準になります。</li>
+        <li>前月以前分の<strong>遅配分</strong>が支給された月は、遅配分を除いた初月分の給与で判定します。</li>
+        <li>特例改定の後さらに2等級以上低下した場合は、その月を新たな報酬減初月として<strong>再度特例改定を行うことが可能</strong>です。</li>
+      </ul>
+
+      <h3>上限・下限等級の特則</h3>
+      <p>次の場合は、1等級の差でも「2等級以上低下する者」に含まれます（通常の随時改定と同じ考え方です）。</p>
+      <ul class="plain">
+        <li><strong>上限等級から1等級下がる場合</strong>／健康保険第50級・厚生年金保険第32級にある方（健保：報酬月額141万5,000円以上、厚年：66万5,000円以上に限る）が降給し、健保第49級・厚年第31級に該当することとなった場合</li>
+        <li><strong>下限等級へ下がる場合</strong>／第2級にある方が降給し、健保5万3,000円未満・厚年8万3,000円未満となった場合</li>
+      </ul>
+
+      <div class="table-wrap">
+        <table>
+          <caption>厚生年金保険の上限等級は3年連続で引き上げられます。あわせて「1等級差でも該当」となる報酬月額の水準も変わります。</caption>
+          <thead><tr><th scope="col">時期</th><th scope="col">最高等級</th><th scope="col">標準報酬月額</th><th scope="col">1等級差でも該当となる報酬月額</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">令和9年9月〜</th><td class="num">第33級</td><td class="num">68万円</td><td class="num">69万5,000円以上</td></tr>
+            <tr><th scope="row">令和10年9月〜</th><td class="num">第34級</td><td class="num">71万円</td><td class="num">73万円以上</td></tr>
+            <tr><th scope="row">令和11年9月〜</th><td class="num">第35級</td><td class="num">75万円</td><td class="num">77万円以上</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section id="s07">
+      <div class="sec-head"><span class="sec-num">07</span><h2>支払基礎日数の特例</h2></div>
+      <div class="callout good">
+        <span class="callout-label">緩和されます</span>
+        <p style="margin:0;">
+          報酬減初月については、就労調整により<strong>勤務しなかった日</strong>（報酬の支払の有無は問いません）があっても、
+          <strong>所定労働日数に変更がなく</strong>、かつ<strong>使用関係が継続している</strong>ときは、
+          その勤務しなかった日も<strong>支払基礎日数として取り扱う</strong>ことができます。
+        </p>
+      </div>
+      <p>
+        ただし、欠勤日を足し込んでもなお支払基礎日数が<strong>17日未満</strong>（法令により11日とされている方は11日未満）となる月は、対象外です。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">場面</th><th scope="col">支払基礎日数の考え方</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">報酬<strong>減</strong>となった初月</th><td>就労調整による不就労日も<strong>算入する</strong>（報酬の有無を問わない）</td></tr>
+            <tr><th scope="row">報酬<strong>増</strong>となった初月</th><td>報酬支払いが無かった日は<strong>算入しない</strong>（通常どおり）</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">実務上の注意</span>
+        <p style="margin:0;">
+          緩和の条件は「<strong>所定労働日数に変更が無く</strong>」です。週5日勤務を週3日にするなど<strong>所定労働日数そのものを減らす</strong>形の時短では、
+          変更後の所定労働日数を前提に判定するため、17日を割って対象外になり得ます。時間単位の短縮か、日数単位の短縮かで結論が変わる点にご留意ください。
+        </p>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="s08">
+      <div class="sec-head"><span class="sec-num">08</span><h2>届出の時期と遡及 ─ 最も注意すべき点</h2></div>
+      <div class="callout warn">
+        <span class="callout-label">Critical</span>
+        <p><strong>過去に遡って適用することはできません。</strong></p>
+        <p style="margin-bottom:0;">
+          この特例では「報酬減となった初月」＝<strong>事業主が届け出た月</strong>と定義されています。
+          そのため改定後の標準報酬月額は<strong>届出月の翌月から</strong>適用され、届出月より前に遡ることはできません。
+          <strong>就労調整が始まった月のうちに届け出る</strong>運用が必須で、遅れた月分は取り戻せません。
+        </p>
+      </div>
+      <ul class="plain">
+        <li>届出期限そのものの定めはありませんが、上記の仕組みにより<strong>実質的に「その月のうち」が期限</strong>になります。</li>
+        <li>一度届け出た<strong>改定月を後から訂正することはできません</strong>。</li>
+        <li>複数の月にわたって要件に該当する場合は、ご本人の書面同意を得たうえで<strong>どの月を初月としても差し支えありません</strong>。<br>
+          例：11月に2等級低下、12月に3等級低下 → 12月を初月とすれば、1月分の保険料から改定後の額で計算されます。</li>
+      </ul>
+
+      <h3>特例改定後の標準報酬月額はいつまで有効か</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">場合</th><th scope="col">有効期間</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">原則</th><td>定時決定月の前月＝<strong>8月分保険料まで</strong>（9月分から定時決定後の額）</td></tr>
+            <tr><th scope="row">7月〜9月に特例改定を行った方</th><td>定時決定を行わないため、<strong>9月分以降の保険料も特例改定後の額</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section id="s09">
+      <div class="sec-head"><span class="sec-num">09</span><h2>就労調整が終わったとき（届出は義務です）</h2></div>
+      <div class="callout warn">
+        <span class="callout-label">義務・遡及あり</span>
+        <p style="margin:0;">
+          就労調整が<strong>終了または縮小</strong>したことにより報酬が増加し、増加後の報酬総額による標準報酬月額が、
+          特例改定後の標準報酬月額と比べて<strong>2等級以上上昇</strong>した場合には、
+          <strong>固定的賃金の変動の有無にかかわらず、速やかに</strong>届け出る必要があります。
+          この場合の改定は<strong>報酬増となった初月の翌月に遡って</strong>行われます。
+        </p>
+      </div>
+      <p>
+        つまり<strong>下げるときは遡及できず、上げるときは遡及する</strong>という非対称な仕組みです。
+        届出が遅れると、その分の保険料が遡って発生します。
+      </p>
+      <ul class="plain">
+        <li>「終了」だけでなく「<strong>縮小</strong>」も対象です。時短の幅を戻した場合（週3日→週5日、2時間短縮→1時間短縮 など）も、2等級以上上昇すれば届出が必要です。</li>
+        <li>この届出を行うことは、申立書兼同意書のなかで<strong>事業主が予め申し立てる事項</strong>のひとつになっています。</li>
+      </ul>
+
+      <div class="callout gold">
+        <span class="callout-label">おすすめの運用</span>
+        <p style="margin:0;">
+          特例改定を届け出た時点で、<strong>就労調整がいつ終わるかを追跡する仕組み</strong>をつくってください。
+          時短勤務の期限、復職予定日、介護の終了時点、子の就学時期などをトリガーに設定し、
+          対象者リストを給与計算のご担当と労務のご担当で共有して、毎月の給与確定時に「2等級以上上昇していないか」を確認する運用が安全です。
+        </p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section id="s10">
+      <div class="sec-head"><span class="sec-num">10</span><h2>手続きと必要書類</h2></div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-body">
+            <h4>要件の確認とご本人への説明</h4>
+            <p>事由・等級低下・見込み・支払基礎日数を確認し、デメリットを含めてご本人にご説明します。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-body">
+            <h4>書面同意の取得（申立書兼同意書）</h4>
+            <p>対象となる方<strong>お一人につき1枚</strong>必要です。複数名をまとめて届け出る場合も全員分をご用意ください。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-body">
+            <h4>届出（就労調整を始めた月のうちに）</h4>
+            <p>被保険者報酬月額変更届（特例改定用）＋申立書兼同意書を提出します。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-body">
+            <h4>証憑の保管（届出日から2年間）</h4>
+            <p>出勤簿・賃金台帳に加え、事由を証明する書類を保存します。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>提出書類</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">書類</th><th scope="col">様式</th><th scope="col">備考</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">被保険者報酬月額変更届（特例改定用）</th><td>別紙1-1、1-2</td><td>3か月分の欄のうち、<strong>一番下の月の欄のみ</strong>に報酬減初月の報酬月額等を記載する取扱いで差し支えありません</td></tr>
+            <tr><th scope="row">申立書兼同意書</th><td>別紙2</td><td><strong>対象者1人につき1枚。</strong>記載内容に漏れがなければ自社様式でも差し支えありません</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>提出先</h3>
+      <ul class="plain">
+        <li>日本年金機構の<strong>事務センター（または年金事務所）</strong></li>
+        <li>健康保険組合が管掌する健康保険については、<strong>同時に当該健康保険組合にも提出</strong>します</li>
+      </ul>
+
+      <div class="callout warn">
+        <span class="callout-label">返戻の原因になります</span>
+        <p style="margin:0;">
+          申立書には「<strong>健康保険及び厚生年金保険の双方で同様の特例改定の手続を行う旨</strong>」のチェック欄が設けられています。
+          <strong>チェックがない場合、申立書は事業主に返戻</strong>されたうえで、健康保険組合と日本年金機構の双方へ同時に手続を行うよう求められます。
+        </p>
+      </div>
+
+      <h3>添付書類</h3>
+      <p>
+        <strong>原則として不要</strong>です。ただし申立書兼同意書の提出は必須で、記載内容に誤りがないかを確実にご確認ください。
+        なお、健康保険組合の判断により添付書類を求められることは妨げられていません。
+      </p>
+
+      <h3>通常の随時改定との届出上の違い（3点）</h3>
+      <ol class="req">
+        <li><strong>特例措置用の届書</strong>で提出すること</li>
+        <li><strong>申立書兼同意書の添付</strong>が必要であること</li>
+        <li>健保組合管掌の場合は、<strong>年金機構と健保組合の双方へ同時に</strong>届け出ること</li>
+      </ol>
+    </section>
+
+    <!-- 11 -->
+    <section id="s11">
+      <div class="sec-head"><span class="sec-num">11</span><h2>ご本人への説明 ─ 最大の実務リスク</h2></div>
+      <p>
+        通知は、特例による改定を行う場合には保険料額への影響のみならず、
+        <strong>将来の年金給付が減少すること</strong>、<strong>傷病手当金および出産手当金に影響が生じること</strong>について
+        <strong>対象となる方に十分説明のうえ、予め同意を得ておく必要がある</strong>としています。同意は<strong>書面</strong>が要件です。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">項目</th><th scope="col">影響</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">健康保険料・厚生年金保険料</th><td><span class="tag ok">メリット</span>　下がります</td></tr>
+            <tr><th scope="row">老齢厚生年金</th><td><span class="tag warn">デメリット</span>　報酬比例部分の計算基礎（平均標準報酬額）が下がり、将来の年金額が減ります</td></tr>
+            <tr><th scope="row">障害厚生年金・遺族厚生年金</th><td><span class="tag warn">デメリット</span>　同じく平均標準報酬額が下がるため影響します</td></tr>
+            <tr><th scope="row">傷病手当金</th><td><span class="tag warn">デメリット</span>　支給開始日以前12か月の標準報酬月額の平均を基礎に日額を計算するため、日額が下がります</td></tr>
+            <tr><th scope="row">出産手当金</th><td><span class="tag warn">デメリット</span>　同上。日額が下がります</td></tr>
+            <tr><th scope="row">雇用保険の育児休業給付等</th><td>賃金日額ベースのため、標準報酬月額の低下による直接の影響はありません</td></tr>
+            <tr><th scope="row">高額療養費の所得区分</th><td>標準報酬月額で区分が決まるため、区分が下がり自己負担限度額が下がる場合があります</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">特に慎重にご説明を</span>
+        <p style="margin-bottom:0;">
+          <strong>これから出産・育児休業を予定されている方</strong>（出産手当金が下がります）、
+          <strong>長期の療養に入る可能性がある方</strong>（傷病手当金が下がります。療養を理由とする就労調整では特に現実的なリスクです）、
+          <strong>年金受給開始が近い方</strong>。
+          「保険料が下がりますよ」だけをお伝えして同意を得ると、後日のトラブルにつながります。
+        </p>
+      </div>
+
+      <h3>届出は任意です</h3>
+      <p>
+        要件に該当する方を全員届け出る必要はなく、<strong>一部の方のみ</strong>を届け出ることもできます。
+        事業主と被保険者の間でご相談のうえ、届出の要否を判断していただく制度設計になっています。
+      </p>
+      <p>
+        なお、特例の対象とならない場合であっても、被保険者の状況を把握された際には、
+        個々の事情に応じて<strong>傷病手当金等の関係する給付制度</strong>の対象となり得ることから、必要な情報提供を行うこととされています。
+      </p>
+
+      <div class="callout gold">
+        <span class="callout-label">おすすめの運用</span>
+        <p style="margin:0;">
+          説明資料（メリット・デメリットの比較、ご本人の給与額での試算例）をセットでご用意ください。
+          同意書には「上記の説明を受けたうえで同意します」の一文を入れ、<strong>説明した記録（日付・説明者）</strong>を残します。
+          会社主導ではなく<strong>ご本人の選択</strong>であることを、書面上も明確にしておくことが有効です。
+        </p>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section id="s12">
+      <div class="sec-head"><span class="sec-num">12</span><h2>書類の2年間保存と事後確認</h2></div>
+      <p>
+        日本年金機構および健康保険組合が事後的に確認できるよう、事業主は、届出および申立書兼同意書の内容が事実であることを確認できる書類を、
+        <strong>届出日から2年間</strong>保存することが求められます。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">区分</th><th scope="col">保存すべき書類の例</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">共通</th><td>出勤簿、賃金台帳など、報酬が急減した月以降の勤務状況・報酬の支払い状況等が分かる書類</td></tr>
+            <tr><th scope="row">療養</th><td>療養の事実が分かる<strong>医師の診断書</strong>など。ご家族の看護等を行う場合は、<strong>その方と被保険者との関係を証明する書類</strong>もあわせて</td></tr>
+            <tr><th scope="row">育児</th><td><strong>子の年齢および被保険者との関係を証明する書類</strong>（住民票・戸籍謄本等）</td></tr>
+            <tr><th scope="row">介護</th><td>ご家族の<strong>介護保険被保険者証</strong>など要介護・要支援認定が確認できる書類、および被保険者との関係を証明する書類</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">遡及取消</span>
+        <p style="margin:0;">
+          後日、届け出た内容が事実と相違していることが確認された場合、<strong>特例による改定は無効となり、遡及して取消</strong>となります。
+          保険料の遡及徴収が発生しますので、要件の確認を曖昧にしたままの届出はお避けください。
+        </p>
+      </div>
+
+      <ul class="plain">
+        <li>届出時の添付は原則不要でも、<strong>社内では届出時点で証憑を揃えて保管</strong>しておくのが安全です。後から診断書や介護保険被保険者証の写しを取り直すのは困難です。</li>
+        <li>保存の起算日は「<strong>届出日から</strong>」2年間です。労働基準法上の記録保存とは別カウントになるため、実務上は賃金台帳・出勤簿と一緒に管理されることをおすすめします。</li>
+        <li>傷病・介護に関する情報は<strong>要配慮個人情報</strong>を含みます。取得目的を明示し、アクセス制限をかけて保管してください。</li>
+      </ul>
+    </section>
+
+    <!-- 13 -->
+    <section id="s13">
+      <div class="sec-head"><span class="sec-num">13</span><h2>定時決定・随時改定との関係</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">場面</th><th scope="col">必要な届出</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">特例と通常の随時改定の要件を両方満たす → 特例を選ぶ</th><td>特例措置の届出のみ（<strong>通常の随時改定の届出は不要</strong>）</td></tr>
+            <tr><th scope="row">特例と通常の随時改定の要件を両方満たす → 特例を使わない</th><td>通常の随時改定の届出（<strong>義務</strong>）</td></tr>
+            <tr><th scope="row">特例改定後に、固定的賃金の変動＋3か月平均で2等級変動</th><td>被保険者標準報酬月額変更届（<strong>通常の随時改定は特例改定後も生きています</strong>）</td></tr>
+            <tr><th scope="row">特例改定後の毎年7月</th><td>算定基礎届（ただし7〜9月に随時改定・特例改定があれば対象外）</td></tr>
+            <tr><th scope="row">就労調整が終了し2等級以上上昇</th><td>特例措置の報酬増の届出（<a href="#s09">09</a>）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>二以上事業所勤務の被保険者</strong>については、通常の随時改定と同様に、
+        <strong>それぞれの事業所ごとに</strong>特例に該当するかを判断し、標準報酬月額は<strong>各事業所の報酬月額を合算</strong>して決定します。
+      </p>
+    </section>
+
+    <!-- 14 -->
+    <section id="s14">
+      <div class="sec-head"><span class="sec-num">14</span><h2>よくある落とし穴</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">落とし穴</th><th scope="col">対処</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">「先月から時短だったので先月分から」</th><td>遡及できません。就労調整の開始月のうちに届出を</td></tr>
+            <tr><th scope="row">保険料が下がることだけ説明した</th><td>後日「聞いていない」となります。傷病手当金・出産手当金・年金への影響を<strong>書面で</strong>ご説明ください</td></tr>
+            <tr><th scope="row">健保組合に出し忘れ／同時手続のチェック欄漏れ</th><td><strong>返戻されます。</strong>同時提出を徹底してください</td></tr>
+            <tr><th scope="row">就労調整が終わったのに届出漏れ</th><td><strong>遡って保険料が徴収されます。</strong>対象者リストで管理を</td></tr>
+            <tr><th scope="row">全部欠勤・無給の月で申請してしまう</th><td>対象外です。傷病手当金等をご案内ください</td></tr>
+            <tr><th scope="row">所定労働日数自体を減らして17日未満に</th><td>支払基礎日数を満たさず対象外になり得ます</td></tr>
+            <tr><th scope="row">「育児は3歳まで」と思い込む</th><td>この特例は<strong>小学校就学前</strong>までです</td></tr>
+            <tr><th scope="row">「療養は本人の病気だけ」と思い込む</th><td><strong>ご家族の看護</strong>も含まれます</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section id="s15">
+      <div class="sec-head"><span class="sec-num">15</span><h2>準備チェックリスト</h2></div>
+
+      <div class="card check-group">
+        <h3>制度開始前（2026年内）</h3>
+        <ul class="check">
+          <li>時短勤務・時間外免除等をご利用中／ご予定の従業員の洗い出し（療養・育児・介護）</li>
+          <li>ご本人への説明資料（メリット・デメリット・試算例）の準備</li>
+          <li>申立書兼同意書の様式の準備（別紙2または自社様式）</li>
+          <li>健康保険組合にご加入の場合、組合側の受付方法の確認</li>
+          <li>給与ソフト・社会保険手続ソフトの特例改定用届書への対応状況の確認</li>
+        </ul>
+      </div>
+
+      <div class="card check-group">
+        <h3>対象者が出たとき（届出前チェック）</h3>
+        <ul class="check">
+          <li>事由が療養・育児・介護のいずれかに当たるか（療養は<strong>家族の看護</strong>も、育児は<strong>小学校就学前</strong>まで）</li>
+          <li>就労調整がご本人と職場の合意のもとで行われているか</li>
+          <li>報酬減初月の報酬総額で2等級以上低下するか</li>
+          <li>その状態が3か月以上続く見込みか</li>
+          <li>支払基礎日数17日（該当者11日）以上か（就労調整による欠勤日は算入可）</li>
+          <li>その月にまったく出勤せず無給、ではないか</li>
+          <li>報酬減初月の翌月に資格喪失しないか</li>
+          <li>被保険者期間が初月を含めて3か月以上あるか</li>
+          <li>デメリットをご説明のうえ、書面同意を取得したか</li>
+          <li>申立書の「健保・厚年の同時手続」チェック欄を入れたか</li>
+        </ul>
+      </div>
+
+      <div class="card check-group">
+        <h3>届出後の管理</h3>
+        <ul class="check">
+          <li>証憑（出勤簿・賃金台帳・診断書・続柄証明等）を届出日から2年間保存</li>
+          <li>就労調整の終了・縮小を追跡（終了したら速やかに届出。遡って保険料が動きます）</li>
+          <li>特例改定後も通常の随時改定の該当チェックを継続</li>
+          <li>算定基礎届は通常どおり提出（7〜9月に特例改定した方を除く）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="sec-head"><span class="sec-num">Q&amp;A</span><h2>よくあるご質問</h2></div>
+      <p style="font-size:.92rem;color:var(--ink-soft);">
+        厚生労働省が同日付けで示したQ&amp;A（全29問）のうち、ご相談の多い項目を抜粋しています。
+      </p>
+
+      <details>
+        <summary><span class="qn">Q1</span><span>この特例はいつまでの措置ですか。</span></summary>
+        <div class="faq-body"><p>期限のある措置ではなく、<strong>恒久的な措置</strong>とされています。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q2</span><span>役員も対象になりますか。</span></summary>
+        <div class="faq-body"><p>法人の役員の方も、その法人に使用される者として被保険者資格をお持ちであれば対象になります。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q3</span><span>固定的賃金の変動がなくても対象になりますか。</span></summary>
+        <div class="faq-body"><p>対象になります。この特例では、固定的賃金（日給等の単価）の変動があったか否かは問いません。残業の抑制のみで2等級以上低下した場合も該当し得ます。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q4</span><span>給与が翌月払いですが、どの月が「報酬減初月」になりますか。</span></summary>
+        <div class="faq-body"><p>「標準報酬月額が2等級以上低下する月」とは、その報酬が<strong>実際に支払われる月</strong>を指します。したがって支払日の属する月が基準になります。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q5</span><span>テレワークで残業や通勤手当が減り、2等級下がりました。使えますか。</span></summary>
+        <div class="faq-body"><p>使えません。療養・育児・介護と仕事を両立するための就労調整が原因である必要があり、テレワーク導入それ自体は理由になりません。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q6</span><span>休職して賃金がまったく支払われない月は対象になりますか。</span></summary>
+        <div class="faq-body"><p>対象外です。その月の全部にわたって勤務せず報酬が一切支払われなかった場合は、療養等と仕事を両立しているとは言い難いためです。この場合は傷病手当金等の情報提供をご検討ください。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q7</span><span>要件に該当する従業員が複数いますが、一部の人だけ届け出てもよいですか。</span></summary>
+        <div class="faq-body"><p>差し支えありません。届出は任意であり、事業主と被保険者の間でご相談のうえ判断していただく制度です。なお、まとめて届け出る場合でも申立書兼同意書は<strong>対象者全員分</strong>が必要です。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q8</span><span>入社したばかりの従業員が翌月から時短勤務になりました。</span></summary>
+        <div class="faq-body"><p>被保険者期間が報酬減初月を含めて3か月未満の場合は、届出の対象となりません。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q9</span><span>特例改定をした後も、算定基礎届は必要ですか。</span></summary>
+        <div class="faq-body"><p>必要です。特例による改定後であっても定時決定は行うため、算定基礎届の提出が必要です。ただし通常の定時決定と同様、7月・8月・9月に随時改定または特例改定が行われる場合は対象外となります。</p></div>
+      </details>
+      <details>
+        <summary><span class="qn">Q10</span><span>一度届け出た改定月を後から変更できますか。</span></summary>
+        <div class="faq-body"><p>改定月の訂正はできません。ただし、特例改定の後にさらに2等級以上低下した場合は、その月を新たな報酬減初月として再度特例改定を行うことが可能です。</p></div>
+      </details>
+    </section>
+
+    <div class="contact">
+      <h2>お問い合わせ</h2>
+      <p style="font-size:.95rem;">
+        対象となりそうな従業員の方がいらっしゃる場合、要件の判定やご本人への説明資料の作成、届出書類のご準備まで弊所でお手伝いいたします。
+        制度開始前の洗い出しについても、お気軽にご相談ください。
+      </p>
+      <p style="margin-bottom:0;font-size:.95rem;">
+        <strong>土橋社労士事務所</strong>　E-mail：<a href="mailto:sr@dobashi-office.com">sr@dobashi-office.com</a>
+      </p>
+    </div>
+
+    <dl class="source">
+      <dt>根拠通知</dt>
+      <dd>令和8年7月31日付け 保保発0731第4号・年年発0731第1号・年管管発0731第7号「療養、育児又は介護により報酬が急減した者についての健康保険法及び厚生年金保険法の標準報酬月額の保険者算定の特例について」（厚生労働省保険局保険課長・年金局年金課長・年金局事業管理課長）</dd>
+      <dt>関連Q&amp;A</dt>
+      <dd>同日付け事務連絡 別添（全29問）</dd>
+      <dt>根拠条文</dt>
+      <dd>健康保険法44条1項、厚生年金保険法24条1項</dd>
+      <dt>ご注意</dt>
+      <dd>本資料は上記通知およびQ&amp;Aに基づき土橋社労士事務所が作成した解説です。個別の事案の取扱いは、所轄の年金事務所または加入されている健康保険組合のご判断によります。実際のご対応にあたっては弊所までご相談ください。</dd>
+    </dl>
+
+  </main>
+</div>
+
+<footer>
+  <span class="mark">SOCIAL INSURANCE &amp; LABOR CONSULTANT</span>
+  土橋社労士事務所　|　2026年8月27日作成
+</footer>
 </body>
 </html>
